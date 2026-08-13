@@ -1,0 +1,30 @@
+# Virtual environment
+.venv/
+
+# Downloaded raw data (too large for git — upload to Google Drive)
+hindi/data/collection/raw/
+sindhi/data/collection/raw/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model checkpoints (upload to Google Drive)
+*.pt
+*.pth
+*.bin
+*.safetensors
