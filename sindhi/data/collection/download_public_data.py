@@ -28,12 +28,13 @@ from tqdm import tqdm
 
 SOURCES = [
     {
-        "id": "sindhi_texts_big",
+        "id": "sindhi_texts_big_cc100",
         "hf_repo": "arnizamani/Sindhi-texts-big-dataset",
         "repo_type": "dataset",
-        "format": "stream_repo_text",
-        "target_gb": 2.0,  # Cap at 2 GB
-        "desc": "CC100 Sindhi + Sindh Salamat Books",
+        "format": "hf_file",
+        "filename": "CC100-Sindhi/sd.txt",
+        "target_gb": 0.5,
+        "desc": "CC100 Sindhi",
     },
     {
         "id": "sindhi_nlp_corpus",
@@ -42,7 +43,7 @@ SOURCES = [
         "format": "parquet",
         "file_pattern": "dataset/sindhi_corpus.parquet",
         "text_col": "text",
-        "target_gb": 1.5,
+        "target_gb": 2.0,
         "desc": "Aggregated Sindhi NLP Corpus",
     },
     {
@@ -170,12 +171,11 @@ def download_parquet_source(source: dict, output_dir: Path, dry_run: bool = Fals
     return stats
 
 
-def download_stream_repo_text(source: dict, output_dir: Path, dry_run: bool = False) -> dict:
-    """Download many small text files from a HuggingFace repo directly (e.g. books)."""
+def download_hf_file(source: dict, output_dir: Path, dry_run: bool = False) -> dict:
+    """Download a specific text file from a HuggingFace repo."""
     src_id = source["id"]
     out_file = output_dir / f"{src_id}.txt"
     stats_file = output_dir / f"{src_id}_stats.json"
-    target_bytes = int(source["target_gb"] * 1024**3)
 
     if out_file.exists() and stats_file.exists():
         with open(stats_file, "r") as f:
@@ -187,48 +187,42 @@ def download_stream_repo_text(source: dict, output_dir: Path, dry_run: bool = Fa
     print(f"\n{'='*70}")
     print(f"  Source: {source['desc']}")
     print(f"  Repo: {source['hf_repo']}")
-    print(f"  Target: {source['target_gb']} GB")
+    print(f"  File: {source['filename']}")
     print(f"  Output: {out_file}")
     print(f"{'='*70}")
 
     if dry_run:
         return {"source": src_id, "status": "dry_run_ok"}
 
-    import requests
-    api = HfApi()
-    
-    print("  Listing files in repo (this may take a moment)...")
-    files = list(api.list_repo_tree(source["hf_repo"], repo_type="dataset", recursive=True))
-    text_files = [f.rfilename for f in files if f.rfilename.endswith(".txt")]
-    print(f"  Found {len(text_files)} text files.")
-
     start_time = time.time()
+    
+    print(f"  Downloading {source['filename']}...")
+    try:
+        local_path = hf_hub_download(
+            repo_id=source["hf_repo"],
+            filename=source["filename"],
+            repo_type="dataset",
+        )
+    except Exception as e:
+        print(f"    ✗ Failed to download {source['filename']}: {e}")
+        return {"source": src_id, "status": "failed"}
+
+    print("  Copying data to output file...")
     bytes_written = 0
     doc_count = 0
-
-    with open(out_file, "w", encoding="utf-8") as f_out:
-        pbar = tqdm(total=target_bytes, unit="B", unit_scale=True, desc="  Downloading", ncols=80)
-        
-        for fname in text_files:
-            url = f"https://huggingface.co/datasets/{source['hf_repo']}/resolve/main/{fname}"
-            try:
-                resp = requests.get(url, timeout=10)
-                if resp.status_code == 200:
-                    text = resp.text.strip()
-                    if len(text) > 50:
-                        out_line = text + "\n\n"
-                        out_bytes = len(out_line.encode("utf-8"))
-                        f_out.write(out_line)
-                        bytes_written += out_bytes
-                        doc_count += 1
-                        pbar.update(out_bytes)
-            except:
-                pass
-
-            if bytes_written >= target_bytes:
-                break
-                
-        pbar.close()
+    with open(local_path, "r", encoding="utf-8") as f_in, open(out_file, "w", encoding="utf-8") as f_out:
+        for line in f_in:
+            if not line.strip():
+                continue
+            line = line.strip() + "\n\n"
+            f_out.write(line)
+            bytes_written += len(line.encode("utf-8"))
+            doc_count += 1
+            
+    try:
+        os.remove(local_path)
+    except OSError:
+        pass
 
     elapsed = time.time() - start_time
     stats = {
@@ -268,8 +262,8 @@ def main():
     for source in SOURCES:
         if source["format"] == "parquet":
             stats = download_parquet_source(source, output_dir, args.dry_run)
-        elif source["format"] == "stream_repo_text":
-            stats = download_stream_repo_text(source, output_dir, args.dry_run)
+        elif source["format"] == "hf_file":
+            stats = download_hf_file(source, output_dir, args.dry_run)
         all_stats.append(stats)
 
     print(f"\n{'='*70}\n  DOWNLOAD SUMMARY\n{'='*70}")
