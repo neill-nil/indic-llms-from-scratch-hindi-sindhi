@@ -1,9 +1,27 @@
+# Project requirements/docs
+*.pdf
+LMA_Individual_Project_v1.pdf
+
 # Virtual environment
 .venv/
 
 # Downloaded raw data (too large for git — upload to Google Drive)
 hindi/data/collection/raw/
 sindhi/data/collection/raw/
+
+# Cleaned data (too large for git)
+hindi/data/preprocessed/
+sindhi/data/preprocessed/
+
+# Tokenizer artifacts (generated locally)
+*.model
+*.vocab
+hindi/tokenizer/train_clean.txt
+sindhi/tokenizer/train_clean.txt
+
+# Log files
+*.log
+nohup.out
 
 # Python cache
 __pycache__/

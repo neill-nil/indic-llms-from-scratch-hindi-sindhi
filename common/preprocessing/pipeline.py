@@ -53,16 +53,16 @@ def iter_raw_documents(raw_dir: Path) -> Generator[Tuple[str, str], None, None]:
                     char_count += len(stripped)
                     # Force yield if a single document exceeds ~1MB to prevent OOM
                     if char_count > 1_000_000:
-                        yield source, "\\n".join(current_doc)
+                        yield source, "\n".join(current_doc)
                         current_doc = []
                         char_count = 0
                 else:
                     if current_doc:
-                        yield source, "\\n".join(current_doc)
+                        yield source, "\n".join(current_doc)
                         current_doc = []
                         char_count = 0
             if current_doc:
-                yield source, "\\n".join(current_doc)
+                yield source, "\n".join(current_doc)
     
     scraped_dir = raw_dir / "scraped"
     if scraped_dir.exists():
@@ -100,7 +100,7 @@ def run_pipeline(language: str, val_ratio: float = 0.05):
     out_dir = PROJECT_ROOT / language / "data" / "preprocessed"
     out_dir.mkdir(parents=True, exist_ok=True)
     
-    logger.info(f"{'='*70}\\n  Preprocessing Pipeline (Streaming) — {language.upper()}\\n{'='*70}")
+    logger.info(f"{'='*70}\n  Preprocessing Pipeline (Streaming) — {language.upper()}\n{'='*70}")
     
     train_path = out_dir / "train.txt"
     val_path = out_dir / "val.txt"
@@ -134,7 +134,7 @@ def run_pipeline(language: str, val_ratio: float = 0.05):
             seen_hashes.add(h)
             stats["after_dedup"] += 1
             
-            out_str = f"{cleaned}\\n{DOC_SEPARATOR}\\n"
+            out_str = f"{cleaned}\n{DOC_SEPARATOR}\n"
             out_bytes = len(out_str.encode('utf-8'))
             
             if random.random() >= val_ratio:
