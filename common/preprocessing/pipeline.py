@@ -79,6 +79,29 @@ def iter_raw_documents(raw_dir: Path) -> Generator[Tuple[str, str], None, None]:
                         if text: yield source, text
                     except json.JSONDecodeError:
                         continue
+                        
+        for txt_file in sorted(scraped_dir.glob("*.txt")):
+            source = txt_file.stem
+            logger.info(f"  Reading {txt_file.name}...")
+            with open(txt_file, 'r', encoding='utf-8') as f:
+                current_doc = []
+                char_count = 0
+                for line in f:
+                    stripped = line.strip()
+                    if stripped:
+                        current_doc.append(stripped)
+                        char_count += len(stripped)
+                        if char_count > 1_000_000:
+                            yield source, "\n".join(current_doc)
+                            current_doc = []
+                            char_count = 0
+                    else:
+                        if current_doc:
+                            yield source, "\n".join(current_doc)
+                            current_doc = []
+                            char_count = 0
+                if current_doc:
+                    yield source, "\n".join(current_doc)
 
 def apply_filters(text: str, language: str) -> Tuple[str, str]:
     text = normalize_unicode(text)

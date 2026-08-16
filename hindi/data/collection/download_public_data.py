@@ -61,7 +61,7 @@ SOURCES = [
         "repo_type": "dataset",
         "files": ["data/hi-1.txt"],  # stream first 0.1 GB from 25 GB file
         "format": "text",
-        "target_gb": 0.1,  # ~12M tokens — just for source diversity
+        "target_gb": 0.7,  # ~85M tokens — pushed up to ensure we clear 450M total
         "desc": "IndicCorp v2 (monolingual web crawl)",
     },
 ]
