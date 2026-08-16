@@ -1,0 +1,190 @@
+{
+  "bpe": {
+    "model": "sindhi_bpe_32000.model",
+    "vocabulary": {
+      "vocab_size": 32000,
+      "special_tokens": 261,
+      "byte_fallback_tokens": 0,
+      "script_distribution": {
+        "arabic": 29581,
+        "latin": 2117,
+        "symbol": 38,
+        "other": 2
+      },
+      "target_script_ratio": 0.9320373054382759,
+      "avg_token_length_chars": 4.2843594429390635,
+      "median_token_length": 4
+    },
+    "fertility": {
+      "fertility": 1.2473,
+      "total_words_sampled": 1267325,
+      "total_tokens": 1580735,
+      "unk_rate": 0.0,
+      "lines_sampled": 50000
+    },
+    "samples": [
+      {
+        "original": "اٺالو پاندان اپنا هم باز آئي محبت سي",
+        "tokens": [
+          "▁اٺ",
+          "الو",
+          "▁پان",
+          "دان",
+          "▁اپنا",
+          "▁هم",
+          "▁باز",
+          "▁آئي",
+          "▁محبت",
+          "▁سي"
+        ],
+        "n_tokens": 10
+      },
+      {
+        "original": "ماجد ڀرڳڙي ۽ سنڌي ڪمپيوٽنگ",
+        "tokens": [
+          "▁ماجد",
+          "▁ڀرڳڙي",
+          "▁۽",
+          "▁سنڌي",
+          "▁ڪمپيوٽنگ"
+        ],
+        "n_tokens": 5
+      },
+      {
+        "original": "مين چاهتا ٿا اسي روڪ رکون",
+        "tokens": [
+          "▁مين",
+          "▁چاه",
+          "تا",
+          "▁ٿا",
+          "▁اسي",
+          "▁روڪ",
+          "▁رکون"
+        ],
+        "n_tokens": 7
+      },
+      {
+        "original": "ميري جان ڀي جائي تو جاني نه دون",
+        "tokens": [
+          "▁ميري",
+          "▁جان",
+          "▁ڀي",
+          "▁جائي",
+          "▁تو",
+          "▁جاني",
+          "▁نه",
+          "▁دون"
+        ],
+        "n_tokens": 8
+      },
+      {
+        "original": "ڪيي لاک فريب ڪروڙ فسون",
+        "tokens": [
+          "▁ڪي",
+          "ي",
+          "▁لاک",
+          "▁فريب",
+          "▁ڪروڙ",
+          "▁ف",
+          "سون"
+        ],
+        "n_tokens": 7
+      }
+    ]
+  },
+  "unigram": {
+    "model": "sindhi_unigram_32000.model",
+    "vocabulary": {
+      "vocab_size": 32000,
+      "special_tokens": 261,
+      "byte_fallback_tokens": 0,
+      "script_distribution": {
+        "arabic": 29389,
+        "latin": 2324,
+        "symbol": 23,
+        "other": 2
+      },
+      "target_script_ratio": 0.9259877749070515,
+      "avg_token_length_chars": 4.506175562417291,
+      "median_token_length": 4
+    },
+    "fertility": {
+      "fertility": 1.2454,
+      "total_words_sampled": 1267325,
+      "total_tokens": 1578378,
+      "unk_rate": 0.0,
+      "lines_sampled": 50000
+    },
+    "samples": [
+      {
+        "original": "اٺالو پاندان اپنا هم باز آئي محبت سي",
+        "tokens": [
+          "▁اٺ",
+          "الو",
+          "▁پاند",
+          "ان",
+          "▁اپ",
+          "نا",
+          "▁هم",
+          "▁باز",
+          "▁آئي",
+          "▁محبت",
+          "▁سي"
+        ],
+        "n_tokens": 11
+      },
+      {
+        "original": "ماجد ڀرڳڙي ۽ سنڌي ڪمپيوٽنگ",
+        "tokens": [
+          "▁ماجد",
+          "▁ڀرڳڙي",
+          "▁۽",
+          "▁سنڌي",
+          "▁ڪمپيوٽنگ"
+        ],
+        "n_tokens": 5
+      },
+      {
+        "original": "مين چاهتا ٿا اسي روڪ رکون",
+        "tokens": [
+          "▁مين",
+          "▁چاهت",
+          "ا",
+          "▁ٿا",
+          "▁اسي",
+          "▁روڪ",
+          "▁رکون"
+        ],
+        "n_tokens": 7
+      },
+      {
+        "original": "ميري جان ڀي جائي تو جاني نه دون",
+        "tokens": [
+          "▁ميري",
+          "▁جان",
+          "▁ڀي",
+          "▁جا",
+          "ئي",
+          "▁تو",
+          "▁جاني",
+          "▁نه",
+          "▁دون"
+        ],
+        "n_tokens": 9
+      },
+      {
+        "original": "ڪيي لاک فريب ڪروڙ فسون",
+        "tokens": [
+          "▁ڪي",
+          "ي",
+          "▁لاک",
+          "▁فريب",
+          "▁ڪروڙ",
+          "▁ف",
+          "سون"
+        ],
+        "n_tokens": 7
+      }
+    ]
+  }
+}

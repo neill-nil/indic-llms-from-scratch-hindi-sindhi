@@ -114,7 +114,7 @@ def train_sentencepiece(
         # Add our document separator as a user-defined special token
         user_defined_symbols=[DOC_SEPARATOR],
         # Training parameters — sample 2M sentences to keep RAM < 2GB
-        input_sentence_size=2_000_000,
+        input_sentence_size=500_000,
         shuffle_input_sentence=True,
         # Byte fallback for rare characters (prevents <unk>)
         byte_fallback=True,
