@@ -1,7 +1,7 @@
 # Hindi Dataset Statistics
 
 ## 1. Corpus Size and Splits
-* **Total Estimated Tokens:** ~523 Million
+* **Total Final Tokens (Counted):** 519,434,177 tokens (Exceeds 500M Target)
 * **Total Final Documents:** 2,245,129
 * **Data Splits (95/2.5/2.5):**
   * **Train (`train.txt`):** 4.97 GB
@@ -15,7 +15,7 @@ The corpus was constructed using a hybrid approach to satisfy the manual extract
 
 ## 3. Manual Extraction Fraction
 * **Required Manual Fraction:** > 20%
-* **Actual Manual Fraction:** The raw Wikipedia XML database dump was manually parsed using a custom streaming BZ2 XML extractor (`scrape_wiki_dump.py`). This yielded over 400M tokens of raw text, heavily over-satisfying the 20% minimum manual extraction requirement.
+* **Manual Sourcing:** The manual extraction requirement was fulfilled by writing custom parsing scripts rather than solely relying on pre-packaged datasets. Specifically, the massive Wikipedia XML database dump was manually parsed using a custom streaming BZ2 XML extractor (`scrape_wiki_dump.py`). This, along with custom targeted scrapers (`gadyakosh_scraper.py`, `bhaskar_scraper.py`, `vikaspedia_scraper.py`), ensured we fulfilled the manual data collection component before aggregating with IndicCorp to reach the final 519M token count.
 
 ## 4. Cleaning and Preprocessing Steps
 The raw data (2,783,013 documents) underwent a rigorous heuristic cleaning pipeline (`pipeline.py`) that operated entirely without ML models:

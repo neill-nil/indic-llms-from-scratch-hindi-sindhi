@@ -64,4 +64,44 @@ Two independent decoder-only Transformer LMs (~25M params each), built from scra
 
 ## Reproduction
 
-_Instructions will be added as each phase is completed._
+### Phase 1: Data Collection & Tokenizer Construction
+
+**1. Setup Environment**
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+**2. Run Hindi Pipeline**
+```bash
+# 1. Download/scrape raw data (~1 hour)
+python -m hindi.data.collection.download_public_data
+python -m common.collection.scrape_wiki_dump --language hindi
+
+# 2. Run streaming cleaning, deduplication, and 95/2.5/2.5 train/val/test splitting
+python -m common.preprocessing.pipeline --language hindi
+
+# 3. Train Unigram & BPE tokenizers
+bash run_tokenizer_hindi.sh
+```
+
+**3. Run Sindhi Pipeline**
+```bash
+# 1. Download/scrape raw data (~1 hour)
+python -m sindhi.data.collection.download_public_data
+python -m common.collection.scrape_wiki_dump --language sindhi
+python sindhi/data/collection/extract_arnizamani.py
+
+# 2. Run streaming cleaning, deduplication, and 95/2.5/2.5 train/val/test splitting
+python -m common.preprocessing.pipeline --language sindhi
+
+# 3. Train Unigram & BPE tokenizers
+bash run_tokenizer_sindhi.sh
+```
+
+**4. Evaluate Tokenizers**
+```bash
+python -m common.tokenizer.evaluate_tokenizer --language hindi
+python -m common.tokenizer.evaluate_tokenizer --language sindhi
+```

@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from tqdm import tqdm
 
-RAW_DIR = Path("sindhi/data/collection/raw")
+RAW_DIR = Path(__file__).resolve().parent / "raw"
 CLONE_DIR = RAW_DIR / "Sindhi-texts-big-dataset"
 
 if not CLONE_DIR.exists():

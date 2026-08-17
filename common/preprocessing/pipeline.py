@@ -116,7 +116,7 @@ def apply_filters(text: str, language: str) -> Tuple[str, str]:
     
     return res, ""
 
-def run_pipeline(language: str, val_ratio: float = 0.05):
+def run_pipeline(language: str, val_ratio: float = 0.025, test_ratio: float = 0.025):
     random.seed(42)
     
     raw_dir = PROJECT_ROOT / language / "data" / "collection" / "raw"
@@ -127,17 +127,19 @@ def run_pipeline(language: str, val_ratio: float = 0.05):
     
     train_path = out_dir / "train.txt"
     val_path = out_dir / "val.txt"
+    test_path = out_dir / "test.txt"
     seen_hashes = set()
     
     stats = {
         "total_raw": 0, "passed_filters": 0, "duplicates_removed": 0, "after_dedup": 0,
         "rejected": {"length": 0, "symbol_ratio": 0, "line_structure": 0, "repetition": 0, "script": 0},
-        "train_bytes": 0, "val_bytes": 0
+        "train_bytes": 0, "val_bytes": 0, "test_bytes": 0
     }
     
     start = time.time()
     with open(train_path, 'w', encoding='utf-8') as f_train, \
-         open(val_path, 'w', encoding='utf-8') as f_val:
+         open(val_path, 'w', encoding='utf-8') as f_val, \
+         open(test_path, 'w', encoding='utf-8') as f_test:
          
         for source, text in iter_raw_documents(raw_dir):
             stats["total_raw"] += 1
@@ -160,19 +162,23 @@ def run_pipeline(language: str, val_ratio: float = 0.05):
             out_str = f"{cleaned}\n{DOC_SEPARATOR}\n"
             out_bytes = len(out_str.encode('utf-8'))
             
-            if random.random() >= val_ratio:
-                f_train.write(out_str)
-                stats["train_bytes"] += out_bytes
-            else:
+            rand_val = random.random()
+            if rand_val < val_ratio:
                 f_val.write(out_str)
                 stats["val_bytes"] += out_bytes
+            elif rand_val < (val_ratio + test_ratio):
+                f_test.write(out_str)
+                stats["test_bytes"] += out_bytes
+            else:
+                f_train.write(out_str)
+                stats["train_bytes"] += out_bytes
             
             if stats["total_raw"] % 500_000 == 0:
                 logger.info(f"  ...processed {stats['total_raw']:,} raw | {stats['after_dedup']:,} clean & deduped")
                 
-    total_bytes = stats["train_bytes"] + stats["val_bytes"]
+    total_bytes = stats["train_bytes"] + stats["val_bytes"] + stats["test_bytes"]
     stats["total_clean_bytes"] = total_bytes
-    stats["estimated_clean_tokens"] = total_bytes // 10
+    stats["estimated_clean_tokens"] = "Run count_tokens.py post-training for exact count"
     
     with open(out_dir / "preprocessing_stats.json", 'w') as f:
         json.dump(stats, f, indent=2)
@@ -180,6 +186,7 @@ def run_pipeline(language: str, val_ratio: float = 0.05):
     logger.info(f"Pipeline complete in {time.time()-start:.1f}s")
     logger.info(f"  train.txt: {stats['train_bytes']/1024/1024:.2f} MB")
     logger.info(f"  val.txt:   {stats['val_bytes']/1024/1024:.2f} MB")
+    logger.info(f"  test.txt:  {stats['test_bytes']/1024/1024:.2f} MB")
     logger.info("DONE!")
 
 def main():
