@@ -2,7 +2,7 @@
 set -e
 
 echo "=== 1. Extracting cloned datasets ==="
-.venv/bin/python extract_arnizamani.py
+.venv/bin/python sindhi/data/collection/extract_arnizamani.py
 
 echo "=== 2. Running scrapers for remaining data ==="
 .venv/bin/python run_scrapers.py 300
