@@ -1,6 +1,6 @@
 # Hindi Tokenizer Statistics
 
-This document summarizes the vocabulary and evaluation metrics for the Hindi tokenizers (BPE and Unigram) trained on the 519M token preprocessed corpus. Both tokenizers were trained from scratch without using any pretrained models or vocabularies.
+This document summarizes the vocabulary and evaluation metrics for the Hindi tokenizers (BPE and Unigram) trained on the 517M token preprocessed corpus. Both tokenizers were trained from scratch without using any pretrained models or vocabularies.
 
 ## 1. Overview
 * **Algorithm Chosen for LM Training:** Unigram

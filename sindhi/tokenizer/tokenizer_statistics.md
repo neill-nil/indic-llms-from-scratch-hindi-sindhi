@@ -1,6 +1,6 @@
 # Sindhi Tokenizer Statistics
 
-This document summarizes the vocabulary and evaluation metrics for the Sindhi tokenizers (BPE and Unigram) trained on the 694M token preprocessed corpus. Both tokenizers were trained from scratch without using any pretrained models or vocabularies.
+This document summarizes the vocabulary and evaluation metrics for the Sindhi tokenizers (BPE and Unigram) trained on the 647M token preprocessed corpus. Both tokenizers were trained from scratch without using any pretrained models or vocabularies.
 
 ## 1. Overview
 * **Algorithm Chosen for LM Training:** Unigram

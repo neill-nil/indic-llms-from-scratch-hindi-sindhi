@@ -1,8 +1,8 @@
 # Sindhi Dataset Statistics
 
 ## 1. Corpus Size and Splits
-* **Total Final Tokens (Counted):** 694,038,121 tokens (Exceeds 500M Target)
-* **Total Final Documents:** 5,239,061
+* **Total Final Tokens (Counted):** 647,780,249 tokens
+* **Total Final Documents:** 5,102,663
 * **Data Splits (95/2.5/2.5):**
   * **Train (`train.txt`):** 3.76 GB
   * **Validation (`val.txt`):** 92 MB (423,127 lines)
@@ -24,6 +24,7 @@ The raw data (7,637,272 documents) underwent a rigorous heuristic cleaning pipel
 3. **Repetition Filter:** Rejected documents with excessive character or n-gram repetition.
 4. **Script Detection:** Enforced that >80% of characters must belong to the Arabic Unicode block (which covers the Sindhi Perso-Arabic alphabet).
 5. **Deduplication:** Applied exact-match line deduplication using SHA-256 fingerprinting.
+6. **Fuzzy Deduplication:** Applied MinHash LSH deduplication retrospectively to remove near-duplicate documents.
 
 ### Filter Rejection Breakdown
 * **Length:** 1,674,168 documents rejected
@@ -31,6 +32,7 @@ The raw data (7,637,272 documents) underwent a rigorous heuristic cleaning pipel
 * **Line structure:** 5,663 documents rejected
 * **Repetition:** 12,774 documents rejected
 * **Script (language):** 152,934 documents rejected
-* **Duplicates removed:** 545,979 documents
+* **Exact Duplicates removed:** 545,979 documents
+* **Fuzzy Duplicates (MinHash):** 136,398 documents removed (pruning ~46.2 Million redundant tokens)
 
-**Final Yield:** 75.7% of the raw documents passed the rigorous filtering phases. The higher rejection rate (compared to Hindi's 83.4%) was expected due to the messy nature of web-scraped data and cross-language noise in low-resource corpora.
+**Final Yield:** 66.8% of the raw documents passed the rigorous filtering phases. The higher rejection rate (compared to Hindi's 82.2%) was expected due to the messy nature of web-scraped data and cross-language noise in low-resource corpora.
