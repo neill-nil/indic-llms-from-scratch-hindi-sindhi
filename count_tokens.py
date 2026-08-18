@@ -38,7 +38,7 @@ def get_total_tokens(sp_model_path, file_path, num_workers=8):
 
 if __name__ == "__main__":
     lang = sys.argv[1]
-    model_path = f"{lang}/tokenizer/{lang}_unigram_32000.model"
+    model_path = f"{lang}/tokenizer/{lang}_unigram_16000.model"
     train_path = f"{lang}/data/preprocessed/train.txt"
     val_path = f"{lang}/data/preprocessed/val.txt"
     test_path = f"{lang}/data/preprocessed/test.txt"

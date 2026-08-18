@@ -9,9 +9,9 @@ the training text without loading everything into Python memory.
 
 Usage:
     python -m common.tokenizer.train_tokenizer \
-        --language hindi --model_type unigram --vocab_size 32000
+        --language hindi --model_type unigram --vocab_size 16000
     python -m common.tokenizer.train_tokenizer \
-        --language sindhi --model_type bpe --vocab_size 32000
+        --language sindhi --model_type bpe --vocab_size 16000
 """
 
 import argparse
@@ -138,8 +138,8 @@ def main():
                         help="Target language")
     parser.add_argument("--model_type", required=True, choices=["unigram", "bpe"],
                         help="SentencePiece model type")
-    parser.add_argument("--vocab_size", type=int, default=32000,
-                        help="Target vocabulary size (default: 32000)")
+    parser.add_argument("--vocab_size", type=int, default=16000,
+                        help="Target vocabulary size (default: 16000)")
     parser.add_argument("--character_coverage", type=float, default=0.9995,
                         help="Character coverage (default: 0.9995)")
     parser.add_argument("--max_lines", type=int, default=0,

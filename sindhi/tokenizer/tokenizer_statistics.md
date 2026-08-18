@@ -4,9 +4,9 @@ This document summarizes the vocabulary and evaluation metrics for the Sindhi to
 
 ## 1. Overview
 * **Algorithm Chosen for LM Training:** Unigram
-* **Target Vocabulary Size:** 32,000 slots
+* **Target Vocabulary Size:** 16,000 slots
 
-**Vocabulary Size Justification:** The target size of 32,000 was deliberately chosen to balance compression efficiency against model parameter constraints. A massive vocabulary (e.g., 100k) would yield slightly lower fertility but would cause the embedding matrix to consume almost the entire 25M parameter budget allotted for Phase 2. At 32k, we achieve a highly optimal fertility rate (~1.24 tokens/word) and zero unknown tokens, while keeping the embedding layer small enough to allow for deep transformer layers.
+**Vocabulary Size Justification:** The target size of 16,000 was deliberately chosen to balance compression efficiency against model parameter constraints. A 25M parameter limit is extremely tight. If we used a 32K vocabulary, the embedding matrix would consume ~12.3M parameters (~49% of the budget), starving the Feed-Forward networks. By strictly limiting the vocabulary to 16K, the embedding layer is restricted to ~6.1M parameters (~24.5%), leaving nearly 19 Million parameters for deep transformer logic (the "reasoning space"). We chose 16K over 10K because over-compressing highly inflected Arabic/Sindhi text causes severe token fragmentation (high fertility), which wastes the sequence length. 16K is the mathematically optimal sweet spot.
 
 ## 2. Unigram Model Statistics (Optimal)
 The Unigram algorithm outperformed standard BPE by achieving superior compression (lower fertility) on the held-out validation set.
@@ -15,22 +15,22 @@ The Unigram algorithm outperformed standard BPE by achieving superior compressio
 
 **Direct Visual Example:**
 In the evaluation reports below, notice how Unigram mathematically compresses the Sindhi vocabulary much more efficiently than BPE. Because Unigram evaluates the probability of the *entire* word rather than just greedy pair-frequencies, it is able to encode the exact same text using fewer total tokens, saving vital context-window space for the Language Model.
-* **Vocabulary Size:** 32,000 slots
+* **Vocabulary Size:** 16,000 slots
 * **Special Tokens:** 261 (including `<s>`, `</s>`, `<pad>`, `<unk>`, and `<|endoftext|>`)
 * **Byte Fallback Tokens:** 0
-* **Average Characters per Token:** 4.50 characters
-* **Target Script Ratio:** 92.59% of the vocabulary successfully mapped to pure Arabic script (Sindhi Perso-Arabic).
+* **Average Characters per Token:** 4.21 characters
+* **Target Script Ratio:** 93.51% of the vocabulary successfully mapped to pure Arabic script (Sindhi Perso-Arabic).
 
 ### Evaluation Metrics (on held-out set)
-* **Fertility:** 1.2454 tokens/word (average)
+* **Fertility:** 1.3151 tokens/word (average)
 * **Unknown Token Rate:** 0.0% (Zero `<unk>` tokens generated)
 
 ### Tokenization Examples (Unigram)
 **Original:** `اٺالو پاندان اپنا هم باز آئي محبت سي`
-**Tokens (11):** `['▁اٺ', 'الو', '▁پاند', 'ان', '▁اپ', 'ना', '▁هم', '▁باز', '▁آئي', '▁محبت', '▁سي']`
+**Tokens (11):** `['▁اٺ', 'الو', '▁پاند', 'ان', '▁اپ', 'نا', '▁هم', '▁باز', '▁آئي', '▁محبت', '▁سي']`
 
 **Original:** `ماجد ڀرڳڙي ۽ سنڌي ڪمپيوٽنگ`
-**Tokens (5):** `['▁ماجد', '▁ڀرڳڙي', '▁۽', '▁سنڌي', '▁ڪمپيوٽنگ']`
+**Tokens (8):** `['▁ماجد', '▁ڀرڳڙي', '▁۽', '▁سنڌي', '▁ڪم', 'پي', 'و', 'ٽنگ']`
 
 ## 3. BPE Model Statistics (Baseline)
 * **Fertility:** 1.2473 tokens/word (inferior to Unigram)

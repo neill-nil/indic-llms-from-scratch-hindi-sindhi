@@ -4,9 +4,9 @@ This document summarizes the vocabulary and evaluation metrics for the Hindi tok
 
 ## 1. Overview
 * **Algorithm Chosen for LM Training:** Unigram
-* **Target Vocabulary Size:** 32,000 slots
+* **Target Vocabulary Size:** 16,000 slots
 
-**Vocabulary Size Justification:** The target size of 32,000 was deliberately chosen to balance compression efficiency against model parameter constraints. A massive vocabulary (e.g., 100k) would yield slightly lower fertility but would cause the embedding matrix to consume almost the entire 25M parameter budget allotted for Phase 2. At 32k, we achieve a highly optimal fertility rate (~1.22 tokens/word) and zero unknown tokens, while keeping the embedding layer small enough to allow for deep transformer layers.
+**Vocabulary Size Justification:** The target size of 16,000 was deliberately chosen to balance compression efficiency against model parameter constraints. A 25M parameter limit is extremely tight. If we used a 32K vocabulary, the embedding matrix would consume ~12.3M parameters (~49% of the budget), starving the Feed-Forward networks. By strictly limiting the vocabulary to 16K, the embedding layer is restricted to ~6.1M parameters (~24.5%), leaving nearly 19 Million parameters for deep transformer logic (the "reasoning space"). We chose 16K over 10K because over-compressing highly inflected Devanagari text causes severe token fragmentation (high fertility), which wastes the sequence length. 16K is the mathematically optimal sweet spot.
 
 ## 2. Unigram Model Statistics (Optimal)
 The Unigram algorithm outperformed standard BPE by achieving superior compression (lower fertility) on the held-out validation set. 
@@ -19,21 +19,21 @@ Notice how BPE greedily and awkwardly splits the acronym `आईआईएम` (I
 * **Unigram:** `['▁आईआईएम']` (1 semantic token)
 * **BPE:** `['▁आई', 'आईएम']` (2 broken tokens)
 
-* **Vocabulary Size:** 32,000 slots
+* **Vocabulary Size:** 16,000 slots
 * **Special Tokens:** 261 (including `<s>`, `</s>`, `<pad>`, `<unk>`, and `<|endoftext|>`)
 * **Byte Fallback Tokens:** 0
-* **Average Characters per Token:** 5.21 characters
-* **Target Script Ratio:** 91.34% of the vocabulary successfully mapped to pure Devanagari script.
+* **Average Characters per Token:** 4.88 characters
+* **Target Script Ratio:** 92.62% of the vocabulary successfully mapped to pure Devanagari script.
 
 ### Evaluation Metrics (on held-out set)
-* **Fertility:** 1.2214 tokens/word (average)
+* **Fertility:** 1.2798 tokens/word (average)
 * **Unknown Token Rate:** 0.0% (Zero `<unk>` tokens generated)
 
 ### Tokenization Examples (Unigram)
 **Original:** `आईआईएम अहमदाबाद के साथ एमओयू करने की तैयारी में सरकार`
-**Tokens (10):** `['▁आईआईएम', '▁अहमदाबाद', '▁के', '▁साथ', '▁एमओयू', '▁करने', '▁की', '▁तैयारी', '▁में', '▁सरकार']`
+**Tokens (13):** `['▁आई', 'आईएम', '▁अहमदाबाद', '▁के', '▁साथ', '▁', 'एमओ', 'यू', '▁करने', '▁की', '▁तैयारी', '▁में', '▁सरकार']`
 
-**Original:** `ONGC ने पूरे 2020-21 वित्त वर्ष में 11,246.44 करोड़ रुपये का शुद्ध लाभ दर्ज किया था.`
+**Original:** `ONGC ने पूरे 2020-21 वित्त वर्ष में 11,246.44 करोड़ रुपये का शुद्ध लाभ दर्ज किया...`
 **Tokens (35):** `['▁O', 'NG', 'C', '▁ने', '▁पूरे', '▁', '2', '0', '2', '0', '-', '2', '1', '▁वित्त', '▁वर्ष', '▁में', '▁', '1', '1', ',', '2', '4', '6', '.', '4', '4', '▁करोड़', '▁रुपये', '▁का', '▁शुद्ध', '▁लाभ', '▁दर्ज', '▁किया', '▁था', '.']`
 
 ## 3. BPE Model Statistics (Baseline)

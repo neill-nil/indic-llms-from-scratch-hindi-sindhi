@@ -10,7 +10,7 @@ Compares BPE vs Unigram tokenizers on standard metrics:
 
 Usage:
     python -m common.tokenizer.evaluate_tokenizer \
-        --language hindi --vocab_size 32000
+        --language hindi --vocab_size 16000
 """
 
 import argparse
@@ -195,7 +195,7 @@ def main():
     parser = argparse.ArgumentParser(description="Evaluate and compare tokenizer models")
     parser.add_argument("--language", required=True, choices=["hindi", "sindhi"],
                         help="Target language")
-    parser.add_argument("--vocab_size", type=int, default=32000,
+    parser.add_argument("--vocab_size", type=int, default=16000,
                         help="Vocab size to look for")
     args = parser.parse_args()
     
