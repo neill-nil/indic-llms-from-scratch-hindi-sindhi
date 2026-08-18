@@ -37,10 +37,10 @@ Notice how BPE greedily and awkwardly splits the acronym `आईआईएम` (I
 **Tokens (35):** `['▁O', 'NG', 'C', '▁ने', '▁पूरे', '▁', '2', '0', '2', '0', '-', '2', '1', '▁वित्त', '▁वर्ष', '▁में', '▁', '1', '1', ',', '2', '4', '6', '.', '4', '4', '▁करोड़', '▁रुपये', '▁का', '▁शुद्ध', '▁लाभ', '▁दर्ज', '▁किया', '▁था', '.']`
 
 ## 3. BPE Model Statistics (Baseline)
-* **Fertility:** 1.2276 tokens/word (inferior to Unigram)
-* **Target Script Ratio:** 92.22%
+* **Fertility:** 1.2944 tokens/word (inferior to Unigram)
+* **Target Script Ratio:** 93.84%
 * **Unknown Token Rate:** 0.0%
 
 ### Tokenization Examples (BPE)
 **Original:** `आईआईएम अहमदाबाद के साथ एमओयू करने की तैयारी में सरकार`
-**Tokens (11):** `['▁आई', 'आईएम', '▁अहमदाबाद', '▁के', '▁साथ', '▁एमओयू', '▁करने', '▁की', '▁तैयारी', '▁में', '▁सरकार']`
+**Tokens (13):** `['▁आई', 'आईएम', '▁अहमदाबाद', '▁के', '▁साथ', '▁एम', 'ओ', 'यू', '▁करने', '▁की', '▁तैयारी', '▁में', '▁सरकार']`

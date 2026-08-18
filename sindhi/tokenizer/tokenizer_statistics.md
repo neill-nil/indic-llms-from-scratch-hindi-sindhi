@@ -33,10 +33,10 @@ In the evaluation reports below, notice how Unigram mathematically compresses th
 **Tokens (8):** `['▁ماجد', '▁ڀرڳڙي', '▁۽', '▁سنڌي', '▁ڪم', 'پي', 'و', 'ٽنگ']`
 
 ## 3. BPE Model Statistics (Baseline)
-* **Fertility:** 1.2473 tokens/word (inferior to Unigram)
-* **Target Script Ratio:** 93.20%
+* **Fertility:** 1.3226 tokens/word (inferior to Unigram)
+* **Target Script Ratio:** 94.49%
 * **Unknown Token Rate:** 0.0%
 
 ### Tokenization Examples (BPE)
 **Original:** `ماجد ڀرڳڙي ۽ سنڌي ڪمپيوٽنگ`
-**Tokens (5):** `['▁ماجد', '▁ڀرڳڙي', '▁۽', '▁سنڌي', '▁ڪمپيوٽنگ']`
+**Tokens (7):** `['▁ما', 'جد', '▁ڀرڳڙي', '▁۽', '▁سنڌي', '▁ڪمپيو', 'ٽنگ']`

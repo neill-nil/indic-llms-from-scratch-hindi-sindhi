@@ -1,4 +1,100 @@
 {
+  "bpe": {
+    "model": "sindhi_bpe_16000.model",
+    "vocabulary": {
+      "vocab_size": 16000,
+      "special_tokens": 261,
+      "byte_fallback_tokens": 0,
+      "script_distribution": {
+        "arabic": 14871,
+        "latin": 841,
+        "symbol": 24,
+        "other": 2
+      },
+      "target_script_ratio": 0.9449104079298514,
+      "avg_token_length_chars": 3.9983479476426482,
+      "median_token_length": 4
+    },
+    "fertility": {
+      "fertility": 1.3226,
+      "total_words_sampled": 1267325,
+      "total_tokens": 1676183,
+      "unk_rate": 0.0,
+      "lines_sampled": 50000
+    },
+    "samples": [
+      {
+        "original": "اٺالو پاندان اپنا هم باز آئي محبت سي",
+        "tokens": [
+          "▁اٺ",
+          "الو",
+          "▁پان",
+          "دان",
+          "▁اپ",
+          "نا",
+          "▁هم",
+          "▁باز",
+          "▁آئي",
+          "▁محبت",
+          "▁سي"
+        ],
+        "n_tokens": 11
+      },
+      {
+        "original": "ماجد ڀرڳڙي ۽ سنڌي ڪمپيوٽنگ",
+        "tokens": [
+          "▁ما",
+          "جد",
+          "▁ڀرڳڙي",
+          "▁۽",
+          "▁سنڌي",
+          "▁ڪمپيو",
+          "ٽنگ"
+        ],
+        "n_tokens": 7
+      },
+      {
+        "original": "مين چاهتا ٿا اسي روڪ رکون",
+        "tokens": [
+          "▁مين",
+          "▁چاه",
+          "تا",
+          "▁ٿا",
+          "▁اسي",
+          "▁روڪ",
+          "▁رکون"
+        ],
+        "n_tokens": 7
+      },
+      {
+        "original": "ميري جان ڀي جائي تو جاني نه دون",
+        "tokens": [
+          "▁ميري",
+          "▁جان",
+          "▁ڀي",
+          "▁جائي",
+          "▁تو",
+          "▁جاني",
+          "▁نه",
+          "▁دون"
+        ],
+        "n_tokens": 8
+      },
+      {
+        "original": "ڪيي لاک فريب ڪروڙ فسون",
+        "tokens": [
+          "▁ڪي",
+          "ي",
+          "▁لاک",
+          "▁فريب",
+          "▁ڪروڙ",
+          "▁ف",
+          "سون"
+        ],
+        "n_tokens": 7
+      }
+    ]
+  },
   "unigram": {
     "model": "sindhi_unigram_16000.model",
     "vocabulary": {
