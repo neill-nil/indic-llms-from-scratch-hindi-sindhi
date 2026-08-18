@@ -54,17 +54,24 @@ Two independent decoder-only Transformer LMs (~25M params each), built from scra
 
 ## Google Drive Links
 
-> **Checkpoints & large artifacts will be linked here once available.**
+All large artifacts (Datasets, Tokenizer Models) that are too large for Git are securely hosted on Google Drive. Permissions are set to public ("Anyone with the link can view").
 
+### Phase 1 Artifacts
+- **[Raw Datasets (Scrapes & Dumps)](https://drive.google.com/drive/folders/1zvLgcQdYhoL8NmwMuf3zTX8XX7RFzjyp?usp=sharing)**
+- **[Preprocessed & Cleaned Datasets (Train/Val/Test splits)](https://drive.google.com/drive/folders/1GfBSP6Cbyn7ONmLlZrhtbTkPIhgQczQY?usp=sharing)**
+- **[Trained Tokenizer Models & Vocab (16K Unigram)](https://drive.google.com/drive/folders/1S0uDU-52hUb54DrZDFUTji7uX_fk_kFb?usp=sharing)**
+
+### Phase 2 & 3 Artifacts (Pending)
 - [ ] Hindi pretrained checkpoint
 - [ ] Sindhi pretrained checkpoint
 - [ ] Hindi finetuned checkpoint
 - [ ] Sindhi finetuned checkpoint
-- [ ] Datasets (if too large for git)
 
 ## Reproduction
 
 ### Phase 1: Data Collection & Tokenizer Construction
+
+If you do not wish to download the pre-compiled datasets from the Google Drive links above, you can reproduce the entire pipeline from absolute scratch.
 
 **1. Setup Environment**
 ```bash
@@ -73,35 +80,21 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**2. Run Hindi Pipeline**
+**2. Run the Full Hindi Pipeline**
+This master script automatically handles scraping, heuristic filtering, exact deduplication, retrospective MinHash LSH fuzzy deduplication, and final token counting.
 ```bash
-# 1. Download/scrape raw data (~1 hour)
-python -m hindi.data.collection.download_public_data
-python -m common.collection.scrape_wiki_dump --language hindi
+bash run_all_hindi.sh
+```
 
-# 2. Run streaming cleaning, deduplication, and 95/2.5/2.5 train/val/test splitting
-python -m common.preprocessing.pipeline --language hindi
+**3. Run the Full Sindhi Pipeline**
+This master script handles the entire Sindhi ingestion process from raw scrapes to final token counts.
+```bash
+bash run_all_sindhi.sh
+```
 
-# 3. Train Unigram & BPE tokenizers
+**4. Train and Evaluate Tokenizers**
+Once the data is preprocessed, train the 16K Unigram/BPE tokenizers and evaluate their fertility.
+```bash
 bash run_tokenizer_hindi.sh
-```
-
-**3. Run Sindhi Pipeline**
-```bash
-# 1. Download/scrape raw data (~1 hour)
-python -m sindhi.data.collection.download_public_data
-python -m common.collection.scrape_wiki_dump --language sindhi
-python sindhi/data/collection/extract_arnizamani.py
-
-# 2. Run streaming cleaning, deduplication, and 95/2.5/2.5 train/val/test splitting
-python -m common.preprocessing.pipeline --language sindhi
-
-# 3. Train Unigram & BPE tokenizers
 bash run_tokenizer_sindhi.sh
-```
-
-**4. Evaluate Tokenizers**
-```bash
-python -m common.tokenizer.evaluate_tokenizer --language hindi
-python -m common.tokenizer.evaluate_tokenizer --language sindhi
 ```
