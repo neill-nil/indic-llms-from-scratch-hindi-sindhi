@@ -8,3 +8,8 @@ sentencepiece>=0.2.0        # tokenizer training + evaluation
 datasketch>=1.6.0           # MinHash LSH fuzzy deduplication
 numpy>=1.24.0
 matplotlib>=3.7.0           # Phase 1 tokenizer plots, Phase 2 loss curves
+
+# ── Phase 2: model implementation, pretraining, evaluation ──
+# Installed from the CUDA 12.1 index, which matches driver 535 / CUDA 12.2:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+torch>=2.5.0
