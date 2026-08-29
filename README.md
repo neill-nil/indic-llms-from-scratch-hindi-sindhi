@@ -6,7 +6,11 @@ Two independent decoder-only Transformer LMs (~25M params each), built from scra
 |---|---|---|
 | **Language** | Hindi (हिन्दी) | Sindhi (سنڌي) |
 | **Resource tier** | Higher-resource | Lower-resource |
-| **Target tokens** | ~500M | ~500M (max feasible) |
+| **Corpus (train split)** | 504.8M tokens | 618.4M tokens |
+| **Tokenizer** | 16K Unigram (SentencePiece) | 16K Unigram (SentencePiece) |
+
+The two models share no data, vocabulary, or weights — separate corpora, separate
+tokenizers, separate training runs.
 
 ## Repository Structure
 
@@ -41,14 +45,6 @@ Two independent decoder-only Transformer LMs (~25M params each), built from scra
 ├── report/                     # per-phase reports, plots, tables, heatmaps
 └── README.md
 ```
-
-## Phases & Deadlines
-
-| # | Phase | Deadline | Marks |
-|---|---|---|---|
-| 1 | Data Collection & Tokenizer Construction | 19 Aug 2026 | 25 |
-| 2 | Model Implementation, Pretraining & Evaluation | 5 Sep 2026 | 40 |
-| 3 | Reasoning Finetuning, Attention Analysis & Final Report | 16 Sep 2026 | 35 |
 
 ## Google Drive Links
 
