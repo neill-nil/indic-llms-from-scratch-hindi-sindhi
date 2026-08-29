@@ -3,8 +3,8 @@
     "model": "sindhi_bpe_16000.model",
     "vocabulary": {
       "vocab_size": 16000,
-      "special_tokens": 261,
-      "byte_fallback_tokens": 0,
+      "special_tokens": 5,
+      "byte_fallback_tokens": 256,
       "script_distribution": {
         "arabic": 14871,
         "latin": 841,
@@ -16,11 +16,20 @@
       "median_token_length": 4
     },
     "fertility": {
-      "fertility": 1.3226,
-      "total_words_sampled": 1267325,
-      "total_tokens": 1676183,
+      "fertility": 1.304,
+      "tokens_per_char": 0.2772,
+      "bytes_per_token": 6.3832,
+      "chars_per_token": 3.6076,
       "unk_rate": 0.0,
-      "lines_sampled": 50000
+      "token_entropy_bits": 10.9107,
+      "vocab_types_used": 15535,
+      "vocab_utilisation": 0.9709,
+      "types_covering_50pct": 292,
+      "types_covering_90pct": 5324,
+      "types_covering_99pct": 12640,
+      "lines_sampled": 21738,
+      "total_words_sampled": 810799,
+      "total_tokens": 1057315
     },
     "samples": [
       {
@@ -99,8 +108,8 @@
     "model": "sindhi_unigram_16000.model",
     "vocabulary": {
       "vocab_size": 16000,
-      "special_tokens": 261,
-      "byte_fallback_tokens": 0,
+      "special_tokens": 5,
+      "byte_fallback_tokens": 256,
       "script_distribution": {
         "arabic": 14717,
         "latin": 999,
@@ -112,11 +121,20 @@
       "median_token_length": 4
     },
     "fertility": {
-      "fertility": 1.3151,
-      "total_words_sampled": 1267325,
-      "total_tokens": 1666641,
+      "fertility": 1.2987,
+      "tokens_per_char": 0.2761,
+      "bytes_per_token": 6.4093,
+      "chars_per_token": 3.6223,
       "unk_rate": 0.0,
-      "lines_sampled": 50000
+      "token_entropy_bits": 10.7703,
+      "vocab_types_used": 15717,
+      "vocab_utilisation": 0.9823,
+      "types_covering_50pct": 231,
+      "types_covering_90pct": 5257,
+      "types_covering_99pct": 12764,
+      "lines_sampled": 21738,
+      "total_words_sampled": 810799,
+      "total_tokens": 1053016
     },
     "samples": [
       {
@@ -192,5 +210,251 @@
         "n_tokens": 7
       }
     ]
+  },
+  "contrastive": {
+    "unigram_better": {
+      "n_words_favouring_unigram": 24,
+      "examples": [
+        {
+          "word": "جديديت",
+          "corpus_frequency": 136,
+          "unigram": [
+            "▁جديديت"
+          ],
+          "bpe": [
+            "▁جدي",
+            "ديت"
+          ]
+        },
+        {
+          "word": "دلاور",
+          "corpus_frequency": 125,
+          "unigram": [
+            "▁دلاور"
+          ],
+          "bpe": [
+            "▁دلا",
+            "ور"
+          ]
+        },
+        {
+          "word": "ماٿري",
+          "corpus_frequency": 119,
+          "unigram": [
+            "▁ماٿري"
+          ],
+          "bpe": [
+            "▁ماٿ",
+            "ري"
+          ]
+        },
+        {
+          "word": "سُونهن",
+          "corpus_frequency": 110,
+          "unigram": [
+            "▁سُونهن"
+          ],
+          "bpe": [
+            "▁سُون",
+            "هن"
+          ]
+        },
+        {
+          "word": "ماتلي",
+          "corpus_frequency": 91,
+          "unigram": [
+            "▁ماتلي"
+          ],
+          "bpe": [
+            "▁مات",
+            "لي"
+          ]
+        },
+        {
+          "word": "گُذري",
+          "corpus_frequency": 91,
+          "unigram": [
+            "▁گُذري"
+          ],
+          "bpe": [
+            "▁گُ",
+            "ذري"
+          ]
+        },
+        {
+          "word": "مُنهنجو",
+          "corpus_frequency": 87,
+          "unigram": [
+            "▁مُنهنجو"
+          ],
+          "bpe": [
+            "▁مُ",
+            "نهنجو"
+          ]
+        },
+        {
+          "word": "کوهارو",
+          "corpus_frequency": 86,
+          "unigram": [
+            "▁کوه",
+            "ارو"
+          ],
+          "bpe": [
+            "▁ک",
+            "وه",
+            "ارو"
+          ]
+        },
+        {
+          "word": "ائٽمي",
+          "corpus_frequency": 79,
+          "unigram": [
+            "▁ائٽمي"
+          ],
+          "bpe": [
+            "▁ائٽ",
+            "مي"
+          ]
+        },
+        {
+          "word": "جمشيد",
+          "corpus_frequency": 79,
+          "unigram": [
+            "▁جمشيد"
+          ],
+          "bpe": [
+            "▁جم",
+            "شيد"
+          ]
+        }
+      ]
+    },
+    "bpe_better": {
+      "n_words_favouring_bpe": 27,
+      "examples": [
+        {
+          "word": "جيون",
+          "corpus_frequency": 308,
+          "bpe": [
+            "▁جيون"
+          ],
+          "unigram": [
+            "▁جي",
+            "ون"
+          ]
+        },
+        {
+          "word": "آهين",
+          "corpus_frequency": 162,
+          "bpe": [
+            "▁آهين"
+          ],
+          "unigram": [
+            "▁آهي",
+            "ن"
+          ]
+        },
+        {
+          "word": "آهين،",
+          "corpus_frequency": 148,
+          "bpe": [
+            "▁آهين",
+            "،"
+          ],
+          "unigram": [
+            "▁آهي",
+            "ن",
+            "،"
+          ]
+        },
+        {
+          "word": "محبتن",
+          "corpus_frequency": 130,
+          "bpe": [
+            "▁محبتن"
+          ],
+          "unigram": [
+            "▁محبت",
+            "ن"
+          ]
+        },
+        {
+          "word": "ساريو",
+          "corpus_frequency": 125,
+          "bpe": [
+            "▁ساريو"
+          ],
+          "unigram": [
+            "▁ساري",
+            "و"
+          ]
+        },
+        {
+          "word": "جيءَ",
+          "corpus_frequency": 121,
+          "bpe": [
+            "▁جيءَ"
+          ],
+          "unigram": [
+            "▁جي",
+            "ءَ"
+          ]
+        },
+        {
+          "word": "[EMAIL]",
+          "corpus_frequency": 121,
+          "bpe": [
+            "▁[",
+            "EMAIL",
+            "]"
+          ],
+          "unigram": [
+            "▁[",
+            "E",
+            "MAIL",
+            "]"
+          ]
+        },
+        {
+          "word": "آهين.",
+          "corpus_frequency": 121,
+          "bpe": [
+            "▁آهين",
+            "."
+          ],
+          "unigram": [
+            "▁آهي",
+            "ن",
+            "."
+          ]
+        },
+        {
+          "word": "ڪاتيار",
+          "corpus_frequency": 115,
+          "bpe": [
+            "▁ڪا",
+            "تيار"
+          ],
+          "unigram": [
+            "▁ڪا",
+            "تي",
+            "ار"
+          ]
+        },
+        {
+          "word": "خليق",
+          "corpus_frequency": 91,
+          "bpe": [
+            "▁خلي",
+            "ق"
+          ],
+          "unigram": [
+            "▁",
+            "خلي",
+            "ق"
+          ]
+        }
+      ]
+    }
   }
 }

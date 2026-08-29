@@ -1,0 +1,18 @@
+{
+  "_note": "HISTORICAL ARTEFACT. This file was written by the two-way (train/val) revision of pipeline.py that produced the shipped corpus, which is why it has train_bytes and val_bytes but no test_bytes: val.txt was split into val/test afterwards by common/preprocessing/make_splits.py, and MinHash dedup then ran on each split independently. It also predates the by_source/provenance fields that pipeline.py now emits, which cannot be back-filled because the raw inputs were deleted after the run. For authoritative, measured counts of the shipped splits see split_statistics.json.",
+  "total_raw": 7637272,
+  "passed_filters": 5785040,
+  "duplicates_removed": 545979,
+  "after_dedup": 5239061,
+  "rejected": {
+    "length": 1674168,
+    "symbol_ratio": 6693,
+    "line_structure": 5663,
+    "repetition": 12774,
+    "script": 152934
+  },
+  "train_bytes": 3762157652,
+  "val_bytes": 185694108,
+  "total_clean_bytes": 3947851760,
+  "estimated_clean_tokens": 394785176
+}

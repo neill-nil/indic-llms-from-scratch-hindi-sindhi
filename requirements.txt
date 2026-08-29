@@ -1,3 +1,10 @@
+# ── Phase 1: data collection, preprocessing, tokenizer ──
 datasets>=2.14.0
 huggingface_hub>=0.17.0
-tqdm
+tqdm>=4.66.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0      # HTML parsing in common/scraping/base_scraper.py
+sentencepiece>=0.2.0        # tokenizer training + evaluation
+datasketch>=1.6.0           # MinHash LSH fuzzy deduplication
+numpy>=1.24.0
+matplotlib>=3.7.0           # Phase 1 tokenizer plots, Phase 2 loss curves

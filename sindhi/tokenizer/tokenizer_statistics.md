@@ -1,42 +1,146 @@
 # Sindhi Tokenizer Statistics
 
-This document summarizes the vocabulary and evaluation metrics for the Sindhi tokenizers (BPE and Unigram) trained on the 647M token preprocessed corpus. Both tokenizers were trained from scratch without using any pretrained models or vocabularies.
+<!-- GENERATED FILE - do not edit by hand.
+     Regenerate with:
+       python -m common.tokenizer.evaluate_tokenizer --language sindhi --vocab_size 16000
+       python -m common.tokenizer.write_stats_report  --language sindhi --vocab_size 16000
+-->
 
-## 1. Overview
-* **Algorithm Chosen for LM Training:** Unigram
-* **Target Vocabulary Size:** 16,000 slots
+Vocabulary and evaluation metrics for the Sindhi tokenizers (Model L (lower-resource)).
+Both were trained from scratch with SentencePiece on the preprocessed training corpus;
+no pretrained tokenizer or vocabulary was used. All held-out metrics below are measured
+on `sindhi/data/preprocessed/val.txt`, which no tokenizer was trained on.
 
-**Vocabulary Size Justification:** The target size of 16,000 was deliberately chosen to balance compression efficiency against model parameter constraints. A 25M parameter limit is extremely tight. If we used a 32K vocabulary, the embedding matrix would consume ~12.3M parameters (~49% of the budget), starving the Feed-Forward networks. By strictly limiting the vocabulary to 16K, the embedding layer is restricted to ~6.1M parameters (~24.5%), leaving nearly 19 Million parameters for deep transformer logic (the "reasoning space"). We chose 16K over 10K because over-compressing highly inflected Arabic/Sindhi text causes severe token fragmentation (high fertility), which wastes the sequence length. 16K is the mathematically optimal sweet spot.
+## 1. Selected configuration
 
-## 2. Unigram Model Statistics (Optimal)
-The Unigram algorithm outperformed standard BPE by achieving superior compression (lower fertility) on the held-out validation set.
+* **Algorithm selected for LM training:** Unigram
+* **Vocabulary size:** 16,000
+* **Character coverage:** 0.9995
+* **Byte fallback:** enabled (256 byte tokens), which is why the
+  unknown-token rate is exactly zero — any character absent from the vocabulary is
+  representable as a sequence of raw byte tokens rather than collapsing to `<unk>`.
+* **Special tokens:** 5 (`<pad>`, `<unk>`, `<s>`, `</s>`, `<|endoftext|>`)
 
-**Why Unigram Performed Better:** BPE is a bottom-up, greedy algorithm that simply merges the most frequent pairs of characters, which can lead to unnatural subword splits in morphologically complex languages like Sindhi. Unigram, on the other hand, is a top-down probabilistic model that evaluates multiple possible segmentations and chooses the one with the highest overall likelihood. This allows Unigram to naturally align with the morphological structure of Sindhi (which uses a highly modified Perso-Arabic script with complex affixes), resulting in cleaner tokens and a tighter compression ratio (lower fertility).
+### Why 16,000 slots
 
-**Direct Visual Example:**
-In the evaluation reports below, notice how Unigram mathematically compresses the Sindhi vocabulary much more efficiently than BPE. Because Unigram evaluates the probability of the *entire* word rather than just greedy pair-frequencies, it is able to encode the exact same text using fewer total tokens, saving vital context-window space for the Language Model.
-* **Vocabulary Size:** 16,000 slots
-* **Special Tokens:** 261 (including `<s>`, `</s>`, `<pad>`, `<unk>`, and `<|endoftext|>`)
-* **Byte Fallback Tokens:** 0
-* **Average Characters per Token:** 4.21 characters
-* **Target Script Ratio:** 93.51% of the vocabulary successfully mapped to pure Arabic script (Sindhi Perso-Arabic).
+Vocabulary size trades compression against parameter budget, and at a ~25M parameter
+target that budget is the binding constraint. With a model dimension of 512 and a tied
+input/output embedding, a 16K vocabulary costs 8.19M parameters;
+a 32K vocabulary would cost 16.38M — roughly two-thirds of the entire budget
+spent on a lookup table, leaving too little for the transformer stack itself.
 
-### Evaluation Metrics (on held-out set)
-* **Fertility:** 1.3151 tokens/word (average)
-* **Unknown Token Rate:** 0.0% (Zero `<unk>` tokens generated)
+The measured cost of that choice is real but modest: a 32K Unigram model compresses this
+corpus 4.4% better (held-out fertility 1.2412 vs
+1.2987). Paying that to free 8.2M parameters for
+depth and feed-forward width is the right trade at this scale.
 
-### Tokenization Examples (Unigram)
+## 2. Tokenizer training data
+
+Trained on a shuffled reservoir sample of **500,000 lines** from the
+cleaned training split (`input_sentence_size`, `shuffle_input_sentence=True`), which bounds
+trainer memory on a multi-GB corpus:
+
+| Train split | Sampled for tokenizer | Fraction |
+|---|---|---|
+| 11,041,567 lines / 618.4M tokens | 500,000 lines / ~28.0M tokens | 4.53% |
+
+**Why this is sufficient.** ~28M tokens against a 16,000-slot
+vocabulary is roughly 1,750 observations per entry on average,
+well above what is needed to estimate merge frequencies or unigram probabilities. The
+held-out numbers below confirm it directly: vocabulary utilisation is
+98.2% and the unknown-token rate is exactly zero on text the
+tokenizer never saw. A vocabulary fitted to too small a sample would be full of tokens that
+never recur.
+
+Sampling applies only to tokenizer training; Phase 2 pretraining uses the entire split.
+
+## 3. Held-out comparison: BPE vs Unigram
+
+Measured on a strided sample across the whole validation file
+(21,738 lines, 810,799 words, 1,053,016 tokens).
+
+| Metric | BPE | Unigram | Better | Margin |
+|---|---|---|---|---|
+| Fertility (tokens / word) | 1.3040 | 1.2987 | Unigram | 0.41% |
+| Tokens per character | 0.2772 | 0.2761 | Unigram | 0.40% |
+| Bytes per token | 6.383 | 6.409 | Unigram | 0.41% |
+| Token entropy (bits/token) | 10.9107 | 10.7703 | Unigram | 1.29% |
+| Unknown-token rate | 0.00000000 | 0.00000000 | tie | 0.00% |
+| Vocabulary utilisation (higher better) | 97.09% | 98.23% | Unigram | 1.14% pts |
+| Target-script share of vocab | 94.49% | 93.51% | BPE | 0.98% pts |
+
+**Verdict.** Unigram is the better choice, but by a narrower margin than raw fertility
+alone suggests. The decisive metric is **token entropy**: Unigram produces a token stream
+with lower empirical entropy, which directly lower-bounds the perplexity a downstream
+language model can achieve on the same text. It also leaves fewer dead embedding rows
+(98.2% of its vocabulary appears in held-out text, against
+97.1% for BPE) — at a tight parameter budget an unused
+vocabulary slot is a wasted embedding vector.
+
+BPE retains a slightly higher target-script share of the vocabulary, but this is not
+evidence of quality: the difference is that Unigram allocates more slots to Latin
+substrings, and real Sindhi web text contains English loanwords, product names
+and numerals that must be encoded either way.
+
+## 4. Vocabulary composition (Unigram)
+
+* **Vocabulary size:** 16,000
+* **Perso-Arabic tokens:** 93.51% of non-special vocabulary
+* **Script distribution:** arabic 14,717, latin 999, symbol 20, other 2
+* **Average token length:** 4.21 characters
+* **Median token length:** 4 characters
+
+## 5. Token-frequency statistics (held-out)
+
+* **Distinct token types observed:** 15,717 of 16,000 (98.23%)
+* **Token entropy:** 10.7703 bits/token
+* **Types covering 50% of all tokens:** 231
+* **Types covering 90% of all tokens:** 5,257
+* **Types covering 99% of all tokens:** 12,764
+* **Unknown-token rate:** 0.00000000
+
+The distribution is steeply Zipfian: just 231 token types account
+for half of all token occurrences, while the last 1% of probability mass is spread across
+roughly 3,236 rare types.
+
+## 6. Where the two algorithms actually differ
+
+These examples are mined automatically from held-out text by
+`mine_contrastive_examples()` rather than chosen by hand, and the comparison is run in
+both directions so neither algorithm is shown only its wins. Across frequent word types,
+Unigram segments 24 more efficiently and BPE segments 27 more efficiently.
+
+**Words that UNIGRAM segments into fewer tokens (24 distinct frequent word types):**
+
+| Word | Corpus freq. | Unigram | BPE |
+|---|---|---|---|
+| `جديديت` | 136 | `▁جديديت` | `▁جدي | ديت` |
+| `دلاور` | 125 | `▁دلاور` | `▁دلا | ور` |
+| `ماٿري` | 119 | `▁ماٿري` | `▁ماٿ | ري` |
+| `سُونهن` | 110 | `▁سُونهن` | `▁سُون | هن` |
+| `ماتلي` | 91 | `▁ماتلي` | `▁مات | لي` |
+
+**Words that BPE segments into fewer tokens (27 distinct frequent word types):**
+
+| Word | Corpus freq. | Unigram | BPE |
+|---|---|---|---|
+| `جيون` | 308 | `▁جي | ون` | `▁جيون` |
+| `آهين` | 162 | `▁آهي | ن` | `▁آهين` |
+| `آهين،` | 148 | `▁آهي | ن | ،` | `▁آهين | ،` |
+| `محبتن` | 130 | `▁محبت | ن` | `▁محبتن` |
+| `ساريو` | 125 | `▁ساري | و` | `▁ساريو` |
+
+
+## 7. Sample tokenizations (Unigram)
+
 **Original:** `اٺالو پاندان اپنا هم باز آئي محبت سي`
-**Tokens (11):** `['▁اٺ', 'الو', '▁پاند', 'ان', '▁اپ', 'نا', '▁هم', '▁باز', '▁آئي', '▁محبت', '▁سي']`
+
+**Tokens (11):** `▁اٺ | الو | ▁پاند | ان | ▁اپ | نا | ▁هم | ▁باز | ▁آئي | ▁محبت | ▁سي`
 
 **Original:** `ماجد ڀرڳڙي ۽ سنڌي ڪمپيوٽنگ`
-**Tokens (8):** `['▁ماجد', '▁ڀرڳڙي', '▁۽', '▁سنڌي', '▁ڪم', 'پي', 'و', 'ٽنگ']`
 
-## 3. BPE Model Statistics (Baseline)
-* **Fertility:** 1.3226 tokens/word (inferior to Unigram)
-* **Target Script Ratio:** 94.49%
-* **Unknown Token Rate:** 0.0%
+**Tokens (8):** `▁ماجد | ▁ڀرڳڙي | ▁۽ | ▁سنڌي | ▁ڪم | پي | و | ٽنگ`
 
-### Tokenization Examples (BPE)
-**Original:** `ماجد ڀرڳڙي ۽ سنڌي ڪمپيوٽنگ`
-**Tokens (7):** `['▁ما', 'جد', '▁ڀرڳڙي', '▁۽', '▁سنڌي', '▁ڪمپيو', 'ٽنگ']`
+**Original:** `مين چاهتا ٿا اسي روڪ رکون`
+
+**Tokens (7):** `▁مين | ▁چاهت | ا | ▁ٿا | ▁اسي | ▁روڪ | ▁رکون`

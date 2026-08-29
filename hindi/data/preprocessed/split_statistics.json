@@ -1,0 +1,44 @@
+{
+  "language": "hindi",
+  "tokenizer": "hindi_unigram_16000.model",
+  "splits": {
+    "train": {
+      "documents": 2103125,
+      "content_lines": 7238248,
+      "bytes": 4949344721,
+      "megabytes": 4720.1,
+      "tokens": 504818280,
+      "tokens_exact": true,
+      "token_sample_stride": 1
+    },
+    "val": {
+      "documents": 61762,
+      "content_lines": 186722,
+      "bytes": 147844370,
+      "megabytes": 141.0,
+      "tokens": 14826428,
+      "tokens_exact": true,
+      "token_sample_stride": 1
+    },
+    "test": {
+      "documents": 49514,
+      "content_lines": 195896,
+      "bytes": 113459394,
+      "megabytes": 108.2,
+      "tokens": 11826335,
+      "tokens_exact": true,
+      "token_sample_stride": 1
+    }
+  },
+  "totals": {
+    "documents": 2214401,
+    "content_lines": 7620866,
+    "bytes": 5210648485,
+    "tokens": 531471043
+  },
+  "realised_token_split": {
+    "train": 0.9499,
+    "val": 0.0279,
+    "test": 0.0223
+  }
+}

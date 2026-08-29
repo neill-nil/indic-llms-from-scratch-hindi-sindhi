@@ -2,11 +2,12 @@
 Tokenizer Evaluation Script for Hindi and Sindhi Models.
 
 Compares BPE vs Unigram tokenizers on standard metrics:
-  1. Vocabulary composition analysis
-  2. Fertility (tokens-per-word ratio)
-  3. Token length distribution
+  1. Vocabulary composition analysis (script mix, byte-fallback, token lengths)
+  2. Compression: fertility, tokens/char, bytes/token
+  3. Token-frequency statistics: entropy, vocabulary utilisation, coverage ranks
   4. Coverage (unknown token rate)
-  5. Sample tokenization examples
+  5. Sample tokenizations, plus automatically-mined contrastive examples where
+     the two algorithms genuinely disagree
 
 Usage:
     python -m common.tokenizer.evaluate_tokenizer \
@@ -14,8 +15,10 @@ Usage:
 """
 
 import argparse
+import itertools
 import json
 import logging
+import math
 import unicodedata
 from collections import Counter
 from pathlib import Path
@@ -64,17 +67,20 @@ def analyze_vocabulary(sp: spm.SentencePieceProcessor, language: str):
     
     for i in range(vocab_size):
         piece = sp.id_to_piece(i)
-        
-        # Special tokens
-        if piece.startswith("<") and piece.endswith(">"):
-            special_tokens += 1
-            continue
-        
-        # Byte fallback tokens (e.g., <0x41>)
+
+        # Byte-fallback tokens (e.g. <0x41>) MUST be tested before the generic
+        # "<...>" special-token test, because they also match that pattern.
+        # Testing in the other order silently folds all 256 byte tokens into
+        # the special-token count and reports byte_fallback_tokens = 0.
         if piece.startswith("<0x") and piece.endswith(">"):
             byte_tokens += 1
             continue
-        
+
+        # Genuine control/special tokens: <pad> <unk> <s> </s> <|endoftext|>
+        if piece.startswith("<") and piece.endswith(">"):
+            special_tokens += 1
+            continue
+
         # Remove the SentencePiece continuation marker ▁
         clean = piece.replace("▁", "")
         if not clean:
@@ -100,43 +106,92 @@ def analyze_vocabulary(sp: spm.SentencePieceProcessor, language: str):
     return results
 
 
-def compute_fertility(sp: spm.SentencePieceProcessor, text_path: Path,
-                      max_lines: int = 50000):
+def iter_sampled_lines(text_path: Path, stride: int = 17, max_lines: int = 120_000):
     """
-    Compute fertility = avg tokens per whitespace-delimited word.
-    Lower fertility means the tokenizer is more efficient.
+    Yield every `stride`-th non-empty content line of a split file.
+
+    Reading a contiguous head-of-file block (e.g. the first 50k lines) biases the
+    sample towards whichever source happened to be written first, so all held-out
+    metrics below are computed on a strided sample spread across the whole file.
     """
-    total_tokens = 0
-    total_words = 0
-    unk_id = sp.unk_id()
-    unk_count = 0
-    total_pieces = 0
-    
+    kept = 0
     with open(text_path, 'r', encoding='utf-8') as f:
         for i, line in enumerate(f):
-            if i >= max_lines:
-                break
+            if i % stride:
+                continue
             stripped = line.strip()
             if not stripped or stripped == DOC_SEPARATOR:
                 continue
-            
-            words = stripped.split()
-            total_words += len(words)
-            
-            pieces = sp.encode(stripped, out_type=int)
-            total_tokens += len(pieces)
-            total_pieces += len(pieces)
-            unk_count += sum(1 for p in pieces if p == unk_id)
-    
-    fertility = total_tokens / max(total_words, 1)
-    unk_rate = unk_count / max(total_pieces, 1)
-    
+            yield stripped
+            kept += 1
+            if kept >= max_lines:
+                return
+
+
+def compute_corpus_metrics(sp: spm.SentencePieceProcessor, text_path: Path):
+    """
+    Encode a held-out sample and compute the tokenizer's intrinsic quality metrics.
+
+    Reports three different compression views because they answer different questions:
+      * fertility   - tokens per whitespace word. The conventional number, but it is
+                      sensitive to how a language delimits words.
+      * tokens/char - script-independent compression. This is the fair way to compare
+                      Devanagari against Perso-Arabic, whose word lengths differ.
+      * bytes/token - how much raw UTF-8 one token buys, which is what actually sets
+                      how much text fits in the model's context window.
+
+    Also returns the token-frequency statistics required by the brief (§1.3):
+      * vocab utilisation - how many vocabulary slots the held-out text ever uses;
+                            unused slots are wasted embedding parameters.
+      * token entropy     - empirical entropy (bits/token) of the token distribution.
+                            A lower-entropy token stream is intrinsically easier to
+                            predict, so it lower-bounds the perplexity a downstream
+                            LM can reach.
+    """
+    unk_id = sp.unk_id()
+    total_tokens = total_words = total_chars = total_bytes = 0
+    unk_count = lines_sampled = 0
+    freq = Counter()
+
+    for stripped in iter_sampled_lines(text_path):
+        lines_sampled += 1
+        total_words += len(stripped.split())
+        total_chars += len(stripped)
+        total_bytes += len(stripped.encode('utf-8'))
+
+        pieces = sp.encode(stripped, out_type=int)
+        total_tokens += len(pieces)
+        freq.update(pieces)
+        unk_count += sum(1 for p in pieces if p == unk_id)
+
+    vocab_size = sp.get_piece_size()
+    entropy = -sum((c / total_tokens) * math.log2(c / total_tokens)
+                   for c in freq.values()) if total_tokens else 0.0
+
+    # Frequency profile: how concentrated is probability mass over the vocabulary?
+    ranked = [c for _, c in freq.most_common()]
+    cumulative = list(itertools.accumulate(ranked))
+
+    def coverage_rank(fraction: float) -> int:
+        """Number of distinct token types needed to cover `fraction` of all tokens."""
+        target = fraction * total_tokens
+        return next((i + 1 for i, c in enumerate(cumulative) if c >= target), len(ranked))
+
     return {
-        "fertility": round(fertility, 4),
+        "fertility": round(total_tokens / max(total_words, 1), 4),
+        "tokens_per_char": round(total_tokens / max(total_chars, 1), 4),
+        "bytes_per_token": round(total_bytes / max(total_tokens, 1), 4),
+        "chars_per_token": round(total_chars / max(total_tokens, 1), 4),
+        "unk_rate": round(unk_count / max(total_tokens, 1), 8),
+        "token_entropy_bits": round(entropy, 4),
+        "vocab_types_used": len(freq),
+        "vocab_utilisation": round(len(freq) / vocab_size, 4),
+        "types_covering_50pct": coverage_rank(0.50),
+        "types_covering_90pct": coverage_rank(0.90),
+        "types_covering_99pct": coverage_rank(0.99),
+        "lines_sampled": lines_sampled,
         "total_words_sampled": total_words,
         "total_tokens": total_tokens,
-        "unk_rate": round(unk_rate, 6),
-        "lines_sampled": min(i + 1, max_lines) if total_words > 0 else 0,
     }
 
 
@@ -161,6 +216,40 @@ def show_sample_tokenizations(sp: spm.SentencePieceProcessor, text_path: Path,
     return samples
 
 
+def mine_contrastive_examples(sp_a: spm.SentencePieceProcessor,
+                              sp_b: spm.SentencePieceProcessor,
+                              text_path: Path, name_a: str, name_b: str,
+                              min_freq: int = 50, top_k: int = 10):
+    """
+    Find frequent words that `sp_a` tokenizes into strictly fewer pieces than `sp_b`.
+
+    Report examples must be mined from the actual models rather than written by hand.
+    An earlier revision of the report claimed Unigram kept a word intact that both
+    tokenizers in fact split identically; generating the examples makes that class
+    of error impossible.
+    """
+    word_freq = Counter()
+    for line in iter_sampled_lines(text_path, stride=1, max_lines=60_000):
+        word_freq.update(line.split())
+
+    wins = []
+    for word, count in word_freq.items():
+        if count < min_freq or len(word) < 4:
+            continue
+        pieces_a = sp_a.encode(word, out_type=str)
+        pieces_b = sp_b.encode(word, out_type=str)
+        if len(pieces_a) < len(pieces_b):
+            wins.append({
+                "word": word,
+                "corpus_frequency": count,
+                name_a: pieces_a,
+                name_b: pieces_b,
+            })
+
+    wins.sort(key=lambda w: -w["corpus_frequency"])
+    return {"n_words_favouring_" + name_a: len(wins), "examples": wins[:top_k]}
+
+
 def evaluate_model(model_path: Path, language: str, val_path: Path):
     """Run full evaluation on a single model."""
     sp = spm.SentencePieceProcessor()
@@ -175,10 +264,15 @@ def evaluate_model(model_path: Path, language: str, val_path: Path):
     logger.info(f"  Target script ratio: {vocab_analysis['target_script_ratio']:.2%}")
     logger.info(f"  Avg token length:    {vocab_analysis['avg_token_length_chars']:.2f} chars")
     
-    # 2. Fertility
-    fertility = compute_fertility(sp, val_path)
+    # 2. Held-out compression + token-frequency statistics
+    fertility = compute_corpus_metrics(sp, val_path)
     logger.info(f"  Fertility:           {fertility['fertility']:.4f} tokens/word")
-    logger.info(f"  UNK rate:            {fertility['unk_rate']:.6f}")
+    logger.info(f"  Tokens per char:     {fertility['tokens_per_char']:.4f}")
+    logger.info(f"  Bytes per token:     {fertility['bytes_per_token']:.3f}")
+    logger.info(f"  Token entropy:       {fertility['token_entropy_bits']:.2f} bits/token")
+    logger.info(f"  Vocab utilisation:   {fertility['vocab_utilisation']:.2%} "
+                f"({fertility['vocab_types_used']:,} types seen)")
+    logger.info(f"  UNK rate:            {fertility['unk_rate']:.8f}")
     
     # 3. Samples
     samples = show_sample_tokenizations(sp, val_path, n_samples=5)
@@ -219,6 +313,22 @@ def main():
         logger.error("No models found to evaluate.")
         return
     
+    both_models = "bpe" in results and "unigram" in results
+
+    # Mine contrastive examples in both directions so neither algorithm is
+    # given a free pass — each gets to show the words it handles better.
+    if both_models:
+        sp_bpe = spm.SentencePieceProcessor(
+            model_file=str(tokenizer_dir / f"{args.language}_bpe_{args.vocab_size}.model"))
+        sp_uni = spm.SentencePieceProcessor(
+            model_file=str(tokenizer_dir / f"{args.language}_unigram_{args.vocab_size}.model"))
+        results["contrastive"] = {
+            "unigram_better": mine_contrastive_examples(
+                sp_uni, sp_bpe, val_path, "unigram", "bpe"),
+            "bpe_better": mine_contrastive_examples(
+                sp_bpe, sp_uni, val_path, "bpe", "unigram"),
+        }
+
     # Save comparison report
     report_path = tokenizer_dir / "evaluation_report.json"
     with open(report_path, 'w', encoding='utf-8') as f:
@@ -226,13 +336,25 @@ def main():
     logger.info(f"\nFull report saved to: {report_path}")
     
     # Print comparison summary
-    if len(results) == 2:
+    if both_models:
         logger.info("\n=== COMPARISON SUMMARY ===")
-        for metric in ["fertility", "unk_rate"]:
+        # For every metric below, lower is better.
+        for metric in ["fertility", "tokens_per_char", "token_entropy_bits", "unk_rate"]:
             bpe_val = results["bpe"]["fertility"][metric]
             uni_val = results["unigram"]["fertility"][metric]
-            winner = "BPE" if bpe_val < uni_val else "Unigram"
-            logger.info(f"  {metric:>20s}: BPE={bpe_val:.4f}  Unigram={uni_val:.4f}  → {winner}")
+            if bpe_val == uni_val:
+                winner = "tie"
+            else:
+                winner = "BPE" if bpe_val < uni_val else "Unigram"
+            delta = abs(bpe_val - uni_val) / max(bpe_val, 1e-12)
+            logger.info(f"  {metric:>20s}: BPE={bpe_val:<10.4f} Unigram={uni_val:<10.4f} "
+                        f"→ {winner} (by {delta:.2%})")
+
+        # Higher is better: more of the vocabulary budget is actually earning its keep.
+        bpe_u = results["bpe"]["fertility"]["vocab_utilisation"]
+        uni_u = results["unigram"]["fertility"]["vocab_utilisation"]
+        logger.info(f"  {'vocab_utilisation':>20s}: BPE={bpe_u:<10.2%} Unigram={uni_u:<10.2%} "
+                    f"→ {'Unigram' if uni_u > bpe_u else 'BPE'}")
         
         bpe_ratio = results["bpe"]["vocabulary"]["target_script_ratio"]
         uni_ratio = results["unigram"]["vocabulary"]["target_script_ratio"]
@@ -241,6 +363,8 @@ def main():
     
     # Print sample tokenizations
     for model_type, data in results.items():
+        if model_type == "contrastive":
+            continue
         logger.info(f"\n--- {model_type.upper()} Sample Tokenizations ---")
         for s in data.get("samples", []):
             logger.info(f"  Original:  {s['original'][:80]}...")

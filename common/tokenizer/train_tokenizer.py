@@ -113,7 +113,8 @@ def train_sentencepiece(
         eos_id=3,
         # Add our document separator as a user-defined special token
         user_defined_symbols=[DOC_SEPARATOR],
-        # Training parameters — sample 2M sentences to keep RAM < 2GB
+        # Reservoir-sample 500k sentences from the (multi-GB) training text. This
+        # bounds trainer RAM; see tokenizer_statistics.md for why it is sufficient.
         input_sentence_size=500_000,
         shuffle_input_sentence=True,
         # Byte fallback for rare characters (prevents <unk>)

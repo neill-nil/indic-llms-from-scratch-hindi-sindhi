@@ -22,6 +22,7 @@ import time
 from pathlib import Path
 from typing import Generator, Tuple
 
+from common.preprocessing.make_splits import SEED, VAL_RATIO, TEST_RATIO, assign_split
 from common.preprocessing.filters import (
     length_filter,
     symbol_ratio_filter,
@@ -103,6 +104,23 @@ def iter_raw_documents(raw_dir: Path) -> Generator[Tuple[str, str], None, None]:
                 if current_doc:
                     yield source, "\n".join(current_doc)
 
+# Source-name prefixes written by the download scripts (download_public_data.py,
+# extract_arnizamani.py). Everything else — Wikipedia XML dump extraction and the
+# targeted site scrapers — counts as manually collected.
+DOWNLOADED_SOURCE_PREFIXES = (
+    "sangraha", "indiccorp", "arnizamani", "sindhi_corpus",
+    "sindhi_nlp_corpus", "sindhi_texts_big", "cc100", "cultuura",
+)
+
+
+def classify_source(source: str) -> str:
+    """Label a source as 'downloaded' (bulk public corpus) or 'manual' (scraped/parsed)."""
+    name = source.lower()
+    if any(name.startswith(p) for p in DOWNLOADED_SOURCE_PREFIXES):
+        return "downloaded"
+    return "manual"
+
+
 def apply_filters(text: str, language: str) -> Tuple[str, str]:
     text = normalize_unicode(text)
     text = blocklist_filter(text)
@@ -116,8 +134,8 @@ def apply_filters(text: str, language: str) -> Tuple[str, str]:
     
     return res, ""
 
-def run_pipeline(language: str, val_ratio: float = 0.025, test_ratio: float = 0.025):
-    random.seed(42)
+def run_pipeline(language: str, val_ratio: float = VAL_RATIO, test_ratio: float = TEST_RATIO):
+    random.seed(SEED)
     
     raw_dir = PROJECT_ROOT / language / "data" / "collection" / "raw"
     out_dir = PROJECT_ROOT / language / "data" / "preprocessed"
@@ -135,7 +153,13 @@ def run_pipeline(language: str, val_ratio: float = 0.025, test_ratio: float = 0.
         "rejected": {"length": 0, "symbol_ratio": 0, "line_structure": 0, "repetition": 0, "script": 0},
         "train_bytes": 0, "val_bytes": 0, "test_bytes": 0
     }
-    
+
+    # Per-source attribution. The brief (§1.2) requires reporting the manual vs.
+    # downloaded split of the final corpus, which can only be measured while the
+    # source label is still attached to each document — once everything is
+    # concatenated into train.txt the provenance is unrecoverable.
+    by_source = {}
+
     start = time.time()
     with open(train_path, 'w', encoding='utf-8') as f_train, \
          open(val_path, 'w', encoding='utf-8') as f_val, \
@@ -143,7 +167,12 @@ def run_pipeline(language: str, val_ratio: float = 0.025, test_ratio: float = 0.
          
         for source, text in iter_raw_documents(raw_dir):
             stats["total_raw"] += 1
-            
+            src = by_source.setdefault(
+                source,
+                {"collection": classify_source(source), "raw_docs": 0,
+                 "kept_docs": 0, "kept_bytes": 0})
+            src["raw_docs"] += 1
+
             cleaned, reason = apply_filters(text, language)
             if reason:
                 stats["rejected"][reason] += 1
@@ -161,17 +190,14 @@ def run_pipeline(language: str, val_ratio: float = 0.025, test_ratio: float = 0.
             
             out_str = f"{cleaned}\n{DOC_SEPARATOR}\n"
             out_bytes = len(out_str.encode('utf-8'))
+            src["kept_docs"] += 1
+            src["kept_bytes"] += out_bytes
             
-            rand_val = random.random()
-            if rand_val < val_ratio:
-                f_val.write(out_str)
-                stats["val_bytes"] += out_bytes
-            elif rand_val < (val_ratio + test_ratio):
-                f_test.write(out_str)
-                stats["test_bytes"] += out_bytes
-            else:
-                f_train.write(out_str)
-                stats["train_bytes"] += out_bytes
+            # Split boundaries live in make_splits.assign_split so the pipeline and the
+            # documented split definition cannot drift apart.
+            target = assign_split(random.random())
+            {"train": f_train, "val": f_val, "test": f_test}[target].write(out_str)
+            stats[f"{target}_bytes"] += out_bytes
             
             if stats["total_raw"] % 500_000 == 0:
                 logger.info(f"  ...processed {stats['total_raw']:,} raw | {stats['after_dedup']:,} clean & deduped")
@@ -179,6 +205,16 @@ def run_pipeline(language: str, val_ratio: float = 0.025, test_ratio: float = 0.
     total_bytes = stats["train_bytes"] + stats["val_bytes"] + stats["test_bytes"]
     stats["total_clean_bytes"] = total_bytes
     stats["estimated_clean_tokens"] = "Run count_tokens.py post-training for exact count"
+
+    # Roll per-source counts up into the manual-vs-downloaded summary required by §1.2.
+    stats["by_source"] = by_source
+    manual_bytes = sum(v["kept_bytes"] for v in by_source.values()
+                       if v["collection"] == "manual")
+    stats["provenance"] = {
+        "manual_bytes": manual_bytes,
+        "downloaded_bytes": total_bytes - manual_bytes,
+        "manual_fraction_of_clean_bytes": round(manual_bytes / total_bytes, 4) if total_bytes else 0.0,
+    }
     
     with open(out_dir / "preprocessing_stats.json", 'w') as f:
         json.dump(stats, f, indent=2)

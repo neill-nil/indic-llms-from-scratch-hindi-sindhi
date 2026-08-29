@@ -3,8 +3,8 @@
     "model": "hindi_bpe_16000.model",
     "vocabulary": {
       "vocab_size": 16000,
-      "special_tokens": 261,
-      "byte_fallback_tokens": 0,
+      "special_tokens": 5,
+      "byte_fallback_tokens": 256,
       "script_distribution": {
         "devanagari": 14769,
         "latin": 959,
@@ -16,11 +16,20 @@
       "median_token_length": 4
     },
     "fertility": {
-      "fertility": 1.2944,
-      "total_words_sampled": 1652863,
-      "total_tokens": 2139417,
+      "fertility": 1.3203,
+      "tokens_per_char": 0.2598,
+      "bytes_per_token": 9.8046,
+      "chars_per_token": 3.8498,
       "unk_rate": 0.0,
-      "lines_sampled": 50000
+      "token_entropy_bits": 10.6594,
+      "vocab_types_used": 15283,
+      "vocab_utilisation": 0.9552,
+      "types_covering_50pct": 215,
+      "types_covering_90pct": 5156,
+      "types_covering_99pct": 12396,
+      "lines_sampled": 10960,
+      "total_words_sampled": 665138,
+      "total_tokens": 878154
     },
     "samples": [
       {
@@ -220,8 +229,8 @@
     "model": "hindi_unigram_16000.model",
     "vocabulary": {
       "vocab_size": 16000,
-      "special_tokens": 261,
-      "byte_fallback_tokens": 0,
+      "special_tokens": 5,
+      "byte_fallback_tokens": 256,
       "script_distribution": {
         "devanagari": 14576,
         "latin": 1152,
@@ -234,11 +243,20 @@
       "median_token_length": 5
     },
     "fertility": {
-      "fertility": 1.2798,
-      "total_words_sampled": 1652863,
-      "total_tokens": 2115357,
+      "fertility": 1.3056,
+      "tokens_per_char": 0.2569,
+      "bytes_per_token": 9.9146,
+      "chars_per_token": 3.893,
       "unk_rate": 0.0,
-      "lines_sampled": 50000
+      "token_entropy_bits": 10.5347,
+      "vocab_types_used": 15583,
+      "vocab_utilisation": 0.9739,
+      "types_covering_50pct": 174,
+      "types_covering_90pct": 5054,
+      "types_covering_99pct": 12545,
+      "lines_sampled": 10960,
+      "total_words_sampled": 665138,
+      "total_tokens": 868410
     },
     "samples": [
       {
@@ -432,5 +450,248 @@
         "n_tokens": 53
       }
     ]
+  },
+  "contrastive": {
+    "unigram_better": {
+      "n_words_favouring_unigram": 88,
+      "examples": [
+        {
+          "word": "ज्वालामुखी",
+          "corpus_frequency": 96,
+          "unigram": [
+            "▁ज्वालामुखी"
+          ],
+          "bpe": [
+            "▁ज्वाल",
+            "ामुखी"
+          ]
+        },
+        {
+          "word": "सेमेस्टर",
+          "corpus_frequency": 86,
+          "unigram": [
+            "▁सेमेस्टर"
+          ],
+          "bpe": [
+            "▁से",
+            "मे",
+            "स्टर"
+          ]
+        },
+        {
+          "word": "द्विआधारी",
+          "corpus_frequency": 85,
+          "unigram": [
+            "▁द्विआधारी"
+          ],
+          "bpe": [
+            "▁द्वि",
+            "आ",
+            "धारी"
+          ]
+        },
+        {
+          "word": "साईं",
+          "corpus_frequency": 82,
+          "unigram": [
+            "▁साईं"
+          ],
+          "bpe": [
+            "▁साई",
+            "ं"
+          ]
+        },
+        {
+          "word": "कोरबा",
+          "corpus_frequency": 82,
+          "unigram": [
+            "▁कोरबा"
+          ],
+          "bpe": [
+            "▁कोर",
+            "बा"
+          ]
+        },
+        {
+          "word": "आक्रोशित",
+          "corpus_frequency": 78,
+          "unigram": [
+            "▁आक्रोशित"
+          ],
+          "bpe": [
+            "▁आक्रो",
+            "शित"
+          ]
+        },
+        {
+          "word": "बीडीओ",
+          "corpus_frequency": 78,
+          "unigram": [
+            "▁बीडीओ"
+          ],
+          "bpe": [
+            "▁बी",
+            "डीओ"
+          ]
+        },
+        {
+          "word": "रक्तदान",
+          "corpus_frequency": 70,
+          "unigram": [
+            "▁रक्तदान"
+          ],
+          "bpe": [
+            "▁रक्त",
+            "दान"
+          ]
+        },
+        {
+          "word": "खुदकुशी",
+          "corpus_frequency": 70,
+          "unigram": [
+            "▁खुदकुशी"
+          ],
+          "bpe": [
+            "▁खुद",
+            "कु",
+            "शी"
+          ]
+        },
+        {
+          "word": "एडीएम",
+          "corpus_frequency": 70,
+          "unigram": [
+            "▁एडीएम"
+          ],
+          "bpe": [
+            "▁ए",
+            "डीएम"
+          ]
+        }
+      ]
+    },
+    "bpe_better": {
+      "n_words_favouring_bpe": 34,
+      "examples": [
+        {
+          "word": "है।'",
+          "corpus_frequency": 198,
+          "bpe": [
+            "▁है",
+            "।'"
+          ],
+          "unigram": [
+            "▁है",
+            "।",
+            "'"
+          ]
+        },
+        {
+          "word": "Also",
+          "corpus_frequency": 111,
+          "bpe": [
+            "▁Al",
+            "so"
+          ],
+          "unigram": [
+            "▁",
+            "Al",
+            "so"
+          ]
+        },
+        {
+          "word": "कांग्रेसी",
+          "corpus_frequency": 96,
+          "bpe": [
+            "▁कांग्रेसी"
+          ],
+          "unigram": [
+            "▁कांग्रेस",
+            "ी"
+          ]
+        },
+        {
+          "word": "केयर",
+          "corpus_frequency": 91,
+          "bpe": [
+            "▁केयर"
+          ],
+          "unigram": [
+            "▁के",
+            "यर"
+          ]
+        },
+        {
+          "word": "हैं।'",
+          "corpus_frequency": 84,
+          "bpe": [
+            "▁हैं",
+            "।'"
+          ],
+          "unigram": [
+            "▁हैं",
+            "।",
+            "'"
+          ]
+        },
+        {
+          "word": "उन्‍हें",
+          "corpus_frequency": 81,
+          "bpe": [
+            "▁उन्‍ह",
+            "ें"
+          ],
+          "unigram": [
+            "▁उन",
+            "्‍",
+            "हें"
+          ]
+        },
+        {
+          "word": "फिल्मी",
+          "corpus_frequency": 78,
+          "bpe": [
+            "▁फिल्मी"
+          ],
+          "unigram": [
+            "▁फिल्म",
+            "ी"
+          ]
+        },
+        {
+          "word": "संचालकों",
+          "corpus_frequency": 67,
+          "bpe": [
+            "▁संचालकों"
+          ],
+          "unigram": [
+            "▁संचालक",
+            "ों"
+          ]
+        },
+        {
+          "word": "बैठकों",
+          "corpus_frequency": 63,
+          "bpe": [
+            "▁बैठकों"
+          ],
+          "unigram": [
+            "▁बैठक",
+            "ों"
+          ]
+        },
+        {
+          "word": "कुएं",
+          "corpus_frequency": 62,
+          "bpe": [
+            "▁कुएं"
+          ],
+          "unigram": [
+            "▁कु",
+            "एं"
+          ]
+        }
+      ]
+    }
   }
 }

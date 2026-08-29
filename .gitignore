@@ -9,19 +9,26 @@ LMA_Individual_Project_v1.pdf
 hindi/data/collection/raw/
 sindhi/data/collection/raw/
 
-# Cleaned data (too large for git)
-hindi/data/preprocessed/
-sindhi/data/preprocessed/
+# Cleaned data (too large for git) - the corpora themselves live on Google Drive,
+# but the small JSON statistics files beside them are graded deliverables.
+hindi/data/preprocessed/*
+sindhi/data/preprocessed/*
+!hindi/data/preprocessed/*.json
+!sindhi/data/preprocessed/*.json
 
-# Tokenizer artifacts (generated locally)
-*.model
-*.vocab
+# Tokenizer artifacts.
+# The .model/.vocab files ARE committed: they are required Phase 1 deliverables
+# and are small (<700 KB each). Only the huge intermediate training text is ignored.
 hindi/tokenizer/train_clean.txt
 sindhi/tokenizer/train_clean.txt
 
 # Log files
 *.log
 nohup.out
+# The tokenizer training.log files on disk are from a failed 32k BPE attempt on
+# 15 Aug (0 sentences loaded), not from the runs that produced the shipped 16k
+# models on 17-19 Aug. They are not committed because they document a crash, not
+# the artefacts. Re-running run_tokenizer_*.sh regenerates real logs.
 
 # Python cache
 __pycache__/

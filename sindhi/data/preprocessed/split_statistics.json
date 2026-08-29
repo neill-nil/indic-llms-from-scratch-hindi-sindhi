@@ -1,0 +1,44 @@
+{
+  "language": "sindhi",
+  "tokenizer": "sindhi_unigram_16000.model",
+  "splits": {
+    "train": {
+      "documents": 4841111,
+      "content_lines": 11041567,
+      "bytes": 3455330618,
+      "megabytes": 3295.3,
+      "tokens": 618440091,
+      "tokens_exact": true,
+      "token_sample_stride": 1
+    },
+    "val": {
+      "documents": 53252,
+      "content_lines": 369137,
+      "bytes": 117171761,
+      "megabytes": 111.7,
+      "tokens": 18112469,
+      "tokens_exact": true,
+      "token_sample_stride": 1
+    },
+    "test": {
+      "documents": 208300,
+      "content_lines": 214515,
+      "bytes": 68187878,
+      "megabytes": 65.0,
+      "tokens": 14956320,
+      "tokens_exact": true,
+      "token_sample_stride": 1
+    }
+  },
+  "totals": {
+    "documents": 5102663,
+    "content_lines": 11625219,
+    "bytes": 3640690257,
+    "tokens": 651508880
+  },
+  "realised_token_split": {
+    "train": 0.9492,
+    "val": 0.0278,
+    "test": 0.023
+  }
+}

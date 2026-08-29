@@ -57,7 +57,14 @@ All large artifacts (Datasets, Tokenizer Models) that are too large for Git are 
 ### Phase 1 Artifacts
 - **[Raw Datasets (Scrapes & Dumps)](https://drive.google.com/drive/folders/1zvLgcQdYhoL8NmwMuf3zTX8XX7RFzjyp?usp=sharing)**
 - **[Preprocessed & Cleaned Datasets (Train/Val/Test splits)](https://drive.google.com/drive/folders/1GfBSP6Cbyn7ONmLlZrhtbTkPIhgQczQY?usp=sharing)**
-- **[Trained Tokenizer Models & Vocab (16K Unigram)](https://drive.google.com/drive/folders/1S0uDU-52hUb54DrZDFUTji7uX_fk_kFb?usp=sharing)**
+- **[Trained Tokenizer Models & Vocab (16K Unigram)](https://drive.google.com/drive/folders/1S0uDU-52hUb54DrZDFUTji7uX_fk_kFb?usp=sharing)** — also committed directly to this repo under `hindi/tokenizer/` and `sindhi/tokenizer/`, so no download is needed to reproduce Phase 2.
+
+### Reports
+- **[Phase 1 report](report/phase1.md)** — dataset statistics, provenance, tokenizer evaluation
+- Per-language detail: [`hindi/data/dataset_statistics.md`](hindi/data/dataset_statistics.md),
+  [`sindhi/data/dataset_statistics.md`](sindhi/data/dataset_statistics.md),
+  [`hindi/tokenizer/tokenizer_statistics.md`](hindi/tokenizer/tokenizer_statistics.md),
+  [`sindhi/tokenizer/tokenizer_statistics.md`](sindhi/tokenizer/tokenizer_statistics.md)
 
 ### Phase 2 & 3 Artifacts (Pending)
 - [ ] Hindi pretrained checkpoint
@@ -91,8 +98,37 @@ bash run_all_sindhi.sh
 ```
 
 **4. Train and Evaluate Tokenizers**
-Once the data is preprocessed, train the 16K Unigram/BPE tokenizers and evaluate their fertility.
+Trains the 16K Unigram and BPE tokenizers and evaluates them on held-out text.
 ```bash
 bash run_tokenizer_hindi.sh
 bash run_tokenizer_sindhi.sh
 ```
+
+**5. Verify the train/val/test splits**
+The split definition lives in `common/preprocessing/make_splits.py` (nominal 95 / 2.5 / 2.5,
+seed 42) and is imported by `pipeline.py`, so the two cannot drift apart. To check the
+splits on disk against it:
+```bash
+python -m common.preprocessing.make_splits --language hindi  --verify
+python -m common.preprocessing.make_splits --language sindhi --verify
+```
+
+**6. Regenerate the statistics reports**
+Both `tokenizer_statistics.md` files and `split_statistics.json` are generated from
+measured artefacts rather than written by hand, so they can be rebuilt at any time:
+```bash
+for lang in hindi sindhi; do
+  python -m common.tokenizer.evaluate_tokenizer  --language $lang --vocab_size 16000
+  python -m common.tokenizer.write_stats_report  --language $lang --vocab_size 16000
+  python -m common.preprocessing.split_stats     --language $lang --train_stride 1
+done
+```
+
+> **Note on the collection scripts.** `run_all_hindi.sh` and `run_all_sindhi.sh` cover the
+> bulk public-corpus downloads and the preprocessing/dedup pipeline. The manually-collected
+> portion is gathered separately and must be run first if you are rebuilding the corpus
+> from nothing:
+> ```bash
+> python -m common.collection.scrape_wiki_dump --language hindi   # and sindhi
+> python run_scrapers.py 300
+> ```
