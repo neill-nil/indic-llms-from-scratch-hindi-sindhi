@@ -92,7 +92,9 @@ class GPTConfig:
         blocks = self.n_layers * (attn + mlp + norms)
         total = tok + pos + blocks + 2 * self.d_model
         if not self.tie_embeddings:
-            total += self.d_model * self.vocab_size + self.vocab_size
+            # The LM head is nn.Linear(d_model, vocab_size, bias=False), so an untied head
+            # costs the weight matrix only — no per-vocabulary-entry bias term.
+            total += self.d_model * self.vocab_size
         return blocks if non_embedding else total
 
     def to_json(self, path: Path) -> None:
