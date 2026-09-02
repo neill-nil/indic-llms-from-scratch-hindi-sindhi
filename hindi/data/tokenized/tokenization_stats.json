@@ -1,0 +1,31 @@
+{
+  "language": "hindi",
+  "tokenizer": "hindi_unigram_16000.model",
+  "dtype": "uint16",
+  "splits": {
+    "test": {
+      "split": "test",
+      "tokens": 11826335,
+      "documents": 49514,
+      "bytes": 23652670,
+      "max_token_id": 15999,
+      "seconds": 1.8
+    },
+    "train": {
+      "split": "train",
+      "tokens": 504818280,
+      "documents": 2103125,
+      "bytes": 1009636560,
+      "max_token_id": 15999,
+      "seconds": 67.1
+    },
+    "val": {
+      "split": "val",
+      "tokens": 14826428,
+      "documents": 61762,
+      "bytes": 29652856,
+      "max_token_id": 15999,
+      "seconds": 2.1
+    }
+  }
+}

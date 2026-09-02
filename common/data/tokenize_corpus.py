@@ -56,46 +56,61 @@ def _init_worker(model_path: str):
     _SP = spm.SentencePieceProcessor(model_file=model_path)
 
 
-def _encode_chunk(lines):
-    """Encode a list of content lines into one flat list of ids."""
+def _encode_chunk(args):
+    """
+    Encode one chunk of items into a flat list of ids.
+
+    An item is either a content line or None, which marks a document boundary. Separators
+    travel inside the chunk rather than being handled by the parent, so the parent never
+    has to flush the worker pool mid-stream. An earlier version yielded each separator
+    separately and forced a full pool drain to keep ordering; with 2.1M Hindi documents
+    averaging 3.4 lines each that meant 2.1M synchronisation points on three-line batches,
+    which serialised the pool completely and ran ~30x slower than single-threaded.
+
+    All real lines in the chunk are encoded in a single SentencePiece call, then the ids
+    are reassembled with separators back in their original positions.
+    """
+    items, sep_id = args
+    lines = [it for it in items if it is not None]
+    encoded = iter(_SP.encode(lines)) if lines else iter(())
     out = []
-    for ids in _SP.encode(lines):
-        out.extend(ids)
+    for item in items:
+        if item is None:
+            out.append(sep_id)
+        else:
+            out.extend(next(encoded))
     return out
 
 
-def iter_chunks(path: Path, sep_id: int):
+def iter_item_chunks(path: Path, chunk_size: int = CHUNK_LINES):
     """
-    Stream the split file, yielding either a list of content lines to encode or a
-    sentinel marking document boundaries.
-
-    Yields tuples of (kind, payload) where kind is "text" or "sep". Keeping the separator
-    out of the encoded batches means it is injected as a raw id rather than round-tripped
-    through the tokenizer.
+    Stream the split file as chunks of items, where an item is a content line or None for
+    a document boundary. Chunk size is bounded so a worker never holds more than this many
+    items, keeping memory flat regardless of corpus size.
     """
     batch = []
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
             stripped = line.strip()
             if stripped == DOC_SEPARATOR:
-                if batch:
-                    yield "text", batch
-                    batch = []
-                yield "sep", sep_id
+                batch.append(None)
             elif stripped:
                 batch.append(stripped)
-                if len(batch) >= CHUNK_LINES:
-                    yield "text", batch
-                    batch = []
+            else:
+                continue
+            if len(batch) >= chunk_size:
+                yield batch
+                batch = []
     if batch:
-        yield "text", batch
+        yield batch
 
 
 def tokenize_split(language: str, split: str, model_path: Path, workers: int) -> dict:
     """
     Encode one split to <split>.bin and return its statistics.
 
-    Writes incrementally so peak memory stays bounded regardless of corpus size.
+    Chunks are dispatched to a worker pool and collected strictly in order, with the queue
+    of outstanding jobs bounded so peak memory stays flat on a multi-GB corpus.
     """
     src = PROJECT_ROOT / language / "data" / "preprocessed" / f"{split}.txt"
     out_dir = PROJECT_ROOT / language / "data" / "tokenized"
@@ -119,37 +134,37 @@ def tokenize_split(language: str, split: str, model_path: Path, workers: int) ->
                 language, split, dst.name, sep_id, workers)
 
     start = time.time()
-    total, docs = 0, 0
-    max_id = 0
+    total = docs = max_id = 0
+    last_log = start
 
     with open(dst, "wb") as f_out, \
          mp.Pool(workers, initializer=_init_worker, initargs=(str(model_path),)) as pool:
 
-        pending, buffer = [], []
+        pending = []
 
-        def drain(force=False):
-            """Resolve completed encode jobs in order and append their ids to the file."""
+        def write_one():
+            """Pop the oldest job, in dispatch order, and append its ids to the file."""
             nonlocal total, max_id
-            while pending and (force or len(pending) > workers):
-                ids = pending.pop(0).get()
-                arr = np.asarray(ids, dtype=DTYPE)
-                arr.tofile(f_out)
-                total += arr.size
-                if arr.size:
-                    max_id = max(max_id, int(arr.max()))
+            arr = np.asarray(pending.pop(0).get(), dtype=DTYPE)
+            arr.tofile(f_out)
+            total += arr.size
+            if arr.size:
+                max_id = max(max_id, int(arr.max()))
 
-        for kind, payload in iter_chunks(src, sep_id):
-            if kind == "text":
-                pending.append(pool.apply_async(_encode_chunk, (payload,)))
-                drain()
-            else:
-                # Flush everything queued so the separator lands in the right place, then
-                # write it as a single raw id.
-                drain(force=True)
-                np.asarray([payload], dtype=DTYPE).tofile(f_out)
-                total += 1
-                docs += 1
-        drain(force=True)
+        for chunk in iter_item_chunks(src):
+            docs += sum(1 for item in chunk if item is None)
+            pending.append(pool.apply_async(_encode_chunk, ((chunk, sep_id),)))
+            # Keep a couple of jobs per worker in flight: enough to hide latency, few
+            # enough that memory stays bounded.
+            while len(pending) > 2 * workers:
+                write_one()
+            if time.time() - last_log > 30:
+                logger.info("  ...%s tokens, %s documents, %.0f tok/s",
+                            f"{total:,}", f"{docs:,}", total / (time.time() - start))
+                last_log = time.time()
+
+        while pending:
+            write_one()
 
     elapsed = time.time() - start
     size = dst.stat().st_size

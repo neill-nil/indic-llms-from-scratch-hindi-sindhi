@@ -1,0 +1,31 @@
+{
+  "language": "sindhi",
+  "tokenizer": "sindhi_unigram_16000.model",
+  "dtype": "uint16",
+  "splits": {
+    "train": {
+      "split": "train",
+      "tokens": 618440091,
+      "documents": 4841111,
+      "bytes": 1236880182,
+      "max_token_id": 15999,
+      "seconds": 70.4
+    },
+    "val": {
+      "split": "val",
+      "tokens": 18112469,
+      "documents": 53252,
+      "bytes": 36224938,
+      "max_token_id": 15999,
+      "seconds": 2.5
+    },
+    "test": {
+      "split": "test",
+      "tokens": 14956320,
+      "documents": 208300,
+      "bytes": 29912640,
+      "max_token_id": 15999,
+      "seconds": 1.8
+    }
+  }
+}
