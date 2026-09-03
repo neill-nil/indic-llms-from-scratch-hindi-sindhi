@@ -11,6 +11,7 @@ the same token budget, so re-running after an interruption is always safe.
 
 import argparse
 import logging
+import signal
 import sys
 from pathlib import Path
 
@@ -128,12 +129,29 @@ def main():
     # Write the config next to the checkpoints, as the brief requires.
     model_cfg.to_json(out_dir / "model_config.json")
 
+    # Catch the signals that end a long unattended run so it saves before dying.
+    #   SIGINT  — Ctrl-C
+    #   SIGTERM — `kill`, and what systemd sends to user processes at shutdown or
+    #             when a session ends
+    #   SIGHUP  — the controlling terminal went away (closing an SSH session or a
+    #             terminal window that was not started with nohup)
+    # Each is re-raised as KeyboardInterrupt so a single handler below covers all of
+    # them. Note this cannot protect against SIGKILL or against the GPU context being
+    # invalidated by a suspend: only the periodic checkpoint covers those, which is why
+    # --checkpoint_every should be small for laptop runs.
+    def _save_and_exit(signum, _frame):
+        log.warning("received signal %s", signal.Signals(signum).name)
+        raise KeyboardInterrupt
+    for sig in (signal.SIGTERM, signal.SIGHUP):
+        signal.signal(sig, _save_and_exit)
+
     try:
         trainer.train()
     except KeyboardInterrupt:
-        log.warning("interrupted — saving checkpoint before exit")
+        log.warning("interrupted at step %d — saving checkpoint before exit", trainer.step)
         trainer.save_checkpoint("latest")
-        log.warning("saved. resume with: --language %s --resume", args.language)
+        log.warning("saved %s", out_dir / "latest.pt")
+        log.warning("resume with:  bash scripts/train_local.sh %s", args.language)
         raise SystemExit(130)
 
 

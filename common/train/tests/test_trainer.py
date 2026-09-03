@@ -138,6 +138,35 @@ def test_resume_works_on_gpu():
                 f"{k} differs after a CUDA resume"
 
 
+def test_checkpoint_is_consistent_when_interrupted_mid_accumulation():
+    """
+    A signal can land part-way through gradient accumulation, when some micro-batches of
+    the next step have been consumed but `step` has not advanced. The saved data-generator
+    position must correspond to the *completed* step count, not to the live generator.
+
+    Saving the live state produced a resumed run that read different windows and drifted
+    from the uninterrupted one by ~1.7e-02 — no error, just a quietly different model.
+    """
+    with tempfile.TemporaryDirectory() as d:
+        tmp = Path(d)
+        model, train, val, tcfg = _setup(tmp, grad_accum=4)
+        t = Trainer(model, train, val, tcfg, tmp / "run", device="cpu")
+        t.train(until_step=3)
+
+        boundary_state = t._rng_snapshot["data_gen"].clone()
+        # Simulate the interrupted micro-batches of an incomplete step 4.
+        for _ in range(2):
+            t.train_data.get_batch(tcfg.micro_batch, "cpu", generator=t.data_gen)
+        assert not torch.equal(t.data_gen.get_state(), boundary_state), \
+            "the simulated partial step did not advance the generator"
+
+        ckpt = torch.load(t.save_checkpoint("latest"), map_location="cpu",
+                          weights_only=False)
+        assert ckpt["step"] == 3
+        assert torch.equal(ckpt["data_gen_state"], boundary_state), \
+            "checkpoint saved the mid-accumulation generator state, not the step boundary"
+
+
 def test_checkpoint_contains_everything_needed():
     """The brief requires weights, optimizer, scheduler position, step and config."""
     with tempfile.TemporaryDirectory() as d:

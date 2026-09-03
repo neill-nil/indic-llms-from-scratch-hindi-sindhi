@@ -132,7 +132,39 @@ class Trainer:
         # a resumed run does not replay the same windows it already trained on.
         self.data_gen = torch.Generator().manual_seed(cfg.seed)
 
+        # All random state as of the last COMPLETED optimizer step, which is what a
+        # checkpoint must record. `self.step` only advances once all grad_accum
+        # micro-batches are done, so if a signal arrives mid-accumulation the live state
+        # has already advanced for a step that will never complete.
+        #
+        # Both sources matter and both bit us in testing:
+        #   * the data generator, which picks the training windows, and
+        #   * the global torch RNG, which dropout draws its masks from.
+        # Saving either mid-step leaves a resumed run consuming different randomness than
+        # an uninterrupted one, and the two silently diverge — no error, just a slightly
+        # different model.
+        self._rng_snapshot = self._capture_rng()
+
         self.log_path = self.out_dir / "training_log.jsonl"
+
+    # ── Random state ────────────────────────────────────────────────────────────
+
+    def _capture_rng(self) -> dict:
+        """Snapshot every RNG whose position affects the next step's result."""
+        return {
+            "data_gen": self.data_gen.get_state(),
+            "torch": torch.get_rng_state(),
+            "cuda": (torch.cuda.get_rng_state()
+                     if self.device.startswith("cuda") and torch.cuda.is_available()
+                     else None),
+        }
+
+    def _restore_rng(self, snapshot: dict) -> None:
+        """Restore a snapshot taken by _capture_rng. All states must be on CPU."""
+        self.data_gen.set_state(snapshot["data_gen"].cpu())
+        torch.set_rng_state(snapshot["torch"].cpu())
+        if snapshot.get("cuda") is not None and self.device.startswith("cuda"):
+            torch.cuda.set_rng_state(snapshot["cuda"].cpu())
 
     # ── Optimizer ───────────────────────────────────────────────────────────────
 
@@ -226,10 +258,10 @@ class Trainer:
             "val_loss": val_loss,
             "model_config": asdict(self.model.config),
             "train_config": asdict(self.cfg),
-            "data_gen_state": self.data_gen.get_state(),
-            "torch_rng_state": torch.get_rng_state(),
-            "cuda_rng_state": (torch.cuda.get_rng_state()
-                               if self.device.startswith("cuda") else None),
+            # The step-boundary snapshot, never the live state — see _rng_snapshot.
+            "data_gen_state": self._rng_snapshot["data_gen"],
+            "torch_rng_state": self._rng_snapshot["torch"],
+            "cuda_rng_state": self._rng_snapshot["cuda"],
         }
         torch.save(payload, tmp)
         tmp.replace(path)
@@ -255,10 +287,10 @@ class Trainer:
         self.step = ckpt["step"]
         self.tokens_seen = ckpt["tokens_seen"]
         self.best_val_loss = ckpt["best_val_loss"]
-        self.data_gen.set_state(ckpt["data_gen_state"].cpu())
-        torch.set_rng_state(ckpt["torch_rng_state"].cpu())
-        if ckpt.get("cuda_rng_state") is not None and self.device.startswith("cuda"):
-            torch.cuda.set_rng_state(ckpt["cuda_rng_state"].cpu())
+        self._restore_rng({"data_gen": ckpt["data_gen_state"],
+                           "torch": ckpt["torch_rng_state"],
+                           "cuda": ckpt.get("cuda_rng_state")})
+        self._rng_snapshot = self._capture_rng()
         self.model.to(self.device)
 
         logger.info("resumed from %s at step %d (%s tokens seen)",
@@ -337,6 +369,10 @@ class Trainer:
 
             self.step += 1
             self.tokens_seen += tokens_per_step
+            # Random state now matches the completed step count. Recording it only here —
+            # never mid-accumulation — is what keeps a checkpoint's step counter and its
+            # randomness consistent with each other.
+            self._rng_snapshot = self._capture_rng()
 
             if self.step % cfg.log_every == 0:
                 dt = time.time() - t_window

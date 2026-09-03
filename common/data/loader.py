@@ -80,10 +80,12 @@ class TokenDataset:
             0, self.max_start + 1, (batch_size,), generator=generator
         ).tolist()
 
-        # Slice into numpy first, then convert once. Building the batch as a single
-        # stacked array avoids batch_size separate host-to-device transfers.
-        xs = np.stack([self.data[s: s + self.block_size] for s in starts])
-        ys = np.stack([self.data[s + 1: s + 1 + self.block_size] for s in starts])
+        # Read each window ONCE as block_size+1 tokens, then take the two overlapping
+        # views. Slicing the file twice would double the memmap reads, which dominates
+        # when the backing store is slow (a network filesystem, or a cold page cache).
+        windows = np.stack([self.data[s: s + self.block_size + 1] for s in starts])
+        xs = windows[:, :-1]
+        ys = windows[:, 1:]
 
         # .astype(np.int64) is required: embedding lookups need a long tensor, and torch
         # has no uint16 dtype to convert from directly.
@@ -118,8 +120,9 @@ class TokenDataset:
             yield self._gather(batch, device)
 
     def _gather(self, starts, device: str) -> Tuple[torch.Tensor, torch.Tensor]:
-        xs = np.stack([self.data[s: s + self.block_size] for s in starts])
-        ys = np.stack([self.data[s + 1: s + 1 + self.block_size] for s in starts])
+        windows = np.stack([self.data[s: s + self.block_size + 1] for s in starts])
+        xs = windows[:, :-1]
+        ys = windows[:, 1:]
         x = torch.from_numpy(xs.astype(np.int64)).to(device)
         y = torch.from_numpy(ys.astype(np.int64)).to(device)
         return x, y
