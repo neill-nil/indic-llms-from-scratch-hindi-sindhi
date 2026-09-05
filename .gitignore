@@ -24,6 +24,10 @@ sindhi/tokenizer/train_clean.txt
 
 # Log files
 *.log
+# ...but the pretraining logs are a required Phase 2 deliverable: the brief states that
+# training logs and loss curves must be in the branch, not on an external dashboard.
+!hindi/train/run/train.log
+!sindhi/train/run/train.log
 nohup.out
 # The tokenizer training.log files on disk are from a failed 32k BPE attempt on
 # 15 Aug (0 sentences loaded), not from the runs that produced the shipped 16k
@@ -53,3 +57,6 @@ Thumbs.db
 *.pth
 *.bin
 *.safetensors
+
+# Personal study notes — reference only, not part of the submission
+PHASE2_STUDY_GUIDE.md

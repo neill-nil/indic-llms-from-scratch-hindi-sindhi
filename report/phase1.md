@@ -396,3 +396,76 @@ of all occurrences, while the final 1% of probability mass is spread over roughl
 | Median token length | 4 chars |
 | Byte-fallback tokens | 256 |
 | Special tokens | 5 |
+
+---
+
+
+### Phase 1 Artifacts
+- **[Raw Datasets (Scrapes & Dumps)](https://drive.google.com/drive/folders/1zvLgcQdYhoL8NmwMuf3zTX8XX7RFzjyp?usp=sharing)**
+- **[Preprocessed & Cleaned Datasets (Train/Val/Test splits)](https://drive.google.com/drive/folders/1GfBSP6Cbyn7ONmLlZrhtbTkPIhgQczQY?usp=sharing)**
+- **[Trained Tokenizer Models & Vocab (16K Unigram)](https://drive.google.com/drive/folders/1S0uDU-52hUb54DrZDFUTji7uX_fk_kFb?usp=sharing)** — also committed directly to this repo under `hindi/tokenizer/` and `sindhi/tokenizer/`, so no download is needed to reproduce Phase 2.
+
+---
+
+
+## Revision Log — corrections made after the Phase 1 deadline
+
+The corrections below were made afterwards on the `phase-2` branch and are recorded for transparency, because Phase 2 and 3 build on these numbers.
+
+**Nothing in the data changed.** `train.txt`, `val.txt` and `test.txt` are the same files
+that were graded and that the Drive links point to. The tokenizers are the same tokenizers.
+What changed is the accuracy of what was *reported* about them.
+
+### Corrected figures
+
+| Reported originally | Correct value | What was wrong |
+|---|---|---|
+| Hindi corpus: **517,187,408** tokens | **531,471,043** | The original figure was the *train split alone*, mislabelled as the corpus total |
+| Hindi val and test: both **130 MB / 248,784 lines** | **val 141.0 MB, test 108.2 MB** | Statistics were inherited from an earlier two-way (train/val) pipeline. The eval splits are not equal in size, because MinHash deduplication was run on each independently and pruned different amounts |
+| Hindi yield: **82.2%** | **79.6%** | 83.4% passed the heuristic filters, 80.7% survived exact deduplication, 79.6% survived MinHash |
+| Fertility: Hindi **1.2798**, Sindhi **1.3151** | **1.3056**, **1.2987** | Measured over only the first 50,000 lines of the validation file — a head-of-file sample biased toward whichever source happened to be written first. Now measured on a strided sample spanning the whole split |
+| **261 special tokens, 0 byte-fallback tokens** | **5 special, 256 byte-fallback** | The evaluation script tested the generic `<...>` pattern before the `<0x..>` pattern, so all 256 byte-fallback tokens were silently counted as special tokens |
+| Filters: 20–10,000 chars, >20% symbols, >80% script | **50–500,000 chars, >30% symbols, >90% script** | The prose described thresholds the code does not use |
+| Vocabulary justification: 32K costs **12.3M** params, 16K costs **6.1M** | **16.38M** and **8.19M** | The original arithmetic assumed a model dimension of 384; the model actually built in Phase 2 uses 512 |
+
+### Withdrawn claim
+
+The report stated that the Unigram tokenizer keeps the acronym `आईआईएम` as a single token
+while BPE splits it, and offered this as evidence that Unigram aligns better with Hindi
+morphology.
+
+**The claim is false.** That string appears in neither vocabulary, and both tokenizers
+segment it identically as `▁आई | आईएम` — as the report's own example, printed three lines
+below the claim, already showed.
+
+Unigram is still the right choice, but for different and smaller reasons than were given.
+The honest case, now in §1.2, rests on **token entropy** (10.53 vs 10.66 bits/token for
+Hindi) and **vocabulary utilisation** (97.4% vs 95.5%), not on the ~1% fertility margin.
+Contrastive examples are now mined automatically from the two models and shown in both
+directions, so neither algorithm is presented only with its wins.
+
+### Required content that was missing
+
+| Requirement | What was added |
+|---|---|
+| §1.2 — report the manual vs. downloaded token split | Provenance section per language: Hindi ≥29.4% manual (est. ~43%), Sindhi ≥9.1% (est. ~38%), with the derivation shown. The pipeline now records per-source counts so a re-run measures this exactly rather than by inference |
+| §1.3 — token-frequency statistics | Token entropy, vocabulary utilisation on held-out text, and coverage ranks (how many token types account for 50%, 90% and 99% of all occurrences) |
+| Train/val/test split definitions as a deliverable | `common/preprocessing/make_splits.py`, imported by `pipeline.py` so the two cannot drift. Its `--verify` mode checks the shipped splits against the definition; both languages pass |
+
+### Why these errors happened, and what prevents a repeat
+
+Every corrected figure above was a number typed by hand into prose, which then drifted from
+the artefact it described. The two per-language `tokenizer_statistics.md` files are now
+**generated** from `evaluation_report.json`, and `split_stats.py` measures the shipped
+splits directly rather than relying on transcription. The false `आईआईएम` claim is the clearest
+case: examples are now derived from the models, which makes that class of error structurally
+impossible rather than merely unlikely.
+
+### Deliberately not changed
+
+* **The corpora.** Re-drawing splits or re-filtering would invalidate every reported
+  statistic and every published Drive copy.
+* **The tokenizers.** Retraining would change the vocabularies all Phase 2 results depend on.
+* **`preprocessing_stats.json`.** It is a true record of the run that produced the data. A
+  `_note` field explains that it predates the three-way split and points to
+  `split_statistics.json` for authoritative counts.

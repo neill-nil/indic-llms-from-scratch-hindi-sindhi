@@ -213,10 +213,36 @@ def evaluate(language: str, split: str, n_prompts: int, prompt_len: int,
                     scored["distinct_1"], scored["distinct_2"],
                     scored["repetition_rate_4gram"])
 
-        samples.append({"setting": label,
-                        "prompt": sp.decode(prompts[0]),
-                        "generated": hyps[0],
-                        "reference": ref_texts[0]})
+        # Rank this setting's outputs so the report can show the actual spread rather than
+        # one arbitrary draw. Ranking is by per-sample chrF++ against the true continuation:
+        # an objective, reproducible criterion rather than a subjective read.
+        #
+        # What that ranks is AGREEMENT WITH THE REFERENCE, which is not the same as quality.
+        # A fluent continuation that simply goes somewhere else than the author did will
+        # rank low. The ranking is therefore a way of surfacing range, not a quality verdict,
+        # and the report says so.
+        per_sample = sorted(
+            ({"rank_score_chrf": chrf.sentence_score(h, [r]).score,
+              "prompt": sp.decode(p_ids), "generated": h, "reference": r}
+             for h, r, p_ids in zip(hyps, ref_texts, prompts)),
+            key=lambda d: -d["rank_score_chrf"])
+
+        n = len(per_sample)
+        samples.append({
+            "setting": label,
+            # Kept for backward compatibility with the previous report format.
+            "prompt": per_sample[0]["prompt"],
+            "generated": per_sample[0]["generated"],
+            "reference": per_sample[0]["reference"],
+            "ranked": {"best": per_sample[0],
+                       "upper_quartile": per_sample[n // 4],
+                       "median": per_sample[n // 2],
+                       "lower_quartile": per_sample[3 * n // 4],
+                       "worst": per_sample[-1]},
+            "chrf_spread": {"best": per_sample[0]["rank_score_chrf"],
+                            "median": per_sample[n // 2]["rank_score_chrf"],
+                            "worst": per_sample[-1]["rank_score_chrf"]},
+        })
 
     return {
         "language": language, "split": split, "n_prompts": len(prompts),
