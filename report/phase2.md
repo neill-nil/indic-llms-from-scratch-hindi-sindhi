@@ -3,6 +3,16 @@
 Two independent decoder-only Transformer language models, built from scratch in PyTorch,
 pretrained on ~500M tokens each and evaluated on their own held-out data.
 
+Builds directly on Phase 1: each model uses its own corpus and its own 16K Unigram
+tokenizer from that phase, with no data, vocabulary or weights shared between the two.
+See [`phase1.md`](phase1.md) for corpus construction and tokenizer selection, including a
+revision log of corrections made to that report after its deadline.
+
+**Companion documents:** [`phase2_intrinsic.md`](phase2_intrinsic.md) (perplexity, BPB) ·
+[`phase2_generation.md`](phase2_generation.md) (BLEU, chrF++, ROUGE-L, samples) ·
+[`phase2_attention.md`](phase2_attention.md) (heatmaps, entropy, distance) ·
+[`context_length_decision.md`](context_length_decision.md)
+
 | | Model H | Model L |
 |---|---|---|
 | Language | Hindi (Devanagari) | Sindhi (Perso-Arabic) |

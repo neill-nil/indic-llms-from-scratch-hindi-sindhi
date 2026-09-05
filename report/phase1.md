@@ -2,6 +2,11 @@
 
 This report summarizes the data pipeline, filtering yields, and tokenizer evaluation metrics for both the higher-resource language (Hindi) and the lower-resource language (Sindhi) targeted for the 25M parameter decoder-only models.
 
+The models trained on these corpora, and their evaluation, are covered in
+[`phase2.md`](phase2.md). A **Revision Log** at the end of this report records corrections
+made after the Phase 1 deadline; the corpora, splits and tokenizers themselves are
+unchanged from the graded state.
+
 ---
 
 ## Part 1: Hindi (Model H)
@@ -400,7 +405,10 @@ of all occurrences, while the final 1% of probability mass is spread over roughl
 ---
 
 
-### Phase 1 Artifacts
+## Phase 1 Artifacts (Google Drive)
+
+Permissions are set to "Anyone with the link can view".
+
 - **[Raw Datasets (Scrapes & Dumps)](https://drive.google.com/drive/folders/1zvLgcQdYhoL8NmwMuf3zTX8XX7RFzjyp?usp=sharing)**
 - **[Preprocessed & Cleaned Datasets (Train/Val/Test splits)](https://drive.google.com/drive/folders/1GfBSP6Cbyn7ONmLlZrhtbTkPIhgQczQY?usp=sharing)**
 - **[Trained Tokenizer Models & Vocab (16K Unigram)](https://drive.google.com/drive/folders/1S0uDU-52hUb54DrZDFUTji7uX_fk_kFb?usp=sharing)** — also committed directly to this repo under `hindi/tokenizer/` and `sindhi/tokenizer/`, so no download is needed to reproduce Phase 2.
