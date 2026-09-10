@@ -61,3 +61,14 @@ Thumbs.db
 # Personal study notes — reference only, not part of the submission
 PHASE2_STUDY_GUIDE.md
 VIVA_GUIDE.md
+# Phase 3 work log: the history of what was tried, reversed and fixed, kept so the
+# work can be reconstructed later. The assessed narrative lives in the phase reports.
+report/phase3_worklog.md
+
+# Phase 3 generated reasoning datasets (~98 MB across both languages).
+# Not committed: they are fully reproducible from a seeded script, so the generator,
+# the validated lexicons and the templates are the artifacts worth versioning.
+#   python -m common.reasoning.generate
+# dataset_statistics.json IS committed — it is small and is the evidence for the
+# balance and leakage claims in the report.
+*/finetune/data/*.jsonl

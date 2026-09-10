@@ -1,0 +1,133 @@
+{
+  "language": "hindi",
+  "_readme": [
+    "Surface templates for the Hindi reasoning corpus. THIS FILE IS MEANT TO BE EDITED",
+    "BY HAND — it is the intended place to add human-authored templates alongside the",
+    "generated ones. Run `python -m common.reasoning.check_templates --language hindi`",
+    "after editing: it validates the schema, checks every literal word against the Hindi",
+    "pretraining corpus, and prints a rendered example of each template.",
+    "",
+    "Each template has two parts. `fact` is emitted once per entity (value_compare) or",
+    "once per adjacent pair (chain); `question` is emitted once at the end. Splitting",
+    "them this way is what lets one template cover 2, 3 or 4 entities, which is how the",
+    "held-out longer-chain test split is built without writing separate templates for it.",
+    "",
+    "PLACEHOLDERS",
+    "  {e0} {e1} {e2} ...  entity name by position",
+    "  {ea} {eb}           the two entities of one chain link (inside `fact` only)",
+    "  {e}  {v}            entity and its value (inside a value_compare `fact` only)",
+    "  {efirst} {elast}    first and last entity of a chain (inside `question` only)",
+    "  {attr} {poss}       attribute noun and its possessive  (उम्र, की)",
+    "  {noun_gender}       not a placeholder - selects {who_poss} automatically",
+    "  {unit} {cop}        unit and copula                    (साल, है)",
+    "  {than}              comparison particle                (से)",
+    "  {more} {less}       invariant quantifiers              (ज्यादा, कम)",
+    "  {sup_more} {sup_less}  superlatives                    (सबसे ज्यादा, सबसे कम)",
+    "  {who} {who_poss}    interrogatives                     (कौन, किसकी/किसका)",
+    "  {or} {equal}        disjunction and equality           (या, बराबर)",
+    "  {fs} {qm}           full stop and question mark        (।, ?)",
+    "  fact_reverse        chain only - the same link stated from the opposite end, so the larger entity is not always named first",
+    "",
+    "FIELDS",
+    "  id             unique, stable - referenced in the results tables",
+    "  family         value_compare | chain",
+    "  question_type  argmax | argmin | relation",
+    "  split          train | heldout   (heldout templates build test_template)",
+    "  author         generated | user  (provenance, reported honestly in the writeup)",
+    "",
+    "A NOTE ON WHAT MAKES A GOOD TEMPLATE: vary the word order and register, not the",
+    "vocabulary. The vocabulary is already corpus-validated; new words would have to go",
+    "through candidates.py instead. Templates that only swap synonyms add little, while",
+    "templates that reorder the clause genuinely test whether the model learned the",
+    "relation or a fixed word sequence."
+  ],
+  "templates": [
+    {
+      "id": "H-VC-argmax-1",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{who_poss} {attr} {more} {cop}{qm}",
+      "split": "train",
+      "author": "generated"
+    },
+    {
+      "id": "H-VC-argmin-1",
+      "family": "value_compare",
+      "question_type": "argmin",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{who_poss} {attr} {less} {cop}{qm}",
+      "split": "train",
+      "author": "generated"
+    },
+    {
+      "id": "H-VC-argmax-2",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{sup_more} {attr} {who_poss} {cop}{qm}",
+      "split": "train",
+      "author": "generated"
+    },
+    {
+      "id": "H-VC-argmin-2",
+      "family": "value_compare",
+      "question_type": "argmin",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{sup_less} {attr} {who_poss} {cop}{qm}",
+      "split": "train",
+      "author": "generated"
+    },
+    {
+      "id": "H-VC-argmax-held",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{attr} {sup_more} {who_poss} {cop}{qm}",
+      "split": "heldout",
+      "author": "generated",
+      "notes": "word order variant: attribute fronted before the superlative"
+    },
+    {
+      "id": "H-CH-argmax-1",
+      "family": "chain",
+      "question_type": "argmax",
+      "fact": "{ea} {poss} {attr} {eb} {than} {more} {cop}{fs}",
+      "question": "{sup_more} {attr} {who_poss} {cop}{qm}",
+      "split": "train",
+      "author": "generated",
+      "fact_reverse": "{eb} {poss} {attr} {ea} {than} {less} {cop}{fs}"
+    },
+    {
+      "id": "H-CH-argmin-1",
+      "family": "chain",
+      "question_type": "argmin",
+      "fact": "{ea} {poss} {attr} {eb} {than} {more} {cop}{fs}",
+      "question": "{sup_less} {attr} {who_poss} {cop}{qm}",
+      "split": "train",
+      "author": "generated",
+      "fact_reverse": "{eb} {poss} {attr} {ea} {than} {less} {cop}{fs}"
+    },
+    {
+      "id": "H-CH-relation-1",
+      "family": "chain",
+      "question_type": "relation",
+      "fact": "{ea} {poss} {attr} {eb} {than} {more} {cop}{fs}",
+      "question": "{efirst} {poss} {attr} {elast} {than} {more} {cop} {or} {less}{qm}",
+      "split": "train",
+      "author": "generated",
+      "fact_reverse": "{eb} {poss} {attr} {ea} {than} {less} {cop}{fs}"
+    },
+    {
+      "id": "H-CH-argmax-held",
+      "family": "chain",
+      "question_type": "argmax",
+      "fact": "{ea} {poss} {attr} {eb} {than} {more} {cop}{fs}",
+      "question": "{attr} {sup_more} {who_poss} {cop}{qm}",
+      "split": "heldout",
+      "author": "generated",
+      "notes": "word order variant, matches H-VC-argmax-held",
+      "fact_reverse": "{eb} {poss} {attr} {ea} {than} {less} {cop}{fs}"
+    }
+  ]
+}

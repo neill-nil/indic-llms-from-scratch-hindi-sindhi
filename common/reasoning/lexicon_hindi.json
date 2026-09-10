@@ -1,0 +1,609 @@
+{
+  "language": "hindi",
+  "entities": {
+    "people": [
+      {
+        "name": "अजय",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "अनीता",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "कविता",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "गीता",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "गौरव",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "ज्योति",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "दिनेश",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "पुष्पा",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "प्रदीप",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "प्रवीण",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "बबीता",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "मनीष",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "माया",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "मुकेश",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "राजेश",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "शारदा",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "श्याम",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "संदीप",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "अंजलि",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "अनिल",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "अनुज",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "अमित",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "अरुण",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "अर्चना",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "अशोक",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "आशा",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "उषा",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "कमल",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "करण",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "किरण",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "जितेंद्र",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "तरुण",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "दीपक",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "नरेश",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "नितिन",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "नीलम",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "नेहा",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "पूजा",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "प्रिया",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "मनोज",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ममता",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "महेश",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "मीना",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "मोहन",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "योगेश",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "रचना",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "रमेश",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "रवि",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "राम",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "राहुल",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "रेखा",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "रोहित",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "लता",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "वंदना",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "वरुण",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "विकास",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "विजय",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "शिखा",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "संजय",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "सपना",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "सरिता",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "सविता",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "सीता",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "सुनीता",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "सुनील",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "सुरेश",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "सोहन",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "स्वाति",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "हरीश",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "हर्ष",
+        "gender": "m",
+        "split": "train"
+      }
+    ],
+    "places": [
+      {
+        "name": "इंदौर",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "उदयपुर",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "ग्वालियर",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "जोधपुर",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "वाराणसी",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "अजमेर",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "अमृतसर",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "कानपुर",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "कोलकाता",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "चेन्नई",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "जयपुर",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "दिल्ली",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "नागपुर",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "पटना",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "भोपाल",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "मुंबई",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "रांची",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "लखनऊ",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "शिमला",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "सूरत",
+        "gender": "m",
+        "split": "train"
+      }
+    ],
+    "objects": [
+      {
+        "name": "कुर्सी",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "डिब्बा",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "पेड़",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "रस्सी",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "कमरा",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "किताब",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "गाड़ी",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "पत्थर",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "बगीचा",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "बैग",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "बोतल",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "मकान",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "मेज",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "साइकिल",
+        "gender": "f",
+        "split": "train"
+      }
+    ]
+  },
+  "attributes": {
+    "age": {
+      "noun": "उम्र",
+      "poss": "की",
+      "noun_gender": "f",
+      "unit": "साल",
+      "adj_more_m": "बड़ा",
+      "adj_more_f": "बड़ी",
+      "adj_less_m": "छोटा",
+      "adj_less_f": "छोटी",
+      "applies_to": [
+        "person"
+      ]
+    },
+    "height": {
+      "noun": "लंबाई",
+      "poss": "की",
+      "noun_gender": "f",
+      "unit": "सेमी",
+      "applies_to": [
+        "person",
+        "object"
+      ]
+    },
+    "weight": {
+      "noun": "वजन",
+      "poss": "का",
+      "noun_gender": "m",
+      "unit": "किलो",
+      "applies_to": [
+        "person",
+        "object"
+      ]
+    },
+    "price": {
+      "noun": "कीमत",
+      "poss": "की",
+      "noun_gender": "f",
+      "unit": "रुपये",
+      "applies_to": [
+        "object"
+      ]
+    },
+    "population": {
+      "noun": "आबादी",
+      "poss": "की",
+      "noun_gender": "f",
+      "unit": "लाख",
+      "applies_to": [
+        "place"
+      ]
+    }
+  },
+  "fragments": {
+    "than": "से",
+    "copula": "है",
+    "quant_more": "ज्यादा",
+    "quant_less": "कम",
+    "sup_prefix": "सबसे",
+    "who": "कौन",
+    "who_poss_f": "किसकी",
+    "who_poss_m": "किसका",
+    "equal": "बराबर",
+    "and": "और",
+    "or": "या",
+    "q_marker": "प्रश्न",
+    "a_marker": "उत्तर",
+    "cmp_more_generic": "से ज्यादा",
+    "cmp_less_generic": "से कम",
+    "sup_more_generic": "सबसे ज्यादा",
+    "sup_less_generic": "सबसे कम",
+    "adj_sup_more": "सबसे बड़ा"
+  },
+  "punct": {
+    "question": "?",
+    "comma": ",",
+    "full_stop": "।"
+  }
+}

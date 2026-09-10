@@ -1,0 +1,579 @@
+{
+  "language": "sindhi",
+  "entities": {
+    "people": [
+      {
+        "name": "آمنه",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "اشرف",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "الطاف",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "اڪرم",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "بشير",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "رخسانه",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "شميم",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "صادق",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "عذرا",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "علي",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "فاطمه",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "فريد",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "قاسم",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "مجيد",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "ناهيد",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "نثار",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "احمد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "اختر",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "اسلم",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "اقبال",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "امير",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "انور",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ايوب",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "بشر",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "بلال",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "توفيق",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ثمينه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "جميل",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "حامد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "حسن",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "حسين",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "خالد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "خديجه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "رابعه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "رحيم",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "رشيد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "رضيه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "زاهد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "زبيده",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "زينب",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "سارا",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "سعيد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "سليم",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "شاهد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "شبانه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "شگفته",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "صفيه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "طارق",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "عائشه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "عابد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "فرزانه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "مريم",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "مقبول",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "منصور",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "نازيه",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "ناصر",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "نديم",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "نسيم",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "نصرت",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "وحيد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "يوسف",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "پروين",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "ڪريم",
+        "gender": "m",
+        "split": "train"
+      }
+    ],
+    "places": [
+      {
+        "name": "حيدرآباد",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "خيرپور",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "لاڙڪاڻو",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "مٺي",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "ٽنڊوآدم",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "بدين",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "جيڪب آباد",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "دادو",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "سانگهڙ",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "سيوهڻ",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "سکر",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "شڪارپور",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "عمرڪوٽ",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "قمبر",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "مورو",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ميرپورخاص",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "نوابشاهه",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "نوشهرو فيروز",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ٺٽو",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ڪراچي",
+        "gender": "f",
+        "split": "train"
+      }
+    ],
+    "objects": [
+      {
+        "name": "دري",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "ميز",
+        "gender": "f",
+        "split": "heldout"
+      },
+      {
+        "name": "پٿر",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "گهر",
+        "gender": "m",
+        "split": "heldout"
+      },
+      {
+        "name": "باغ",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "بوتل",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "دٻو",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "رسي",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "سائيڪل",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "وڻ",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ٿيلهو",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ڪتاب",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "ڪرسي",
+        "gender": "f",
+        "split": "train"
+      },
+      {
+        "name": "ڪمرو",
+        "gender": "m",
+        "split": "train"
+      },
+      {
+        "name": "گاڏي",
+        "gender": "f",
+        "split": "train"
+      }
+    ]
+  },
+  "attributes": {
+    "age": {
+      "noun": "عمر",
+      "poss": "جي",
+      "noun_gender": "f",
+      "unit": "سال",
+      "adj_more_m": "وڏو",
+      "adj_more_f": "وڏي",
+      "adj_less_m": "ننڍو",
+      "adj_less_f": "ننڍي",
+      "applies_to": [
+        "person"
+      ]
+    },
+    "height": {
+      "noun": "ڊيگهه",
+      "poss": "جي",
+      "noun_gender": "f",
+      "unit": "سينٽي ميٽر",
+      "applies_to": [
+        "person",
+        "object"
+      ]
+    },
+    "weight": {
+      "noun": "وزن",
+      "poss": "جو",
+      "noun_gender": "m",
+      "unit": "ڪلو",
+      "applies_to": [
+        "person",
+        "object"
+      ]
+    },
+    "price": {
+      "noun": "قيمت",
+      "poss": "جي",
+      "noun_gender": "f",
+      "unit": "رپيا",
+      "applies_to": [
+        "object"
+      ]
+    },
+    "population": {
+      "noun": "آبادي",
+      "poss": "جي",
+      "noun_gender": "f",
+      "unit": "لک",
+      "applies_to": [
+        "place"
+      ]
+    }
+  },
+  "fragments": {
+    "than": "کان",
+    "copula": "آهي",
+    "quant_more": "وڌيڪ",
+    "quant_less": "گهٽ",
+    "sup_prefix": "سڀ کان",
+    "who": "ڪير",
+    "who_poss_f": "ڪنهن جي",
+    "who_poss_m": "ڪنهن جو",
+    "equal": "برابر",
+    "and": "۽",
+    "or": "يا",
+    "q_marker": "سوال",
+    "a_marker": "جواب",
+    "cmp_more_generic": "کان وڌيڪ",
+    "cmp_less_generic": "کان گهٽ",
+    "sup_more_generic": "سڀ کان وڌيڪ",
+    "sup_less_generic": "سڀ کان گهٽ",
+    "adj_sup_more": "سڀ کان وڏو"
+  },
+  "punct": {
+    "question": "؟",
+    "comma": "،",
+    "full_stop": "."
+  }
+}
