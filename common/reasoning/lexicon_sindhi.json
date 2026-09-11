@@ -5,496 +5,594 @@
       {
         "name": "آمنه",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "آمنه"
       },
       {
         "name": "اشرف",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "اشرف"
       },
       {
         "name": "الطاف",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "الطاف"
       },
       {
         "name": "اڪرم",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "اڪرم"
       },
       {
         "name": "بشير",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "بشير"
       },
       {
         "name": "رخسانه",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "رخسانه"
       },
       {
         "name": "شميم",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "شميم"
       },
       {
         "name": "صادق",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "صادق"
       },
       {
         "name": "عذرا",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "عذرا"
       },
       {
         "name": "علي",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "علي"
       },
       {
         "name": "فاطمه",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "فاطمه"
       },
       {
         "name": "فريد",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "فريد"
       },
       {
         "name": "قاسم",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "قاسم"
       },
       {
         "name": "مجيد",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "مجيد"
       },
       {
         "name": "ناهيد",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "ناهيد"
       },
       {
         "name": "نثار",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "نثار"
       },
       {
         "name": "احمد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "احمد"
       },
       {
         "name": "اختر",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "اختر"
       },
       {
         "name": "اسلم",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "اسلم"
       },
       {
         "name": "اقبال",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "اقبال"
       },
       {
         "name": "امير",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "امير"
       },
       {
         "name": "انور",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "انور"
       },
       {
         "name": "ايوب",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ايوب"
       },
       {
         "name": "بشر",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "بشر"
       },
       {
         "name": "بلال",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "بلال"
       },
       {
         "name": "توفيق",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "توفيق"
       },
       {
         "name": "ثمينه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "ثمينه"
       },
       {
         "name": "جميل",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "جميل"
       },
       {
         "name": "حامد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "حامد"
       },
       {
         "name": "حسن",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "حسن"
       },
       {
         "name": "حسين",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "حسين"
       },
       {
         "name": "خالد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "خالد"
       },
       {
         "name": "خديجه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "خديجه"
       },
       {
         "name": "رابعه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "رابعه"
       },
       {
         "name": "رحيم",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "رحيم"
       },
       {
         "name": "رشيد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "رشيد"
       },
       {
         "name": "رضيه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "رضيه"
       },
       {
         "name": "زاهد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "زاهد"
       },
       {
         "name": "زبيده",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "زبيده"
       },
       {
         "name": "زينب",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "زينب"
       },
       {
         "name": "سارا",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "سارا"
       },
       {
         "name": "سعيد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "سعيد"
       },
       {
         "name": "سليم",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "سليم"
       },
       {
         "name": "شاهد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "شاهد"
       },
       {
         "name": "شبانه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "شبانه"
       },
       {
         "name": "شگفته",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "شگفته"
       },
       {
         "name": "صفيه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "صفيه"
       },
       {
         "name": "طارق",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "طارق"
       },
       {
         "name": "عائشه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "عائشه"
       },
       {
         "name": "عابد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "عابد"
       },
       {
         "name": "فرزانه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "فرزانه"
       },
       {
         "name": "مريم",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "مريم"
       },
       {
         "name": "مقبول",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "مقبول"
       },
       {
         "name": "منصور",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "منصور"
       },
       {
         "name": "نازيه",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "نازيه"
       },
       {
         "name": "ناصر",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ناصر"
       },
       {
         "name": "نديم",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "نديم"
       },
       {
         "name": "نسيم",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "نسيم"
       },
       {
         "name": "نصرت",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "نصرت"
       },
       {
         "name": "وحيد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "وحيد"
       },
       {
         "name": "يوسف",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "يوسف"
       },
       {
         "name": "پروين",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "پروين"
       },
       {
         "name": "ڪريم",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ڪريم"
       }
     ],
     "places": [
       {
         "name": "حيدرآباد",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "حيدرآباد"
       },
       {
         "name": "خيرپور",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "خيرپور"
       },
       {
         "name": "لاڙڪاڻو",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "لاڙڪاڻي"
       },
       {
         "name": "مٺي",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "مٺي"
       },
       {
         "name": "ٽنڊوآدم",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "ٽنڊوآدم"
       },
       {
         "name": "بدين",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "بدين"
       },
       {
         "name": "جيڪب آباد",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "جيڪب آباد"
       },
       {
         "name": "دادو",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "دادو"
       },
       {
         "name": "سانگهڙ",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "سانگهڙ"
       },
       {
         "name": "سيوهڻ",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "سيوهڻ"
       },
       {
         "name": "سکر",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "سکر"
       },
       {
         "name": "شڪارپور",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "شڪارپور"
       },
       {
         "name": "عمرڪوٽ",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "عمرڪوٽ"
       },
       {
         "name": "قمبر",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "قمبر"
       },
       {
         "name": "مورو",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "موري"
       },
       {
         "name": "ميرپورخاص",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ميرپورخاص"
       },
       {
         "name": "نوابشاهه",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "نوابشاهه"
       },
       {
         "name": "نوشهرو فيروز",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "نوشهرو فيروز"
       },
       {
         "name": "ٺٽو",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ٺٽي"
       },
       {
         "name": "ڪراچي",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "ڪراچي"
       }
     ],
     "objects": [
       {
         "name": "دري",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "دري"
       },
       {
         "name": "ميز",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "ميز"
       },
       {
         "name": "پٿر",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "پٿر"
       },
       {
         "name": "گهر",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "گهر"
       },
       {
         "name": "باغ",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "باغ"
       },
       {
         "name": "بوتل",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "بوتل"
       },
       {
         "name": "دٻو",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "دٻي"
       },
       {
         "name": "رسي",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "رسي"
       },
       {
         "name": "سائيڪل",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "سائيڪل"
       },
       {
         "name": "وڻ",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "وڻ"
       },
       {
         "name": "ٿيلهو",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ٿيلهي"
       },
       {
         "name": "ڪتاب",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ڪتاب"
       },
       {
         "name": "ڪرسي",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "ڪرسي"
       },
       {
         "name": "ڪمرو",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "ڪمري"
       },
       {
         "name": "گاڏي",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "گاڏي"
       }
     ]
   },

@@ -12,6 +12,12 @@
     "them this way is what lets one template cover 2, 3 or 4 entities, which is how the",
     "held-out longer-chain test split is built without writing separate templates for it.",
     "",
+    "YOU DO NOT HAVE TO WRITE PLACEHOLDERS BY HAND. Write the sentence with real",
+    "words and convert it:  python -m common.reasoning.make_template --language hindi",
+    "  --fact \"<one statement>\" --question \"<the question>\" --type argmax",
+    "It prints a finished template to paste here, and names any word it did not",
+    "recognise. The placeholder list below is reference, not a prerequisite.",
+    "",
     "PLACEHOLDERS",
     "  {e0} {e1} {e2} ...  entity name by position",
     "  {ea} {eb}           the two entities of one chain link (inside `fact` only)",
@@ -128,6 +134,86 @@
       "author": "generated",
       "notes": "word order variant, matches H-VC-argmax-held",
       "fact_reverse": "{eb} {poss} {attr} {ea} {than} {less} {cop}{fs}"
+    },
+    {
+      "id": "H-VC-argmax-user1",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{attr} में सबसे बड़ा {who} {cop}{qm}",
+      "split": "train",
+      "author": "user",
+      "notes": "user sample 1, unchanged. First template to use `कौन` rather than किसकी/किसका, and the only one in the adjective register (सबसे बड़ा, 899)."
+    },
+    {
+      "id": "H-VC-argmax-user2",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{entities} में से {who_poss} {attr} {more} {cop}{qm}",
+      "split": "train",
+      "author": "user",
+      "notes": "user sample 2. Names its candidates explicitly — the shape that motivated the {entities} placeholder, since entity names previously could not appear in a question. `में से` 7,045."
+    },
+    {
+      "id": "H-VC-argmin-user3",
+      "family": "value_compare",
+      "question_type": "argmin",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{less} {attr} {who_poss} {cop} इनमें से{qm}",
+      "split": "heldout",
+      "author": "user",
+      "notes": "user sample 3, with one correction: the original said `दोनों में से` (\"of the two\"), which would be false on the three-entity problems the brief also asks for. `इनमें से` (800) is count-neutral; the spaced spelling `इन में से` scores only 10."
+    },
+    {
+      "id": "H-VC-argmax-user4",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{who} {more} {attr} का {cop}{qm}",
+      "split": "heldout",
+      "author": "user",
+      "notes": "user sample 4, with `का` kept as literal text rather than the {poss} placeholder. Here the possessive agrees with कौन, not with the attribute noun, so substituting it by attribute gender produced the ungrammatical `कौन ज्यादा उम्र की है?`."
+    },
+    {
+      "id": "H-VC-argmin-user5",
+      "family": "value_compare",
+      "question_type": "argmin",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "इनमें से {who_poss} {attr} {less} {cop}{qm}",
+      "split": "train",
+      "author": "user",
+      "notes": "user sample 5, unchanged. First template to open with the among-phrase."
+    },
+    {
+      "id": "H-VC-argmax-user6",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "इनमें से {who_poss} {attr} {sup_more} {cop}{qm}",
+      "split": "train",
+      "author": "user",
+      "notes": "user sample 6, with `इन सब में से` (4 occurrences) replaced by `इनमें से` (800). Puts the superlative at the end, which no other template does."
+    },
+    {
+      "id": "H-VC-argmin-user7",
+      "family": "value_compare",
+      "question_type": "argmin",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{attr} में {sup_less} इनमें से {who} {cop}{qm}",
+      "split": "heldout",
+      "author": "user",
+      "notes": "user sample 7, same `इन सब में से` substitution. Attribute fronted, among-phrase medial, `कौन` final — the most scrambled order in the set, hence held out."
+    },
+    {
+      "id": "H-VC-argmax-user8",
+      "family": "value_compare",
+      "question_type": "argmax",
+      "fact": "{e} {poss} {attr} {v} {unit} {cop}{fs}",
+      "question": "{sup_more} {who} {cop} {attr} में{qm}",
+      "split": "train",
+      "author": "user",
+      "notes": "user sample 8, with `इन दोनों में` dropped rather than substituted: `दोनों` is false on three-entity problems, and the sentence reads naturally without it. Keeps the original's distinctive superlative-first, attribute-last order."
     }
   ]
 }

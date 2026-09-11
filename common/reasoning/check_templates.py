@@ -34,7 +34,7 @@ import re
 from pathlib import Path
 
 from common.reasoning.generate import (HERE, Renderer, applicable_attributes,
-                                       sample_values, VALUE_RANGES)
+                                       in_text, sample_values, VALUE_RANGES)
 from common.reasoning.validate_lexicon import load_val_text, fragment_threshold
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
@@ -48,7 +48,7 @@ SLOT_PLACEHOLDERS = {
     "sup_more", "sup_less", "who", "who_poss", "or", "equal", "fs", "qm",
 }
 FACT_ONLY = {"e", "v", "ea", "eb"}
-QUESTION_ONLY = {"efirst", "elast"}
+QUESTION_ONLY = {"efirst", "elast", "entities"}
 
 REQUIRED = {"id", "family", "question_type", "fact", "question", "split"}
 FAMILIES = {"value_compare", "chain"}
@@ -163,17 +163,17 @@ def render_samples(language: str, templates: list[dict], seed: int = 0) -> list[
             # values, which made an argmax question look ambiguous in the sample even
             # though the dataset itself never contains one.
             values = sample_values(attr_key, len(ents), tie=False, rng=rng)
-            facts = [t["fact"].format(e=e["name"], v=v, **slots)
+            facts = [t["fact"].format(e=in_text(e), v=v, **slots)
                      for e, v in zip(ents, values)]
             question = t["question"].format(**slots)
         else:
-            facts = [t["fact"].format(ea=ents[i]["name"], eb=ents[i + 1]["name"], **slots)
+            facts = [t["fact"].format(ea=in_text(ents[i]), eb=in_text(ents[i + 1]), **slots)
                      for i in range(2)]
             if "fact_reverse" in t:
                 facts[1] = t["fact_reverse"].format(
-                    ea=ents[1]["name"], eb=ents[2]["name"], **slots)
+                    ea=in_text(ents[1]), eb=in_text(ents[2]), **slots)
             question = t["question"].format(
-                efirst=ents[0]["name"], elast=ents[-1]["name"], **slots)
+                efirst=in_text(ents[0]), elast=in_text(ents[-1]), **slots)
 
         frag = lexicon["fragments"]
         body = " ".join(facts) + " " + question

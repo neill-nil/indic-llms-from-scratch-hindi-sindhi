@@ -106,6 +106,37 @@ class Renderer:
         }
 
 
+# Entity mentions inside a rendered example are ALWAYS followed by a postposition — a
+# possessive, the comparison particle, or `में`/`۾` — so they take the oblique form where
+# the corpus says a name inflects. The answer is a bare name governed by nothing, so it
+# keeps the citation form. See resolve_oblique_forms in validate_lexicon.py.
+def in_text(ent: dict) -> str:
+    """The form of an entity name as it appears inside a sentence."""
+    return ent.get("oblique", ent["name"])
+
+
+def format_entity_list(names: list[str], lexicon: dict) -> str:
+    """
+    Join entity names the way the language does: "राम और श्याम", "राम, श्याम और मोहन".
+
+    This fills the `{entities}` placeholder, which lets a question name its candidates
+    ("of Ram and Shyam, whose age is greater?") instead of only referring back to them
+    implicitly. It is the most natural-sounding question shape available and none of the
+    original templates could express it, because entity names were only ever substituted
+    into `fact`.
+
+    The names are listed in the order they were MENTIONED in the facts. Listing them in
+    the underlying ranking order would leak the answer outright.
+    """
+    if len(names) == 1:
+        return names[0]
+    joiner = f" {lexicon['fragments']['and']} "
+    if len(names) == 2:
+        return joiner.join(names)
+    comma = lexicon["punct"]["comma"] + " "
+    return comma.join(names[:-1]) + joiner + names[-1]
+
+
 def applicable_attributes(lexicon: dict, entity_kind: str) -> list[str]:
     """Attributes that make sense for this kind of entity — a book has no age."""
     want = KIND_TO_APPLIES[entity_kind]
@@ -140,7 +171,7 @@ def make_value_example(lexicon: dict, rend: Renderer, template: dict,
     values = sample_values(attr_key, n, tie, rng)
     slots = rend.base_slots(attr_key)
 
-    facts = [template["fact"].format(e=ent["name"], v=v, **slots)
+    facts = [template["fact"].format(e=in_text(ent), v=v, **slots)
              for ent, v in zip(entities, values)]
 
     want_max = template["question_type"] == "argmax"
@@ -153,7 +184,8 @@ def make_value_example(lexicon: dict, rend: Renderer, template: dict,
 
     return {
         "facts": facts,
-        "question": template["question"].format(**slots),
+        "question": template["question"].format(
+            entities=format_entity_list([in_text(e) for e in entities], lexicon), **slots),
         "answer": answer,
         "family": "value_compare",
         "question_type": template["question_type"],
@@ -186,10 +218,21 @@ def make_chain_example(lexicon: dict, rend: Renderer, template: dict,
     for a, b in presentation:
         if "fact_reverse" in template and rng.random() < 0.5:
             facts.append(template["fact_reverse"].format(
-                ea=a["name"], eb=b["name"], **slots))
+                ea=in_text(a), eb=in_text(b), **slots))
         else:
             facts.append(template["fact"].format(
-                ea=a["name"], eb=b["name"], **slots))
+                ea=in_text(a), eb=in_text(b), **slots))
+
+    # First-mention order, read off the rendered text. Needed by every branch below:
+    # by `{entities}` so the question lists names in the order the reader met them, and
+    # by `answer_position` so the balance statistic measures what a positional shortcut
+    # would actually key on. A reversed link names its two entities in the opposite order
+    # from `presentation`, so the presentation list is not a reliable guide. Names are
+    # searched space-padded so one name cannot match inside another.
+    padded = " " + " ".join(facts) + " "
+    mentioned = sorted((in_text(ent) for ent in order),
+                       key=lambda nm: padded.find(f" {nm} "))
+    entity_list = format_entity_list(mentioned, lexicon)
 
     qtype = template["question_type"]
     if qtype == "argmax":
@@ -203,7 +246,7 @@ def make_chain_example(lexicon: dict, rend: Renderer, template: dict,
         first, last = (order[0], order[-1]) if rng.random() < 0.5 else (order[-1], order[0])
         answer = slots["more"] if first is order[0] else slots["less"]
         question = template["question"].format(
-            efirst=first["name"], elast=last["name"], **slots)
+            efirst=in_text(first), elast=in_text(last), entities=entity_list, **slots)
         return {
             "facts": facts, "question": question, "answer": answer,
             "family": "chain", "question_type": qtype,
@@ -212,24 +255,14 @@ def make_chain_example(lexicon: dict, rend: Renderer, template: dict,
         }
 
     winner = order[0] if qtype == "argmax" else order[-1]
-    # Position of the answer in the order it was PRESENTED, not the true ranking. This is
-    # the number that must come out uniform, since it is what a positional shortcut would
-    # exploit.
-    # Order of FIRST MENTION in the rendered text, which is what a positional shortcut
-    # would key on. Read straight off the rendered string: a reversed link names its two
-    # entities in the opposite order from `presentation`, so the presentation list is not
-    # a reliable guide. Names are searched space-padded so one name cannot match inside
-    # another.
-    padded = " " + " ".join(facts) + " "
-    mentioned = sorted((ent["name"] for ent in order),
-                       key=lambda nm: padded.find(f" {nm} "))
 
     return {
-        "facts": facts, "question": template["question"].format(**slots),
+        "facts": facts,
+        "question": template["question"].format(entities=entity_list, **slots),
         "answer": answer, "family": "chain", "question_type": qtype,
         "n_entities": len(order), "n_hops": len(links), "attribute": attr_key,
         "margin": None, "is_tie": False,
-        "answer_position": mentioned.index(winner["name"]),
+        "answer_position": mentioned.index(in_text(winner)),
     }
 
 
@@ -344,8 +377,14 @@ def audit(splits: dict[str, list[dict]], lexicon: dict) -> dict:
         report[f"{name}.exact_overlap_with_train"] = overlap
         assert overlap == 0, f"{name}: {overlap} examples appear verbatim in train"
 
-    heldout_names = {e["name"] for kind in lexicon["entities"]
-                     for e in lexicon["entities"][kind] if e["split"] == "heldout"}
+    heldout_names = set()
+    for kind in lexicon["entities"]:
+        for e in lexicon["entities"][kind]:
+            if e["split"] == "heldout":
+                # Both forms: a held-out name that inflects appears in text as its
+                # oblique form, so checking the citation form alone would miss it.
+                heldout_names.add(e["name"])
+                heldout_names.add(e.get("oblique", e["name"]))
     leaked = [e for e in splits["train"]
               if any(f" {h} " in f" {e['text']} " for h in heldout_names)]
     report["train.heldout_entity_leaks"] = len(leaked)

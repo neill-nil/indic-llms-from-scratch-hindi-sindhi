@@ -5,526 +5,630 @@
       {
         "name": "अजय",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "अजय"
       },
       {
         "name": "अनीता",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "अनीता"
       },
       {
         "name": "कविता",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "कविता"
       },
       {
         "name": "गीता",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "गीता"
       },
       {
         "name": "गौरव",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "गौरव"
       },
       {
         "name": "ज्योति",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "ज्योति"
       },
       {
         "name": "दिनेश",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "दिनेश"
       },
       {
         "name": "पुष्पा",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "पुष्पा"
       },
       {
         "name": "प्रदीप",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "प्रदीप"
       },
       {
         "name": "प्रवीण",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "प्रवीण"
       },
       {
         "name": "बबीता",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "बबीता"
       },
       {
         "name": "मनीष",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "मनीष"
       },
       {
         "name": "माया",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "माया"
       },
       {
         "name": "मुकेश",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "मुकेश"
       },
       {
         "name": "राजेश",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "राजेश"
       },
       {
         "name": "शारदा",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "शारदा"
       },
       {
         "name": "श्याम",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "श्याम"
       },
       {
         "name": "संदीप",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "संदीप"
       },
       {
         "name": "अंजलि",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "अंजलि"
       },
       {
         "name": "अनिल",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "अनिल"
       },
       {
         "name": "अनुज",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "अनुज"
       },
       {
         "name": "अमित",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "अमित"
       },
       {
         "name": "अरुण",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "अरुण"
       },
       {
         "name": "अर्चना",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "अर्चना"
       },
       {
         "name": "अशोक",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "अशोक"
       },
       {
         "name": "आशा",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "आशा"
       },
       {
         "name": "उषा",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "उषा"
       },
       {
         "name": "कमल",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "कमल"
       },
       {
         "name": "करण",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "करण"
       },
       {
         "name": "किरण",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "किरण"
       },
       {
         "name": "जितेंद्र",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "जितेंद्र"
       },
       {
         "name": "तरुण",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "तरुण"
       },
       {
         "name": "दीपक",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "दीपक"
       },
       {
         "name": "नरेश",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "नरेश"
       },
       {
         "name": "नितिन",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "नितिन"
       },
       {
         "name": "नीलम",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "नीलम"
       },
       {
         "name": "नेहा",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "नेहा"
       },
       {
         "name": "पूजा",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "पूजा"
       },
       {
         "name": "प्रिया",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "प्रिया"
       },
       {
         "name": "मनोज",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "मनोज"
       },
       {
         "name": "ममता",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "ममता"
       },
       {
         "name": "महेश",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "महेश"
       },
       {
         "name": "मीना",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "मीना"
       },
       {
         "name": "मोहन",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "मोहन"
       },
       {
         "name": "योगेश",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "योगेश"
       },
       {
         "name": "रचना",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "रचना"
       },
       {
         "name": "रमेश",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "रमेश"
       },
       {
         "name": "रवि",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "रवि"
       },
       {
         "name": "राम",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "राम"
       },
       {
         "name": "राहुल",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "राहुल"
       },
       {
         "name": "रेखा",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "रेखा"
       },
       {
         "name": "रोहित",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "रोहित"
       },
       {
         "name": "लता",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "लता"
       },
       {
         "name": "वंदना",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "वंदना"
       },
       {
         "name": "वरुण",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "वरुण"
       },
       {
         "name": "विकास",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "विकास"
       },
       {
         "name": "विजय",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "विजय"
       },
       {
         "name": "शिखा",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "शिखा"
       },
       {
         "name": "संजय",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "संजय"
       },
       {
         "name": "सपना",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "सपना"
       },
       {
         "name": "सरिता",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "सरिता"
       },
       {
         "name": "सविता",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "सविता"
       },
       {
         "name": "सीता",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "सीता"
       },
       {
         "name": "सुनीता",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "सुनीता"
       },
       {
         "name": "सुनील",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "सुनील"
       },
       {
         "name": "सुरेश",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "सुरेश"
       },
       {
         "name": "सोहन",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "सोहन"
       },
       {
         "name": "स्वाति",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "स्वाति"
       },
       {
         "name": "हरीश",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "हरीश"
       },
       {
         "name": "हर्ष",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "हर्ष"
       }
     ],
     "places": [
       {
         "name": "इंदौर",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "इंदौर"
       },
       {
         "name": "उदयपुर",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "उदयपुर"
       },
       {
         "name": "ग्वालियर",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "ग्वालियर"
       },
       {
         "name": "जोधपुर",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "जोधपुर"
       },
       {
         "name": "वाराणसी",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "वाराणसी"
       },
       {
         "name": "अजमेर",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "अजमेर"
       },
       {
         "name": "अमृतसर",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "अमृतसर"
       },
       {
         "name": "कानपुर",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "कानपुर"
       },
       {
         "name": "कोलकाता",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "कोलकाता"
       },
       {
         "name": "चेन्नई",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "चेन्नई"
       },
       {
         "name": "जयपुर",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "जयपुर"
       },
       {
         "name": "दिल्ली",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "दिल्ली"
       },
       {
         "name": "नागपुर",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "नागपुर"
       },
       {
         "name": "पटना",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "पटना"
       },
       {
         "name": "भोपाल",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "भोपाल"
       },
       {
         "name": "मुंबई",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "मुंबई"
       },
       {
         "name": "रांची",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "रांची"
       },
       {
         "name": "लखनऊ",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "लखनऊ"
       },
       {
         "name": "शिमला",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "शिमला"
       },
       {
         "name": "सूरत",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "सूरत"
       }
     ],
     "objects": [
       {
         "name": "कुर्सी",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "कुर्सी"
       },
       {
         "name": "डिब्बा",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "डिब्बे"
       },
       {
         "name": "पेड़",
         "gender": "m",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "पेड़"
       },
       {
         "name": "रस्सी",
         "gender": "f",
-        "split": "heldout"
+        "split": "heldout",
+        "oblique": "रस्सी"
       },
       {
         "name": "कमरा",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "कमरे"
       },
       {
         "name": "किताब",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "किताब"
       },
       {
         "name": "गाड़ी",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "गाड़ी"
       },
       {
         "name": "पत्थर",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "पत्थर"
       },
       {
         "name": "बगीचा",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "बगीचे"
       },
       {
         "name": "बैग",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "बैग"
       },
       {
         "name": "बोतल",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "बोतल"
       },
       {
         "name": "मकान",
         "gender": "m",
-        "split": "train"
+        "split": "train",
+        "oblique": "मकान"
       },
       {
         "name": "मेज",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "मेज"
       },
       {
         "name": "साइकिल",
         "gender": "f",
-        "split": "train"
+        "split": "train",
+        "oblique": "साइकिल"
       }
     ]
   },

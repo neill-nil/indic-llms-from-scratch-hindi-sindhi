@@ -1,9 +1,10 @@
 {
   "language": "sindhi",
   "seed": 20260910,
-  "n_templates": 9,
+  "n_templates": 17,
   "n_templates_by_author": {
-    "generated": 9
+    "generated": 9,
+    "user": 8
   },
   "audit": {
     "val.exact_overlap_with_train": 0,
@@ -19,188 +20,195 @@
     "train": {
       "n": 40000,
       "families": {
-        "value_compare": 29255,
-        "chain": 10745
+        "value_compare": 34367,
+        "chain": 5633
       },
       "question_types": {
-        "argmax": 18239,
-        "argmin": 18247,
-        "relation": 3514
+        "argmin": 13294,
+        "argmax": 24814,
+        "relation": 1892
       },
       "attributes": {
-        "population": 13264,
-        "age": 4444,
-        "weight": 8897,
-        "height": 8943,
-        "price": 4452
+        "population": 13375,
+        "weight": 8946,
+        "height": 8821,
+        "age": 4408,
+        "price": 4450
       },
       "template_authors": {
-        "generated": 40000
+        "generated": 20845,
+        "user": 19155
       },
-      "tie_rate": 0.0826,
+      "tie_rate": 0.1111,
       "distinct_answers": 76,
-      "most_common_answer_share": 0.0826,
+      "most_common_answer_share": 0.1111,
       "answer_position_distribution": {
-        "0": 0.377,
-        "1": 0.38,
-        "2": 0.243
+        "0": 0.395,
+        "1": 0.396,
+        "2": 0.209
       },
-      "mean_prompt_chars": 107.8
+      "mean_prompt_chars": 111.0
     },
     "val": {
       "n": 2000,
       "families": {
-        "chain": 534,
-        "value_compare": 1466
+        "value_compare": 1700,
+        "chain": 300
       },
       "question_types": {
-        "relation": 170,
-        "argmax": 910,
-        "argmin": 920
+        "argmin": 682,
+        "argmax": 1217,
+        "relation": 101
       },
       "attributes": {
-        "population": 699,
-        "weight": 444,
-        "height": 423,
-        "price": 222,
-        "age": 212
+        "height": 468,
+        "population": 673,
+        "age": 208,
+        "weight": 434,
+        "price": 217
       },
       "template_authors": {
-        "generated": 2000
+        "generated": 1072,
+        "user": 928
       },
-      "tie_rate": 0.082,
+      "tie_rate": 0.105,
       "distinct_answers": 76,
-      "most_common_answer_share": 0.082,
+      "most_common_answer_share": 0.105,
       "answer_position_distribution": {
-        "0": 0.392,
-        "1": 0.376,
-        "2": 0.232
+        "0": 0.387,
+        "1": 0.404,
+        "2": 0.21
       },
-      "mean_prompt_chars": 107.7
+      "mean_prompt_chars": 110.9
     },
     "test_iid": {
       "n": 2000,
       "families": {
-        "chain": 550,
-        "value_compare": 1450
+        "chain": 277,
+        "value_compare": 1723
       },
       "question_types": {
-        "argmin": 922,
-        "argmax": 913,
-        "relation": 165
+        "relation": 101,
+        "argmin": 677,
+        "argmax": 1222
       },
       "attributes": {
-        "population": 626,
-        "weight": 470,
-        "age": 249,
-        "height": 445,
-        "price": 210
+        "population": 632,
+        "age": 229,
+        "height": 453,
+        "price": 216,
+        "weight": 470
       },
       "template_authors": {
-        "generated": 2000
+        "generated": 1032,
+        "user": 968
+      },
+      "tie_rate": 0.107,
+      "distinct_answers": 76,
+      "most_common_answer_share": 0.107,
+      "answer_position_distribution": {
+        "0": 0.398,
+        "1": 0.396,
+        "2": 0.206
+      },
+      "mean_prompt_chars": 111.0
+    },
+    "test_entity": {
+      "n": 2000,
+      "families": {
+        "value_compare": 1718,
+        "chain": 282
+      },
+      "question_types": {
+        "argmax": 1253,
+        "relation": 89,
+        "argmin": 658
+      },
+      "attributes": {
+        "height": 443,
+        "weight": 445,
+        "population": 653,
+        "age": 243,
+        "price": 216
+      },
+      "template_authors": {
+        "generated": 1082,
+        "user": 918
+      },
+      "tie_rate": 0.12,
+      "distinct_answers": 28,
+      "most_common_answer_share": 0.12,
+      "answer_position_distribution": {
+        "0": 0.417,
+        "1": 0.388,
+        "2": 0.196
+      },
+      "mean_prompt_chars": 110.0
+    },
+    "test_template": {
+      "n": 2000,
+      "families": {
+        "value_compare": 1781,
+        "chain": 219
+      },
+      "question_types": {
+        "argmax": 1121,
+        "argmin": 879
+      },
+      "attributes": {
+        "weight": 485,
+        "height": 415,
+        "population": 660,
+        "age": 217,
+        "price": 223
+      },
+      "template_authors": {
+        "generated": 675,
+        "user": 1325
+      },
+      "tie_rate": 0.098,
+      "distinct_answers": 74,
+      "most_common_answer_share": 0.098,
+      "answer_position_distribution": {
+        "0": 0.391,
+        "1": 0.384,
+        "2": 0.226
+      },
+      "mean_prompt_chars": 109.7
+    },
+    "test_hop": {
+      "n": 2000,
+      "families": {
+        "value_compare": 1504,
+        "chain": 496
+      },
+      "question_types": {
+        "argmax": 1148,
+        "argmin": 665,
+        "relation": 187
+      },
+      "attributes": {
+        "population": 666,
+        "height": 454,
+        "weight": 450,
+        "age": 218,
+        "price": 212
+      },
+      "template_authors": {
+        "user": 813,
+        "generated": 1187
       },
       "tie_rate": 0.078,
       "distinct_answers": 76,
       "most_common_answer_share": 0.078,
       "answer_position_distribution": {
-        "0": 0.367,
-        "1": 0.375,
-        "2": 0.258
+        "0": 0.204,
+        "1": 0.208,
+        "2": 0.236,
+        "3": 0.226,
+        "4": 0.126
       },
-      "mean_prompt_chars": 107.9
-    },
-    "test_entity": {
-      "n": 2000,
-      "families": {
-        "value_compare": 1445,
-        "chain": 555
-      },
-      "question_types": {
-        "argmax": 906,
-        "relation": 181,
-        "argmin": 913
-      },
-      "attributes": {
-        "weight": 449,
-        "height": 454,
-        "population": 641,
-        "age": 212,
-        "price": 244
-      },
-      "template_authors": {
-        "generated": 2000
-      },
-      "tie_rate": 0.075,
-      "distinct_answers": 28,
-      "most_common_answer_share": 0.0755,
-      "answer_position_distribution": {
-        "0": 0.378,
-        "1": 0.377,
-        "2": 0.245
-      },
-      "mean_prompt_chars": 107.0
-    },
-    "test_template": {
-      "n": 2000,
-      "families": {
-        "chain": 665,
-        "value_compare": 1335
-      },
-      "question_types": {
-        "argmax": 2000
-      },
-      "attributes": {
-        "weight": 470,
-        "population": 669,
-        "age": 212,
-        "height": 427,
-        "price": 222
-      },
-      "template_authors": {
-        "generated": 2000
-      },
-      "tie_rate": 0.101,
-      "distinct_answers": 74,
-      "most_common_answer_share": 0.101,
-      "answer_position_distribution": {
-        "0": 0.357,
-        "1": 0.337,
-        "2": 0.306
-      },
-      "mean_prompt_chars": 109.4
-    },
-    "test_hop": {
-      "n": 2000,
-      "families": {
-        "chain": 860,
-        "value_compare": 1140
-      },
-      "question_types": {
-        "argmax": 835,
-        "relation": 317,
-        "argmin": 848
-      },
-      "attributes": {
-        "population": 670,
-        "height": 451,
-        "weight": 463,
-        "price": 221,
-        "age": 195
-      },
-      "template_authors": {
-        "generated": 2000
-      },
-      "tie_rate": 0.0425,
-      "distinct_answers": 76,
-      "most_common_answer_share": 0.0845,
-      "answer_position_distribution": {
-        "0": 0.195,
-        "1": 0.201,
-        "2": 0.215,
-        "3": 0.254,
-        "4": 0.135
-      },
-      "mean_prompt_chars": 161.8
+      "mean_prompt_chars": 167.1
     }
   }
 }

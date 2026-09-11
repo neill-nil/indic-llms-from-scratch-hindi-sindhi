@@ -225,6 +225,96 @@ def validate(language: str, scan_train_split: bool) -> dict:
             "val_bytes": val_bytes, "train_bytes": train_bytes, "records": records}
 
 
+# Masculine nouns take an oblique form before a postposition: Hindi `-ा` becomes `-े`
+# and Sindhi `-و` becomes `-ي`. Whether a given name actually inflects is decided by
+# measurement, never by this rule alone — see resolve_oblique_forms.
+OBLIQUE_RULE = {"hindi": ("ा", "े"), "sindhi": ("و", "ي")}
+
+
+def resolve_oblique_forms(language: str, lexicon: dict, text: str,
+                          scan_train_split: bool) -> list[dict]:
+    """
+    Decide, per entity, which form to use when the name is followed by a postposition.
+
+    Every entity mention in a generated example sits before a postposition — a possessive
+    (`की`/`جي`), the comparison particle (`से`/`کان`), or `में`/`۾`. Hindi and Sindhi
+    masculine nouns inflect in that position, and the generator was emitting the citation
+    form: `बगीचा का वजन`, `دٻو جي ڊيگهه`. Both are wrong.
+
+    The form is chosen by counting both candidates in the corpus rather than by applying
+    the morphological rule, because the rule over-applies badly:
+
+        कमरा का       0  vs  कमरे का      42   -> inflects
+        कोलकाता की   30  vs  कोलकाते की    0   -> does NOT inflect (a place name)
+        ٺٽو جي       21  vs  ٺٽي جي      343   -> inflects
+        دادو جي      84  vs  دادي جي       6   -> does NOT inflect
+
+    That last pair is the reason this cannot be a rule. Hindi place names resist
+    inflection while Sindhi place names take it, so a rule written from Hindi intuition
+    and mirrored across would be wrong for Sindhi specifically — the exact failure mode
+    this whole validation approach exists to prevent.
+
+    Names with no evidence either way are escalated to the full training split, and if
+    still undecided are left in the citation form and reported, so an unevidenced guess
+    never enters the data silently.
+    """
+    if language not in OBLIQUE_RULE:
+        return []
+    ending, replacement = OBLIQUE_RULE[language]
+
+    # The postpositions an entity name can precede in any template.
+    frag = lexicon["fragments"]
+    followers = {frag["than"]}
+    followers |= {spec["poss"] for spec in lexicon["attributes"].values()}
+
+    decisions, undecided = [], []
+    for kind, entities in lexicon["entities"].items():
+        for ent in entities:
+            name = ent["name"]
+            ent["oblique"] = name          # default: no inflection
+            if not name.endswith(ending):
+                continue
+            candidate = name[:-len(ending)] + replacement
+            plain = sum(text.count(f"{name} {f}") for f in followers)
+            obl = sum(text.count(f"{candidate} {f}") for f in followers)
+            row = {"kind": kind, "name": name, "candidate": candidate,
+                   "plain": plain, "oblique": obl, "source": "val"}
+            if plain == 0 and obl == 0:
+                undecided.append((ent, row, followers, candidate))
+            else:
+                ent["oblique"] = candidate if obl > plain else name
+                row["decision"] = "oblique" if obl > plain else "citation"
+                decisions.append(row)
+
+    if undecided and scan_train_split:
+        needles = []
+        for ent, row, fs, candidate in undecided:
+            needles += [f"{row['name']} {f}" for f in fs]
+            needles += [f"{candidate} {f}" for f in fs]
+        counts = scan_train(language, sorted(set(needles)))
+        for ent, row, fs, candidate in undecided:
+            plain = sum(counts.get(f"{row['name']} {f}", 0) for f in fs)
+            obl = sum(counts.get(f"{candidate} {f}", 0) for f in fs)
+            row.update(plain=plain, oblique=obl, source="train")
+            if plain == 0 and obl == 0:
+                row["decision"] = "no evidence - left as citation"
+            else:
+                ent["oblique"] = candidate if obl > plain else row["name"]
+                row["decision"] = "oblique" if obl > plain else "citation"
+            decisions.append(row)
+    else:
+        for ent, row, fs, candidate in undecided:
+            row["decision"] = "no evidence - left as citation"
+            decisions.append(row)
+
+    for row in decisions:
+        level = logger.warning if row["decision"].startswith("oblique") else logger.info
+        level("  %s %-14s %-14s plain %5d | oblique %5d (%s) -> %s",
+              language[:3], row["name"], row["candidate"], row["plain"],
+              row["oblique"], row["source"], row["decision"])
+    return decisions
+
+
 def build_lexicon(result: dict) -> dict:
     """Assemble the accepted survivors into the structure the generator consumes."""
     language = result["language"]
@@ -408,6 +498,19 @@ def main():
     out_dir = Path(__file__).resolve().parent
     lexicons = {r["language"]: build_lexicon(r) for r in results}
     enforce_parity(lexicons)
+
+    # Entity names are always followed by a postposition in a generated example, so the
+    # form stored here is the one that appears in text. The citation form stays in
+    # `name` and remains the expected answer, which is correct: a bare name given as an
+    # answer is not governed by anything and does not inflect.
+    logger.info("resolving oblique forms")
+    oblique_decisions = {}
+    for language, lex in lexicons.items():
+        oblique_decisions[language] = resolve_oblique_forms(
+            language, lex, load_val_text(language), args.scan_train)
+        n = sum(1 for e in lex["entities"] for ent in lex["entities"][e]
+                if ent["oblique"] != ent["name"])
+        logger.info("%s: %d entities inflect before a postposition", language, n)
 
     for r in results:
         lex = lexicons[r["language"]]
