@@ -138,9 +138,16 @@ class GPT(nn.Module):
             # Cross-entropy between the logits at position t and the token at t+1,
             # averaged over every position in the batch. Flattened to (B*T, V) and (B*T,)
             # because F.cross_entropy expects a single class axis.
+            # ignore_index=-100 lets a caller exclude positions from the loss. Pretraining
+            # never uses it: every position of a packed token stream is a genuine training
+            # target, so no target is ever -100 and the behaviour is unchanged. Reasoning
+            # finetuning needs it, because an example is a prompt followed by an answer and
+            # only the answer should be learned — training the model to reproduce the
+            # question would spend most of its capacity on text it will always be given.
             loss = F.cross_entropy(
                 logits.reshape(-1, logits.size(-1)),
                 targets.reshape(-1),
+                ignore_index=-100,
             )
 
         if return_attention:
