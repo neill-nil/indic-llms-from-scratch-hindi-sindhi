@@ -72,3 +72,8 @@ report/phase3_worklog.md
 # dataset_statistics.json IS committed — it is small and is the evidence for the
 # balance and leakage claims in the report.
 */finetune/data/*.jsonl
+
+# Learning-rate probe completion markers. Only their existence matters, and only locally,
+# so that re-running common.finetune.lr_probe skips finished runs. The committed
+# training_log.jsonl already records that each run completed.
+*/finetune/lr_probe/*/DONE

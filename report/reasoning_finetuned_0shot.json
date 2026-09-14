@@ -1,0 +1,1266 @@
+[
+  {
+    "language": "hindi",
+    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/hindi/finetune/run/best.pt",
+    "condition": "finetuned",
+    "shots": 0,
+    "splits": {
+      "test_iid": {
+        "split": "test_iid",
+        "n": 2000,
+        "accuracy": 0.7885,
+        "off_answer_rate": 0.0,
+        "by_family": {
+          "chain": {
+            "n": 284,
+            "accuracy": 0.5951
+          },
+          "value_compare": {
+            "n": 1716,
+            "accuracy": 0.8205
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1220,
+            "accuracy": 0.8082
+          },
+          "argmin": {
+            "n": 675,
+            "accuracy": 0.8119
+          },
+          "relation": {
+            "n": 105,
+            "accuracy": 0.4095
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 874,
+            "accuracy": 0.873
+          },
+          "3": {
+            "n": 1126,
+            "accuracy": 0.7229
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1066,
+            "accuracy": 0.757
+          },
+          "user": {
+            "n": 934,
+            "accuracy": 0.8244
+          }
+        },
+        "tie_accuracy": 0.4315,
+        "examples": [
+          {
+            "predicted": "बैग",
+            "gold": "मेज",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 1139,
+            "index": 0
+          },
+          {
+            "predicted": "बोतल",
+            "gold": "बोतल",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 1833,
+            "index": 1
+          },
+          {
+            "predicted": "जयपुर",
+            "gold": "जयपुर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 83,
+            "index": 2
+          },
+          {
+            "predicted": "नेहा",
+            "gold": "नेहा",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 36,
+            "index": 3
+          },
+          {
+            "predicted": "बराबर",
+            "gold": "बराबर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": true,
+            "margin": 0,
+            "index": 4
+          },
+          {
+            "predicted": "शिखा",
+            "gold": "शिखा",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 15,
+            "index": 5
+          },
+          {
+            "predicted": "विकास",
+            "gold": "विकास",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 22,
+            "index": 6
+          },
+          {
+            "predicted": "कोलकाता",
+            "gold": "कोलकाता",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-VC-argmax-user8",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 160,
+            "index": 7
+          }
+        ]
+      },
+      "test_entity": {
+        "split": "test_entity",
+        "n": 2000,
+        "accuracy": 0.17,
+        "off_answer_rate": 0.2905,
+        "by_family": {
+          "chain": {
+            "n": 310,
+            "accuracy": 0.171
+          },
+          "value_compare": {
+            "n": 1690,
+            "accuracy": 0.1698
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1224,
+            "accuracy": 0.1846
+          },
+          "argmin": {
+            "n": 661,
+            "accuracy": 0.0953
+          },
+          "relation": {
+            "n": 115,
+            "accuracy": 0.4435
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 879,
+            "accuracy": 0.1786
+          },
+          "3": {
+            "n": 1121,
+            "accuracy": 0.1632
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1073,
+            "accuracy": 0.1491
+          },
+          "user": {
+            "n": 927,
+            "accuracy": 0.1942
+          }
+        },
+        "tie_accuracy": 0.9655,
+        "examples": [
+          {
+            "predicted": "ज्यादा",
+            "gold": "ज्यादा",
+            "correct": true,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "H-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 0
+          },
+          {
+            "predicted": "बराबर",
+            "gold": "रस्सी",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 31,
+            "index": 1
+          },
+          {
+            "predicted": "बराबर",
+            "gold": "पेड़",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 79,
+            "index": 2
+          },
+          {
+            "predicted": "ज्यादा",
+            "gold": "ज्यादा",
+            "correct": true,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "H-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 3
+          },
+          {
+            "predicted": "रोहित",
+            "gold": "इंदौर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 51,
+            "index": 4
+          },
+          {
+            "predicted": "बराबर",
+            "gold": "बराबर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": true,
+            "margin": 0,
+            "index": 5
+          },
+          {
+            "predicted": "बराबर",
+            "gold": "कविता",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 35,
+            "index": 6
+          },
+          {
+            "predicted": "�� बाकी",
+            "gold": "इंदौर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 177,
+            "index": 7
+          }
+        ]
+      },
+      "test_template": {
+        "split": "test_template",
+        "n": 2000,
+        "accuracy": 0.7995,
+        "off_answer_rate": 0.0,
+        "by_family": {
+          "chain": {
+            "n": 230,
+            "accuracy": 0.6957
+          },
+          "value_compare": {
+            "n": 1770,
+            "accuracy": 0.813
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1142,
+            "accuracy": 0.7951
+          },
+          "argmin": {
+            "n": 858,
+            "accuracy": 0.8054
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 848,
+            "accuracy": 0.8196
+          },
+          "3": {
+            "n": 1152,
+            "accuracy": 0.7847
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 689,
+            "accuracy": 0.7881
+          },
+          "user": {
+            "n": 1311,
+            "accuracy": 0.8055
+          }
+        },
+        "tie_accuracy": 0.3467,
+        "examples": [
+          {
+            "predicted": "आशा",
+            "gold": "आशा",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 48,
+            "index": 0
+          },
+          {
+            "predicted": "लखनऊ",
+            "gold": "लखनऊ",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-VC-argmax-user4",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 3,
+            "index": 1
+          },
+          {
+            "predicted": "अमृतसर",
+            "gold": "अमृतसर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 140,
+            "index": 2
+          },
+          {
+            "predicted": "विकास",
+            "gold": "विकास",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user4",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 2,
+            "index": 3
+          },
+          {
+            "predicted": "अरुण",
+            "gold": "आशा",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-CH-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 4
+          },
+          {
+            "predicted": "बराबर",
+            "gold": "बराबर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user4",
+            "template_author": "user",
+            "is_tie": true,
+            "margin": 0,
+            "index": 5
+          },
+          {
+            "predicted": "नागपुर",
+            "gold": "नागपुर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-user3",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 56,
+            "index": 6
+          },
+          {
+            "predicted": "पत्थर",
+            "gold": "पत्थर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 44,
+            "index": 7
+          }
+        ]
+      },
+      "test_hop": {
+        "split": "test_hop",
+        "n": 2000,
+        "accuracy": 0.4785,
+        "off_answer_rate": 0.0,
+        "by_family": {
+          "chain": {
+            "n": 486,
+            "accuracy": 0.3251
+          },
+          "value_compare": {
+            "n": 1514,
+            "accuracy": 0.5277
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1192,
+            "accuracy": 0.469
+          },
+          "argmin": {
+            "n": 653,
+            "accuracy": 0.49
+          },
+          "relation": {
+            "n": 155,
+            "accuracy": 0.5032
+          }
+        },
+        "by_n_entities": {
+          "4": {
+            "n": 994,
+            "accuracy": 0.5624
+          },
+          "5": {
+            "n": 1006,
+            "accuracy": 0.3956
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1144,
+            "accuracy": 0.4519
+          },
+          "user": {
+            "n": 856,
+            "accuracy": 0.514
+          }
+        },
+        "tie_accuracy": 0.2207,
+        "examples": [
+          {
+            "predicted": "कमरा",
+            "gold": "कमरा",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 8,
+            "index": 0
+          },
+          {
+            "predicted": "राम",
+            "gold": "राम",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 30,
+            "index": 1
+          },
+          {
+            "predicted": "पत्थर",
+            "gold": "पत्थर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 1463,
+            "index": 2
+          },
+          {
+            "predicted": "कमरा",
+            "gold": "बराबर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": true,
+            "margin": 0,
+            "index": 3
+          },
+          {
+            "predicted": "बराबर",
+            "gold": "अरुण",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 7,
+            "index": 4
+          },
+          {
+            "predicted": "मेज",
+            "gold": "बोतल",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 379,
+            "index": 5
+          },
+          {
+            "predicted": "कानपुर",
+            "gold": "कानपुर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 88,
+            "index": 6
+          },
+          {
+            "predicted": "पत्थर",
+            "gold": "पत्थर",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 65,
+            "index": 7
+          }
+        ]
+      }
+    }
+  },
+  {
+    "language": "sindhi",
+    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/sindhi/finetune/run/best.pt",
+    "condition": "finetuned",
+    "shots": 0,
+    "splits": {
+      "test_iid": {
+        "split": "test_iid",
+        "n": 2000,
+        "accuracy": 0.7365,
+        "off_answer_rate": 0.0,
+        "by_family": {
+          "chain": {
+            "n": 277,
+            "accuracy": 0.4621
+          },
+          "value_compare": {
+            "n": 1723,
+            "accuracy": 0.7806
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1222,
+            "accuracy": 0.7471
+          },
+          "argmin": {
+            "n": 677,
+            "accuracy": 0.7518
+          },
+          "relation": {
+            "n": 101,
+            "accuracy": 0.505
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 867,
+            "accuracy": 0.8351
+          },
+          "3": {
+            "n": 1133,
+            "accuracy": 0.6611
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1032,
+            "accuracy": 0.6841
+          },
+          "user": {
+            "n": 968,
+            "accuracy": 0.7924
+          }
+        },
+        "tie_accuracy": 0.3645,
+        "examples": [
+          {
+            "predicted": "گهٽ",
+            "gold": "گهٽ",
+            "correct": true,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "S-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 0
+          },
+          {
+            "predicted": "نوشهرو فيروز",
+            "gold": "نوشهرو فيروز",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 240,
+            "index": 1
+          },
+          {
+            "predicted": "رحيم",
+            "gold": "رحيم",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 22,
+            "index": 2
+          },
+          {
+            "predicted": "سليم",
+            "gold": "سليم",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 68,
+            "index": 3
+          },
+          {
+            "predicted": "ڪمرو",
+            "gold": "ڪمرو",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 1209,
+            "index": 4
+          },
+          {
+            "predicted": "ٿيلهو",
+            "gold": "ٿيلهو",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 22,
+            "index": 5
+          },
+          {
+            "predicted": "برابر",
+            "gold": "برابر",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": true,
+            "margin": 0,
+            "index": 6
+          },
+          {
+            "predicted": "حامد",
+            "gold": "حامد",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 30,
+            "index": 7
+          }
+        ]
+      },
+      "test_entity": {
+        "split": "test_entity",
+        "n": 2000,
+        "accuracy": 0.148,
+        "off_answer_rate": 0.2465,
+        "by_family": {
+          "chain": {
+            "n": 282,
+            "accuracy": 0.1383
+          },
+          "value_compare": {
+            "n": 1718,
+            "accuracy": 0.1496
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1253,
+            "accuracy": 0.1644
+          },
+          "argmin": {
+            "n": 658,
+            "accuracy": 0.0775
+          },
+          "relation": {
+            "n": 89,
+            "accuracy": 0.4382
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 870,
+            "accuracy": 0.1575
+          },
+          "3": {
+            "n": 1130,
+            "accuracy": 0.1407
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1082,
+            "accuracy": 0.1275
+          },
+          "user": {
+            "n": 918,
+            "accuracy": 0.1721
+          }
+        },
+        "tie_accuracy": 0.9917,
+        "examples": [
+          {
+            "predicted": "برابر",
+            "gold": "صادق",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 8,
+            "index": 0
+          },
+          {
+            "predicted": "برابر",
+            "gold": "دري",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 24,
+            "index": 1
+          },
+          {
+            "predicted": "وڌيڪ",
+            "gold": "وڌيڪ",
+            "correct": true,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "S-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 2
+          },
+          {
+            "predicted": "برابر",
+            "gold": "شميم",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 15,
+            "index": 3
+          },
+          {
+            "predicted": "برابر",
+            "gold": "خيرپور",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 84,
+            "index": 4
+          },
+          {
+            "predicted": "برابر",
+            "gold": "برابر",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-1",
+            "template_author": "generated",
+            "is_tie": true,
+            "margin": 0,
+            "index": 5
+          },
+          {
+            "predicted": "ٺٽو",
+            "gold": "ٽنڊوآدم",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "S-CH-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 6
+          },
+          {
+            "predicted": "برابر",
+            "gold": "رخسانه",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 29,
+            "index": 7
+          }
+        ]
+      },
+      "test_template": {
+        "split": "test_template",
+        "n": 2000,
+        "accuracy": 0.748,
+        "off_answer_rate": 0.0,
+        "by_family": {
+          "chain": {
+            "n": 219,
+            "accuracy": 0.484
+          },
+          "value_compare": {
+            "n": 1781,
+            "accuracy": 0.7805
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1121,
+            "accuracy": 0.7163
+          },
+          "argmin": {
+            "n": 879,
+            "accuracy": 0.7884
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 887,
+            "accuracy": 0.8241
+          },
+          "3": {
+            "n": 1113,
+            "accuracy": 0.6873
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 675,
+            "accuracy": 0.6889
+          },
+          "user": {
+            "n": 1325,
+            "accuracy": 0.7781
+          }
+        },
+        "tie_accuracy": 0.3571,
+        "examples": [
+          {
+            "predicted": "دٻو",
+            "gold": "دٻو",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 48,
+            "index": 0
+          },
+          {
+            "predicted": "امير",
+            "gold": "امير",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 17,
+            "index": 1
+          },
+          {
+            "predicted": "ڪرسي",
+            "gold": "ڪرسي",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user3",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 25,
+            "index": 2
+          },
+          {
+            "predicted": "باغ",
+            "gold": "ٿيلهو",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-CH-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 3
+          },
+          {
+            "predicted": "سائيڪل",
+            "gold": "بوتل",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 1,
+            "index": 4
+          },
+          {
+            "predicted": "شڪارپور",
+            "gold": "شڪارپور",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 6,
+            "index": 5
+          },
+          {
+            "predicted": "توفيق",
+            "gold": "توفيق",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user3",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 7,
+            "index": 6
+          },
+          {
+            "predicted": "خديجه",
+            "gold": "زبيده",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-CH-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 7
+          }
+        ]
+      },
+      "test_hop": {
+        "split": "test_hop",
+        "n": 2000,
+        "accuracy": 0.453,
+        "off_answer_rate": 0.0,
+        "by_family": {
+          "chain": {
+            "n": 496,
+            "accuracy": 0.2903
+          },
+          "value_compare": {
+            "n": 1504,
+            "accuracy": 0.5066
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1148,
+            "accuracy": 0.4416
+          },
+          "argmin": {
+            "n": 665,
+            "accuracy": 0.4511
+          },
+          "relation": {
+            "n": 187,
+            "accuracy": 0.5294
+          }
+        },
+        "by_n_entities": {
+          "4": {
+            "n": 950,
+            "accuracy": 0.5221
+          },
+          "5": {
+            "n": 1050,
+            "accuracy": 0.3905
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1187,
+            "accuracy": 0.4246
+          },
+          "user": {
+            "n": 813,
+            "accuracy": 0.4945
+          }
+        },
+        "tie_accuracy": 0.4615,
+        "examples": [
+          {
+            "predicted": "شڪارپور",
+            "gold": "شڪارپور",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "S-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 13,
+            "index": 0
+          },
+          {
+            "predicted": "رسي",
+            "gold": "رسي",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 18,
+            "index": 1
+          },
+          {
+            "predicted": "سانگهڙ",
+            "gold": "سانگهڙ",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "S-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 99,
+            "index": 2
+          },
+          {
+            "predicted": "ٿيلهو",
+            "gold": "بوتل",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-CH-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 3
+          },
+          {
+            "predicted": "سکر",
+            "gold": "سکر",
+            "correct": true,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "S-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 66,
+            "index": 4
+          },
+          {
+            "predicted": "گاڏي",
+            "gold": "ڪتاب",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "S-VC-argmax-user8",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 13,
+            "index": 5
+          },
+          {
+            "predicted": "ٿيلهو",
+            "gold": "دٻو",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 13,
+            "index": 6
+          },
+          {
+            "predicted": "نوابشاهه",
+            "gold": "سکر",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 39,
+            "index": 7
+          }
+        ]
+      }
+    }
+  }
+]

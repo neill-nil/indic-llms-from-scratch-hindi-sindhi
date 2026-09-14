@@ -1,0 +1,1266 @@
+[
+  {
+    "language": "hindi",
+    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/hindi/train/run/best.pt",
+    "condition": "pretrained",
+    "shots": 4,
+    "splits": {
+      "test_iid": {
+        "split": "test_iid",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 1.0,
+        "by_family": {
+          "chain": {
+            "n": 284,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1716,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1220,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 675,
+            "accuracy": 0.0
+          },
+          "relation": {
+            "n": 105,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 874,
+            "accuracy": 0.0
+          },
+          "3": {
+            "n": 1126,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1066,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 934,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "गाड़ी की कीमत 1900 रुपये है",
+            "gold": "मेज",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 1139,
+            "index": 0
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1023 रुपये है",
+            "gold": "बोतल",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 1833,
+            "index": 1
+          },
+          {
+            "predicted": "गाड़ी संख्या 154 लाख है",
+            "gold": "जयपुर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 83,
+            "index": 2
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "नेहा",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 36,
+            "index": 3
+          },
+          {
+            "predicted": "गाड़ी की लंबाई 177 सेमी है",
+            "gold": "बराबर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": true,
+            "margin": 0,
+            "index": 4
+          },
+          {
+            "predicted": "गाड़ी की लंबाई 160 सेमी है",
+            "gold": "शिखा",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 15,
+            "index": 5
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "विकास",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 22,
+            "index": 6
+          },
+          {
+            "predicted": "गाड़ी संख्या 117 लाख है",
+            "gold": "कोलकाता",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-VC-argmax-user8",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 160,
+            "index": 7
+          }
+        ]
+      },
+      "test_entity": {
+        "split": "test_entity",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 1.0,
+        "by_family": {
+          "chain": {
+            "n": 310,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1690,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1224,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 661,
+            "accuracy": 0.0
+          },
+          "relation": {
+            "n": 115,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 879,
+            "accuracy": 0.0
+          },
+          "3": {
+            "n": 1121,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1073,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 927,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "ज्यादा",
+            "correct": false,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "H-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 0
+          },
+          {
+            "predicted": "गाड़ी की लंबाई 143 सेमी है",
+            "gold": "रस्सी",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 31,
+            "index": 1
+          },
+          {
+            "predicted": "गाड़ी का वजन 11 किलो है",
+            "gold": "पेड़",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 79,
+            "index": 2
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "ज्यादा",
+            "correct": false,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "H-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 3
+          },
+          {
+            "predicted": "गाड़ी संख्या 11 लाख है",
+            "gold": "इंदौर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 51,
+            "index": 4
+          },
+          {
+            "predicted": "गाड़ी की लंबाई 151 सेमी है",
+            "gold": "बराबर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": true,
+            "margin": 0,
+            "index": 5
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "कविता",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 35,
+            "index": 6
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "इंदौर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 177,
+            "index": 7
+          }
+        ]
+      },
+      "test_template": {
+        "split": "test_template",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 1.0,
+        "by_family": {
+          "chain": {
+            "n": 230,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1770,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1142,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 858,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 848,
+            "accuracy": 0.0
+          },
+          "3": {
+            "n": 1152,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 689,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 1311,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "आशा",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 48,
+            "index": 0
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "लखनऊ",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-VC-argmax-user4",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 3,
+            "index": 1
+          },
+          {
+            "predicted": "गाड़ी संख्या 136 लाख है",
+            "gold": "अमृतसर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 140,
+            "index": 2
+          },
+          {
+            "predicted": "गाड़ी का वजन 12 किलो है",
+            "gold": "विकास",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user4",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 2,
+            "index": 3
+          },
+          {
+            "predicted": "गाड़ी की लंबाई 148 सेमी है",
+            "gold": "आशा",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "H-CH-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 4
+          },
+          {
+            "predicted": "गाड़ी संख्या 155 लाख है",
+            "gold": "बराबर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "H-VC-argmax-user4",
+            "template_author": "user",
+            "is_tie": true,
+            "margin": 0,
+            "index": 5
+          },
+          {
+            "predicted": "गाड़ी संख्या 14 लाख है",
+            "gold": "नागपुर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "H-VC-argmin-user3",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 56,
+            "index": 6
+          },
+          {
+            "predicted": "गाड़ी का वजन 40 किलो है",
+            "gold": "पत्थर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "H-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 44,
+            "index": 7
+          }
+        ]
+      },
+      "test_hop": {
+        "split": "test_hop",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 1.0,
+        "by_family": {
+          "chain": {
+            "n": 486,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1514,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1192,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 653,
+            "accuracy": 0.0
+          },
+          "relation": {
+            "n": 155,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "4": {
+            "n": 994,
+            "accuracy": 0.0
+          },
+          "5": {
+            "n": 1006,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1144,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 856,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "गाड़ी का वजन 94 किलो है",
+            "gold": "कमरा",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 8,
+            "index": 0
+          },
+          {
+            "predicted": "गाड़ी की लंबाई 187 सेमी है",
+            "gold": "राम",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 30,
+            "index": 1
+          },
+          {
+            "predicted": "गाड़ी की कीमत 487 रुपये है",
+            "gold": "पत्थर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 1463,
+            "index": 2
+          },
+          {
+            "predicted": "गाड़ी का वजन 185 किलो है",
+            "gold": "बराबर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": true,
+            "margin": 0,
+            "index": 3
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1396 रुपये है",
+            "gold": "अरुण",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user6",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 7,
+            "index": 4
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1013 रुपये है",
+            "gold": "बोतल",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 379,
+            "index": 5
+          },
+          {
+            "predicted": "गाड़ी की कीमत 1750 रुपये है",
+            "gold": "कानपुर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 88,
+            "index": 6
+          },
+          {
+            "predicted": "गाड़ी की लंबाई 119 सेमी है",
+            "gold": "पत्थर",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "H-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 65,
+            "index": 7
+          }
+        ]
+      }
+    }
+  },
+  {
+    "language": "sindhi",
+    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/sindhi/train/run/best.pt",
+    "condition": "pretrained",
+    "shots": 4,
+    "splits": {
+      "test_iid": {
+        "split": "test_iid",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 1.0,
+        "by_family": {
+          "chain": {
+            "n": 277,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1723,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1222,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 677,
+            "accuracy": 0.0
+          },
+          "relation": {
+            "n": 101,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 867,
+            "accuracy": 0.0
+          },
+          "3": {
+            "n": 1133,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1032,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 968,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "1910ع ۾ دادو ضلعي جي آبادي",
+            "gold": "گهٽ",
+            "correct": false,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "S-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 0
+          },
+          {
+            "predicted": "ثمينه جي عمر 18 سال آهي. ڪراچي",
+            "gold": "نوشهرو فيروز",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 240,
+            "index": 1
+          },
+          {
+            "predicted": "ثمينه جي عمر 10 سال آهي. هن",
+            "gold": "رحيم",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 22,
+            "index": 2
+          },
+          {
+            "predicted": "ثمينه جي ڊيگهه 191 سينٽي ميٽر آهي",
+            "gold": "سليم",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 68,
+            "index": 3
+          },
+          {
+            "predicted": "ثمينه جي عمر 18 سال آهي. ان",
+            "gold": "ڪمرو",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user5",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 1209,
+            "index": 4
+          },
+          {
+            "predicted": "15 سينٽي ميٽر آهي",
+            "gold": "ٿيلهو",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 22,
+            "index": 5
+          },
+          {
+            "predicted": "100 رپيا آهي",
+            "gold": "برابر",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": true,
+            "margin": 0,
+            "index": 6
+          },
+          {
+            "predicted": "ثمينه جو وزن 100 ڪلو آهي",
+            "gold": "حامد",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 30,
+            "index": 7
+          }
+        ]
+      },
+      "test_entity": {
+        "split": "test_entity",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 0.9965,
+        "by_family": {
+          "chain": {
+            "n": 282,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1718,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1253,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 658,
+            "accuracy": 0.0
+          },
+          "relation": {
+            "n": 89,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 870,
+            "accuracy": 0.0
+          },
+          "3": {
+            "n": 1130,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1082,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 918,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "ثمينه جي ڊيگهه 150 سينٽي ميٽر آهي",
+            "gold": "صادق",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 8,
+            "index": 0
+          },
+          {
+            "predicted": "ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي",
+            "gold": "دري",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 24,
+            "index": 1
+          },
+          {
+            "predicted": "100 سينٽي ميٽر آهي",
+            "gold": "وڌيڪ",
+            "correct": false,
+            "family": "chain",
+            "question_type": "relation",
+            "n_entities": 3,
+            "template_id": "S-CH-relation-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 2
+          },
+          {
+            "predicted": "ثمينه جي ڊيگهه 12 سينٽي ميٽر آهي",
+            "gold": "شميم",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-user1",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 15,
+            "index": 3
+          },
+          {
+            "predicted": "ثمينه جي عمر 18 سال آهي. عمر",
+            "gold": "خيرپور",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 84,
+            "index": 4
+          },
+          {
+            "predicted": "1910ع ۾ ڪراچي ۾ آبادي 1",
+            "gold": "برابر",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-1",
+            "template_author": "generated",
+            "is_tie": true,
+            "margin": 0,
+            "index": 5
+          },
+          {
+            "predicted": "100 سينٽي ميٽر آهي",
+            "gold": "ٽنڊوآدم",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmin",
+            "n_entities": 3,
+            "template_id": "S-CH-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 6
+          },
+          {
+            "predicted": "ثمينه جي عمر 41 سال آهي. عمر",
+            "gold": "رخسانه",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 29,
+            "index": 7
+          }
+        ]
+      },
+      "test_template": {
+        "split": "test_template",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 1.0,
+        "by_family": {
+          "chain": {
+            "n": 219,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1781,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1121,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 879,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "2": {
+            "n": 887,
+            "accuracy": 0.0
+          },
+          "3": {
+            "n": 1113,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 675,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 1325,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي",
+            "gold": "دٻو",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 48,
+            "index": 0
+          },
+          {
+            "predicted": "ثمينه جو وزن 100 ڪلو آهي",
+            "gold": "امير",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-VC-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 17,
+            "index": 1
+          },
+          {
+            "predicted": "ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي",
+            "gold": "ڪرسي",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user3",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 25,
+            "index": 2
+          },
+          {
+            "predicted": "100 سينٽي ميٽر آهي",
+            "gold": "ٿيلهو",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-CH-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 3
+          },
+          {
+            "predicted": "150 سينٽي ميٽر آهي",
+            "gold": "بوتل",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user7",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 1,
+            "index": 4
+          },
+          {
+            "predicted": "1910ع ۾ ڪراچي ۾ آبادي 1",
+            "gold": "شڪارپور",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 2,
+            "template_id": "S-VC-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 6,
+            "index": 5
+          },
+          {
+            "predicted": "ثمينه جو وزن 100 ڪلو آهي",
+            "gold": "توفيق",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 2,
+            "template_id": "S-VC-argmin-user3",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 7,
+            "index": 6
+          },
+          {
+            "predicted": "ثمينه جي عمر 18 سال آهي. اختر",
+            "gold": "زبيده",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmax",
+            "n_entities": 3,
+            "template_id": "S-CH-argmax-held",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 7
+          }
+        ]
+      },
+      "test_hop": {
+        "split": "test_hop",
+        "n": 2000,
+        "accuracy": 0.0,
+        "off_answer_rate": 1.0,
+        "by_family": {
+          "chain": {
+            "n": 496,
+            "accuracy": 0.0
+          },
+          "value_compare": {
+            "n": 1504,
+            "accuracy": 0.0
+          }
+        },
+        "by_question_type": {
+          "argmax": {
+            "n": 1148,
+            "accuracy": 0.0
+          },
+          "argmin": {
+            "n": 665,
+            "accuracy": 0.0
+          },
+          "relation": {
+            "n": 187,
+            "accuracy": 0.0
+          }
+        },
+        "by_n_entities": {
+          "4": {
+            "n": 950,
+            "accuracy": 0.0
+          },
+          "5": {
+            "n": 1050,
+            "accuracy": 0.0
+          }
+        },
+        "by_template_author": {
+          "generated": {
+            "n": 1187,
+            "accuracy": 0.0
+          },
+          "user": {
+            "n": 813,
+            "accuracy": 0.0
+          }
+        },
+        "tie_accuracy": 0.0,
+        "examples": [
+          {
+            "predicted": "ثمينه جي عمر 18 سال آهي. ڪراچي",
+            "gold": "شڪارپور",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 5,
+            "template_id": "S-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 13,
+            "index": 0
+          },
+          {
+            "predicted": "180 سينٽي ميٽر آهي",
+            "gold": "رسي",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 18,
+            "index": 1
+          },
+          {
+            "predicted": "1910ع ۾ ڪراچي جي آبادي 1",
+            "gold": "سانگهڙ",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "S-VC-argmax-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 99,
+            "index": 2
+          },
+          {
+            "predicted": "100 سينٽي ميٽر آهي",
+            "gold": "بوتل",
+            "correct": false,
+            "family": "chain",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-CH-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": null,
+            "index": 3
+          },
+          {
+            "predicted": "ثمينه جي عمر 18 سال آهي. ڪراچي",
+            "gold": "سکر",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "S-VC-argmax-user2",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 66,
+            "index": 4
+          },
+          {
+            "predicted": "ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي",
+            "gold": "ڪتاب",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmax",
+            "n_entities": 4,
+            "template_id": "S-VC-argmax-user8",
+            "template_author": "user",
+            "is_tie": false,
+            "margin": 13,
+            "index": 5
+          },
+          {
+            "predicted": "ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي",
+            "gold": "دٻو",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-VC-argmin-1",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 13,
+            "index": 6
+          },
+          {
+            "predicted": "1910ع ۾ ڪراچي جي آبادي 1",
+            "gold": "سکر",
+            "correct": false,
+            "family": "value_compare",
+            "question_type": "argmin",
+            "n_entities": 5,
+            "template_id": "S-VC-argmin-2",
+            "template_author": "generated",
+            "is_tie": false,
+            "margin": 39,
+            "index": 7
+          }
+        ]
+      }
+    }
+  }
+]

@@ -1,0 +1,253 @@
+{
+  "selection": "highest mean best-val-accuracy across both languages; ties within 0.005 resolved to the lower rate",
+  "split_used": "val",
+  "probe_epochs": 1,
+  "chosen_learning_rate": 0.0001,
+  "summary": {
+    "5e-05": {
+      "per_language": {
+        "hindi": 0.407,
+        "sindhi": 0.3795
+      },
+      "mean": 0.39325
+    },
+    "0.0001": {
+      "per_language": {
+        "hindi": 0.473,
+        "sindhi": 0.407
+      },
+      "mean": 0.43999999999999995
+    },
+    "0.0003": {
+      "per_language": {
+        "hindi": 0.402,
+        "sindhi": 0.3775
+      },
+      "mean": 0.38975000000000004
+    }
+  },
+  "runs": [
+    {
+      "language": "hindi",
+      "learning_rate": 5e-05,
+      "best_val_accuracy": 0.407,
+      "final_val_accuracy": 0.407,
+      "best_val_loss": 0.5848892193938059,
+      "curve": [
+        [
+          200,
+          0.3355
+        ],
+        [
+          400,
+          0.3435
+        ],
+        [
+          600,
+          0.3535
+        ],
+        [
+          800,
+          0.3835
+        ],
+        [
+          1000,
+          0.389
+        ],
+        [
+          1200,
+          0.3915
+        ],
+        [
+          1250,
+          0.407
+        ]
+      ]
+    },
+    {
+      "language": "sindhi",
+      "learning_rate": 5e-05,
+      "best_val_accuracy": 0.3795,
+      "final_val_accuracy": 0.3605,
+      "best_val_loss": 0.6392015020052592,
+      "curve": [
+        [
+          200,
+          0.3285
+        ],
+        [
+          400,
+          0.3445
+        ],
+        [
+          600,
+          0.3185
+        ],
+        [
+          800,
+          0.3655
+        ],
+        [
+          1000,
+          0.3795
+        ],
+        [
+          1200,
+          0.3745
+        ],
+        [
+          1250,
+          0.3605
+        ]
+      ]
+    },
+    {
+      "language": "hindi",
+      "learning_rate": 0.0001,
+      "best_val_accuracy": 0.473,
+      "final_val_accuracy": 0.473,
+      "best_val_loss": 0.5568008096445174,
+      "curve": [
+        [
+          200,
+          0.322
+        ],
+        [
+          400,
+          0.3555
+        ],
+        [
+          600,
+          0.36
+        ],
+        [
+          800,
+          0.393
+        ],
+        [
+          1000,
+          0.4235
+        ],
+        [
+          1200,
+          0.446
+        ],
+        [
+          1250,
+          0.473
+        ]
+      ]
+    },
+    {
+      "language": "sindhi",
+      "learning_rate": 0.0001,
+      "best_val_accuracy": 0.407,
+      "final_val_accuracy": 0.401,
+      "best_val_loss": 0.6154929058892387,
+      "curve": [
+        [
+          200,
+          0.345
+        ],
+        [
+          400,
+          0.3355
+        ],
+        [
+          600,
+          0.3425
+        ],
+        [
+          800,
+          0.394
+        ],
+        [
+          1000,
+          0.4045
+        ],
+        [
+          1200,
+          0.407
+        ],
+        [
+          1250,
+          0.401
+        ]
+      ]
+    },
+    {
+      "language": "hindi",
+      "learning_rate": 0.0003,
+      "best_val_accuracy": 0.402,
+      "final_val_accuracy": 0.402,
+      "best_val_loss": 0.5844435956743028,
+      "curve": [
+        [
+          200,
+          0.3275
+        ],
+        [
+          400,
+          0.3565
+        ],
+        [
+          600,
+          0.349
+        ],
+        [
+          800,
+          0.3595
+        ],
+        [
+          1000,
+          0.3555
+        ],
+        [
+          1200,
+          0.3725
+        ],
+        [
+          1250,
+          0.402
+        ]
+      ]
+    },
+    {
+      "language": "sindhi",
+      "learning_rate": 0.0003,
+      "best_val_accuracy": 0.3775,
+      "final_val_accuracy": 0.343,
+      "best_val_loss": 0.6344404778783284,
+      "curve": [
+        [
+          200,
+          0.3505
+        ],
+        [
+          400,
+          0.342
+        ],
+        [
+          600,
+          0.329
+        ],
+        [
+          800,
+          0.3775
+        ],
+        [
+          1000,
+          0.371
+        ],
+        [
+          1200,
+          0.368
+        ],
+        [
+          1250,
+          0.343
+        ]
+      ]
+    }
+  ]
+}

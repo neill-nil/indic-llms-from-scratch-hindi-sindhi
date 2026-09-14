@@ -1,0 +1,206 @@
+[
+  {
+    "language": "hindi",
+    "condition": "pretrained",
+    "splits": {
+      "test_iid": {
+        "split": "test_iid",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.3535,
+        "accuracy_mean_logprob": 0.3485,
+        "chance": 0.307,
+        "names_only": {
+          "n": 1698,
+          "accuracy": 0.3963,
+          "chance": 0.407
+        },
+        "by_answer_type": {
+          "name": {
+            "n": 1698,
+            "accuracy_sum_logprob": 0.3869,
+            "accuracy_mean_logprob": 0.384
+          },
+          "equal/more/less": {
+            "n": 302,
+            "accuracy_sum_logprob": 0.1656,
+            "accuracy_mean_logprob": 0.149
+          }
+        }
+      },
+      "test_entity": {
+        "split": "test_entity",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.3415,
+        "accuracy_mean_logprob": 0.3505,
+        "chance": 0.3091,
+        "names_only": {
+          "n": 1653,
+          "accuracy": 0.3884,
+          "chance": 0.4071
+        },
+        "by_answer_type": {
+          "equal/more/less": {
+            "n": 347,
+            "accuracy_sum_logprob": 0.2478,
+            "accuracy_mean_logprob": 0.1844
+          },
+          "name": {
+            "n": 1653,
+            "accuracy_sum_logprob": 0.3612,
+            "accuracy_mean_logprob": 0.3854
+          }
+        }
+      },
+      "test_template": {
+        "split": "test_template",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.3495,
+        "accuracy_mean_logprob": 0.3505,
+        "chance": 0.2949,
+        "names_only": {
+          "n": 1801,
+          "accuracy": 0.3909,
+          "chance": 0.3988
+        },
+        "by_answer_type": {
+          "name": {
+            "n": 1801,
+            "accuracy_sum_logprob": 0.3831,
+            "accuracy_mean_logprob": 0.3887
+          },
+          "equal/more/less": {
+            "n": 199,
+            "accuracy_sum_logprob": 0.0452,
+            "accuracy_mean_logprob": 0.005
+          }
+        }
+      },
+      "test_hop": {
+        "split": "test_hop",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.204,
+        "accuracy_mean_logprob": 0.216,
+        "chance": 0.2146,
+        "names_only": {
+          "n": 1700,
+          "accuracy": 0.1912,
+          "chance": 0.2251
+        },
+        "by_answer_type": {
+          "name": {
+            "n": 1700,
+            "accuracy_sum_logprob": 0.1906,
+            "accuracy_mean_logprob": 0.2047
+          },
+          "equal/more/less": {
+            "n": 300,
+            "accuracy_sum_logprob": 0.28,
+            "accuracy_mean_logprob": 0.28
+          }
+        }
+      }
+    }
+  },
+  {
+    "language": "sindhi",
+    "condition": "pretrained",
+    "splits": {
+      "test_iid": {
+        "split": "test_iid",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.3635,
+        "accuracy_mean_logprob": 0.365,
+        "chance": 0.3061,
+        "names_only": {
+          "n": 1685,
+          "accuracy": 0.4012,
+          "chance": 0.4068
+        },
+        "by_answer_type": {
+          "equal/more/less": {
+            "n": 315,
+            "accuracy_sum_logprob": 0.1619,
+            "accuracy_mean_logprob": 0.1619
+          },
+          "name": {
+            "n": 1685,
+            "accuracy_sum_logprob": 0.4012,
+            "accuracy_mean_logprob": 0.403
+          }
+        }
+      },
+      "test_entity": {
+        "split": "test_entity",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.353,
+        "accuracy_mean_logprob": 0.3465,
+        "chance": 0.3054,
+        "names_only": {
+          "n": 1671,
+          "accuracy": 0.3974,
+          "chance": 0.4064
+        },
+        "by_answer_type": {
+          "name": {
+            "n": 1671,
+            "accuracy_sum_logprob": 0.3974,
+            "accuracy_mean_logprob": 0.3896
+          },
+          "equal/more/less": {
+            "n": 329,
+            "accuracy_sum_logprob": 0.1277,
+            "accuracy_mean_logprob": 0.1277
+          }
+        }
+      },
+      "test_template": {
+        "split": "test_template",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.3385,
+        "accuracy_mean_logprob": 0.347,
+        "chance": 0.2961,
+        "names_only": {
+          "n": 1804,
+          "accuracy": 0.3764,
+          "chance": 0.4035
+        },
+        "by_answer_type": {
+          "name": {
+            "n": 1804,
+            "accuracy_sum_logprob": 0.3753,
+            "accuracy_mean_logprob": 0.3847
+          },
+          "equal/more/less": {
+            "n": 196,
+            "accuracy_sum_logprob": 0.0,
+            "accuracy_mean_logprob": 0.0
+          }
+        }
+      },
+      "test_hop": {
+        "split": "test_hop",
+        "n": 2000,
+        "accuracy_sum_logprob": 0.221,
+        "accuracy_mean_logprob": 0.221,
+        "chance": 0.2187,
+        "names_only": {
+          "n": 1657,
+          "accuracy": 0.2106,
+          "chance": 0.224
+        },
+        "by_answer_type": {
+          "name": {
+            "n": 1657,
+            "accuracy_sum_logprob": 0.2106,
+            "accuracy_mean_logprob": 0.2106
+          },
+          "equal/more/less": {
+            "n": 343,
+            "accuracy_sum_logprob": 0.2711,
+            "accuracy_mean_logprob": 0.2711
+          }
+        }
+      }
+    }
+  }
+]

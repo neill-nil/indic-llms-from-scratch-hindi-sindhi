@@ -1,0 +1,2552 @@
+{
+  "hindi/finetuned_0shot": {
+    "language": "hindi",
+    "file": "hindi/eval/reasoning_finetuned_0shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.7885
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.17
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.7995
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.4785
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.3718,
+        "random_name_or_equal": 0.307,
+        "always_first_mentioned": 0.3465,
+        "always_last_mentioned": 0.3545
+      },
+      "test_entity": {
+        "random_name": 0.3653,
+        "random_name_or_equal": 0.3091,
+        "always_first_mentioned": 0.3225,
+        "always_last_mentioned": 0.3535
+      },
+      "test_template": {
+        "random_name": 0.3591,
+        "random_name_or_equal": 0.2949,
+        "always_first_mentioned": 0.339,
+        "always_last_mentioned": 0.393
+      },
+      "test_hop": {
+        "random_name": 0.2301,
+        "random_name_or_equal": 0.2146,
+        "always_first_mentioned": 0.1795,
+        "always_last_mentioned": 0.223
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 225,
+        "accuracy": 0.3378
+      },
+      "2-5%": {
+        "n": 460,
+        "accuracy": 0.3783
+      },
+      "5-15%": {
+        "n": 1410,
+        "accuracy": 0.5163
+      },
+      "15-40%": {
+        "n": 2326,
+        "accuracy": 0.6466
+      },
+      ">40%": {
+        "n": 1496,
+        "accuracy": 0.6959
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 824,
+        "accuracy": 0.4636
+      },
+      "chain:4": {
+        "n": 220,
+        "accuracy": 0.4045
+      },
+      "chain:5": {
+        "n": 266,
+        "accuracy": 0.2594
+      },
+      "value_compare:2": {
+        "n": 2601,
+        "accuracy": 0.6209
+      },
+      "value_compare:3": {
+        "n": 2575,
+        "accuracy": 0.5899
+      },
+      "value_compare:4": {
+        "n": 774,
+        "accuracy": 0.6072
+      },
+      "value_compare:5": {
+        "n": 740,
+        "accuracy": 0.4446
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3972,
+        "accuracy": 0.5103
+      },
+      "user": {
+        "n": 4028,
+        "accuracy": 0.6072
+      }
+    },
+    "accuracy_by_template": {
+      "H-CH-argmax-1": {
+        "n": 335,
+        "accuracy": 0.2567
+      },
+      "H-CH-argmax-held": {
+        "n": 230,
+        "accuracy": 0.6957
+      },
+      "H-CH-argmin-1": {
+        "n": 370,
+        "accuracy": 0.3297
+      },
+      "H-CH-relation-1": {
+        "n": 375,
+        "accuracy": 0.4587
+      },
+      "H-VC-argmax-1": {
+        "n": 549,
+        "accuracy": 0.4918
+      },
+      "H-VC-argmax-2": {
+        "n": 560,
+        "accuracy": 0.5036
+      },
+      "H-VC-argmax-held": {
+        "n": 459,
+        "accuracy": 0.8344
+      },
+      "H-VC-argmax-user1": {
+        "n": 555,
+        "accuracy": 0.5153
+      },
+      "H-VC-argmax-user2": {
+        "n": 556,
+        "accuracy": 0.5198
+      },
+      "H-VC-argmax-user4": {
+        "n": 453,
+        "accuracy": 0.8057
+      },
+      "H-VC-argmax-user6": {
+        "n": 542,
+        "accuracy": 0.4982
+      },
+      "H-VC-argmax-user8": {
+        "n": 539,
+        "accuracy": 0.5343
+      },
+      "H-VC-argmin-1": {
+        "n": 574,
+        "accuracy": 0.5122
+      },
+      "H-VC-argmin-2": {
+        "n": 520,
+        "accuracy": 0.4962
+      },
+      "H-VC-argmin-user3": {
+        "n": 434,
+        "accuracy": 0.7949
+      },
+      "H-VC-argmin-user5": {
+        "n": 525,
+        "accuracy": 0.4895
+      },
+      "H-VC-argmin-user7": {
+        "n": 424,
+        "accuracy": 0.816
+      }
+    },
+    "errors": {
+      "total": 3527,
+      "by_category": {
+        "false_tie": {
+          "n": 1242,
+          "share": 0.3521
+        },
+        "wrong_entity": {
+          "n": 1026,
+          "share": 0.2909
+        },
+        "off_answer": {
+          "n": 595,
+          "share": 0.1687
+        },
+        "missed_tie": {
+          "n": 357,
+          "share": 0.1012
+        },
+        "relation_flip": {
+          "n": 189,
+          "share": 0.0536
+        },
+        "opposite_extreme": {
+          "n": 118,
+          "share": 0.0335
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "wrong_entity": 159,
+          "false_tie": 54,
+          "missed_tie": 112,
+          "opposite_extreme": 36,
+          "relation_flip": 62
+        },
+        "test_entity": {
+          "false_tie": 1009,
+          "off_answer": 581,
+          "relation_flip": 64,
+          "wrong_entity": 4,
+          "missed_tie": 2
+        },
+        "test_template": {
+          "wrong_entity": 172,
+          "opposite_extreme": 56,
+          "missed_tie": 130,
+          "false_tie": 43
+        },
+        "test_hop": {
+          "missed_tie": 113,
+          "false_tie": 136,
+          "opposite_extreme": 26,
+          "wrong_entity": 691,
+          "relation_flip": 63,
+          "off_answer": 14
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {
+      "first": 256,
+      "middle": 568,
+      "last": 320
+    },
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 54,
+          "accuracy": 0.5185
+        },
+        "2-5%": {
+          "n": 100,
+          "accuracy": 0.48
+        },
+        "5-15%": {
+          "n": 320,
+          "accuracy": 0.7688
+        },
+        "15-40%": {
+          "n": 583,
+          "accuracy": 0.9348
+        },
+        ">40%": {
+          "n": 462,
+          "accuracy": 0.987
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 78,
+          "accuracy": 0.6795
+        },
+        "chain, argmin": {
+          "n": 101,
+          "accuracy": 0.7228
+        },
+        "chain, relation": {
+          "n": 105,
+          "accuracy": 0.4095
+        },
+        "numeric, no tie": {
+          "n": 1519,
+          "accuracy": 0.871
+        },
+        "numeric, tie": {
+          "n": 197,
+          "accuracy": 0.4315
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "generated": {
+          "n": 695,
+          "accuracy": 0.8633
+        },
+        "user": {
+          "n": 824,
+          "accuracy": 0.8774
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.0716,
+        "middle": 0.0799,
+        "last": 0.0718
+      },
+      "relation_confusion": {
+        "gold=ज्यादा predicted=ज्यादा": 28,
+        "gold=कम predicted=ज्यादा": 30,
+        "gold=कम predicted=कम": 15,
+        "gold=ज्यादा predicted=कम": 32
+      }
+    },
+    "qualitative": {
+      "successes": [
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmax-held",
+          "text": "प्रश्न: करण की लंबाई 130 सेमी है। अशोक की लंबाई 146 सेमी है। लंबाई सबसे ज्यादा किसकी है?\nउत्तर:",
+          "gold": "अशोक",
+          "predicted": "अशोक",
+          "error": null
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmax-user4",
+          "text": "प्रश्न: मुंबई की आबादी 156 लाख है। पटना की आबादी 161 लाख है। कोलकाता की आबादी 216 लाख है। कौन ज्यादा आबादी का है?\nउत्तर:",
+          "gold": "कोलकाता",
+          "predicted": "कोलकाता",
+          "error": null
+        },
+        {
+          "split": "test_iid",
+          "template_id": "H-CH-argmax-1",
+          "text": "प्रश्न: मेज की लंबाई बोतल से ज्यादा है। बोतल की लंबाई बगीचे से ज्यादा है। सबसे ज्यादा लंबाई किसकी है?\nउत्तर:",
+          "gold": "मेज",
+          "predicted": "मेज",
+          "error": null
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmin-user3",
+          "text": "प्रश्न: सरिता की लंबाई 114 सेमी है। रचना की लंबाई 127 सेमी है। सोहन की लंबाई 192 सेमी है। कम लंबाई किसकी है इनमें से?\nउत्तर:",
+          "gold": "सरिता",
+          "predicted": "सरिता",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-user8",
+          "text": "प्रश्न: पटना की आबादी 90 लाख है। अमृतसर की आबादी 223 लाख है। लखनऊ की आबादी 63 लाख है। अजमेर की आबादी 258 लाख है। भोपाल की आबादी 258 लाख है। सबसे ज्यादा कौन है आबादी में?\nउत्तर:",
+          "gold": "बराबर",
+          "predicted": "बराबर",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-user8",
+          "text": "प्रश्न: मेज की लंबाई 173 सेमी है। पत्थर की लंबाई 172 सेमी है। साइकिल की लंबाई 100 सेमी है। किताब की लंबाई 137 सेमी है। सबसे ज्यादा कौन है लंबाई में?\nउत्तर:",
+          "gold": "मेज",
+          "predicted": "मेज",
+          "error": null
+        }
+      ],
+      "failures": [
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmin-user5",
+          "text": "प्रश्न: लखनऊ की आबादी 161 लाख है। पटना की आबादी 100 लाख है। नागपुर की आबादी 273 लाख है। सूरत की आबादी 245 लाख है। रांची की आबादी 204 लाख है। इनमें से किसकी आबादी कम है?\nउत्तर:",
+          "gold": "पटना",
+          "predicted": "रांची",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmax-user6",
+          "text": "प्रश्न: श्याम की उम्र 43 साल है। माया की उम्र 62 साल है। इनमें से किसकी उम्र सबसे ज्यादा है?\nउत्तर:",
+          "gold": "माया",
+          "predicted": "बराबर",
+          "error": "false_tie"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-user2",
+          "text": "प्रश्न: चेन्नई की आबादी 94 लाख है। शिमला की आबादी 64 लाख है। जयपुर की आबादी 191 लाख है। दिल्ली की आबादी 152 लाख है। अजमेर की आबादी 280 लाख है। चेन्नई, शिमला, जयपुर, दिल्ली और अजमेर में से किसकी आबादी ज्यादा है?\nउत्तर:",
+          "gold": "अजमेर",
+          "predicted": "जयपुर",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: गौरव की उम्र 66 साल है। प्रवीण की उम्र 61 साल है। राजेश की उम्र 79 साल है। सबसे कम उम्र किसकी है?\nउत्तर:",
+          "gold": "प्रवीण",
+          "predicted": "विजय",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "H-VC-argmax-user1",
+          "text": "प्रश्न: पत्थर की लंबाई 183 सेमी है। मकान की लंबाई 164 सेमी है। कमरे की लंबाई 179 सेमी है। लंबाई में सबसे बड़ा कौन है?\nउत्तर:",
+          "gold": "पत्थर",
+          "predicted": "कमरा",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-user5",
+          "text": "प्रश्न: डिब्बे की लंबाई 123 सेमी है। पेड़ की लंबाई 156 सेमी है। रस्सी की लंबाई 137 सेमी है। इनमें से किसकी लंबाई कम है?\nउत्तर:",
+          "gold": "डिब्बा",
+          "predicted": "कमरा",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-CH-argmax-held",
+          "text": "प्रश्न: रमेश की लंबाई हर्ष से कम है। हर्ष की लंबाई मनोज से कम है। लंबाई सबसे ज्यादा किसकी है?\nउत्तर:",
+          "gold": "मनोज",
+          "predicted": "रमेश",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: पेड़ की लंबाई 142 सेमी है। डिब्बे की लंबाई 133 सेमी है। सबसे कम लंबाई किसकी है?\nउत्तर:",
+          "gold": "डिब्बा",
+          "predicted": "बराबर",
+          "error": "false_tie"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmax-1",
+          "text": "प्रश्न: जोधपुर की आबादी 73 लाख है। इंदौर की आबादी 212 लाख है। उदयपुर की आबादी 66 लाख है। किसकी आबादी ज्यादा है?\nउत्तर:",
+          "gold": "इंदौर",
+          "predicted": "बराबर",
+          "error": "false_tie"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-1",
+          "text": "प्रश्न: पत्थर की कीमत 485 रुपये है। गाड़ी की कीमत 709 रुपये है। बैग की कीमत 2465 रुपये है। साइकिल की कीमत 3062 रुपये है। किसकी कीमत ज्यादा है?\nउत्तर:",
+          "gold": "साइकिल",
+          "predicted": "बराबर",
+          "error": "false_tie"
+        }
+      ]
+    }
+  },
+  "hindi/pretrained_0shot": {
+    "language": "hindi",
+    "file": "hindi/eval/reasoning_pretrained_0shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.0
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.3718,
+        "random_name_or_equal": 0.307,
+        "always_first_mentioned": 0.3465,
+        "always_last_mentioned": 0.3545
+      },
+      "test_entity": {
+        "random_name": 0.3653,
+        "random_name_or_equal": 0.3091,
+        "always_first_mentioned": 0.3225,
+        "always_last_mentioned": 0.3535
+      },
+      "test_template": {
+        "random_name": 0.3591,
+        "random_name_or_equal": 0.2949,
+        "always_first_mentioned": 0.339,
+        "always_last_mentioned": 0.393
+      },
+      "test_hop": {
+        "random_name": 0.2301,
+        "random_name_or_equal": 0.2146,
+        "always_first_mentioned": 0.1795,
+        "always_last_mentioned": 0.223
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 225,
+        "accuracy": 0.0
+      },
+      "2-5%": {
+        "n": 460,
+        "accuracy": 0.0
+      },
+      "5-15%": {
+        "n": 1410,
+        "accuracy": 0.0
+      },
+      "15-40%": {
+        "n": 2326,
+        "accuracy": 0.0
+      },
+      ">40%": {
+        "n": 1496,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 824,
+        "accuracy": 0.0
+      },
+      "chain:4": {
+        "n": 220,
+        "accuracy": 0.0
+      },
+      "chain:5": {
+        "n": 266,
+        "accuracy": 0.0
+      },
+      "value_compare:2": {
+        "n": 2601,
+        "accuracy": 0.0
+      },
+      "value_compare:3": {
+        "n": 2575,
+        "accuracy": 0.0
+      },
+      "value_compare:4": {
+        "n": 774,
+        "accuracy": 0.0
+      },
+      "value_compare:5": {
+        "n": 740,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3972,
+        "accuracy": 0.0
+      },
+      "user": {
+        "n": 4028,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template": {
+      "H-CH-argmax-1": {
+        "n": 335,
+        "accuracy": 0.0
+      },
+      "H-CH-argmax-held": {
+        "n": 230,
+        "accuracy": 0.0
+      },
+      "H-CH-argmin-1": {
+        "n": 370,
+        "accuracy": 0.0
+      },
+      "H-CH-relation-1": {
+        "n": 375,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-1": {
+        "n": 549,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-2": {
+        "n": 560,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-held": {
+        "n": 459,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user1": {
+        "n": 555,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user2": {
+        "n": 556,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user4": {
+        "n": 453,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user6": {
+        "n": 542,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user8": {
+        "n": 539,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-1": {
+        "n": 574,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-2": {
+        "n": 520,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-user3": {
+        "n": 434,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-user5": {
+        "n": 525,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-user7": {
+        "n": 424,
+        "accuracy": 0.0
+      }
+    },
+    "errors": {
+      "total": 8000,
+      "by_category": {
+        "off_answer": {
+          "n": 8000,
+          "share": 1.0
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "off_answer": 2000
+        },
+        "test_entity": {
+          "off_answer": 2000
+        },
+        "test_template": {
+          "off_answer": 2000
+        },
+        "test_hop": {
+          "off_answer": 2000
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {},
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 54,
+          "accuracy": 0.0
+        },
+        "2-5%": {
+          "n": 100,
+          "accuracy": 0.0
+        },
+        "5-15%": {
+          "n": 320,
+          "accuracy": 0.0
+        },
+        "15-40%": {
+          "n": 583,
+          "accuracy": 0.0
+        },
+        ">40%": {
+          "n": 462,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 78,
+          "accuracy": 0.0
+        },
+        "chain, argmin": {
+          "n": 101,
+          "accuracy": 0.0
+        },
+        "chain, relation": {
+          "n": 105,
+          "accuracy": 0.0
+        },
+        "numeric, no tie": {
+          "n": 1519,
+          "accuracy": 0.0
+        },
+        "numeric, tie": {
+          "n": 197,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "generated": {
+          "n": 695,
+          "accuracy": 0.0
+        },
+        "user": {
+          "n": 824,
+          "accuracy": 0.0
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.0,
+        "middle": 0.0,
+        "last": 0.0
+      },
+      "relation_confusion": {
+        "gold=ज्यादा predicted=2019 में जितेंद्र से शादी करने के बाद": 1,
+        "gold=कम predicted=दिल्ली की आबादी 2018 में 20": 2,
+        "gold=कम predicted=राजधानी भोपाल की आबादी 2018 में 2": 2,
+        "gold=ज्यादा predicted=नेहा की उम्र 30 साल है। योगेश की उम्र": 1,
+        "gold=ज्यादा predicted=2019 में आई थी। 20": 1,
+        "gold=ज्यादा predicted=2022 में, 2022": 5,
+        "gold=ज्यादा predicted=2019 में प्रकाशित एक लेख में, लेखक": 1,
+        "gold=ज्यादा predicted=2019 में जन्मे नरेश की उम्र 2": 1,
+        "gold=ज्यादा predicted=भोपाल की आबादी 2011 में 20": 1,
+        "gold=कम predicted=2006 में, 2006": 2,
+        "gold=ज्यादा predicted=दिल्ली की आबादी लखनऊ से ज्यादा है। दिल्ली की आबादी": 1,
+        "gold=ज्यादा predicted=दिल्ली की आबादी 2018 में 20": 2,
+        "gold=ज्यादा predicted=2019 में, संजय का वजन 1": 1,
+        "gold=कम predicted=उषा का वजन मीना से कम है। मीना का वजन मीना": 1,
+        "gold=कम predicted=2019 में, 2019": 2,
+        "gold=ज्यादा predicted=वरुण की लंबाई 1.5 मीटर है। वरुण की": 1,
+        "gold=ज्यादा predicted=2016 में, अमित की लंबाई 2": 1,
+        "gold=ज्यादा predicted=राजधानी पटना में 10000000": 1,
+        "gold=ज्यादा predicted=2019 में प्रकाशित एक लेख में, उषा": 1,
+        "gold=कम predicted=2022 में 2022 में": 5,
+        "gold=कम predicted=दिल्ली की आबादी 2011 में 10": 1,
+        "gold=ज्यादा predicted=2019 में, वह 201": 2,
+        "gold=कम predicted=दिल्ली की आबादी चेन्नई से कम है। दिल्ली की आबादी": 1,
+        "gold=कम predicted=2019 में प्रकाशित एक लेख में, यह": 2,
+        "gold=ज्यादा predicted=2019 में नीलम से शादी की है": 1,
+        "gold=ज्यादा predicted=योगेश की लंबाई वरुण से ज्यादा है। वरुण की लंबाई वरुण": 1,
+        "gold=ज्यादा predicted=दिल्ली की आबादी 2011 में 20": 1,
+        "gold=कम predicted=2022 में, 2022": 1,
+        "gold=ज्यादा predicted=2016 में 10000": 1,
+        "gold=कम predicted=2008 में, 2008": 2,
+        "gold=ज्यादा predicted=2006 में, 2006": 1,
+        "gold=ज्यादा predicted=मेज की लंबाई 1.5 मीटर है। मे": 1,
+        "gold=ज्यादा predicted=दिल्ली की आबादी जयपुर से ज्यादा है। दिल्ली की आबादी": 1,
+        "gold=ज्यादा predicted=नागपुर की आबादी 2011 में 10": 1,
+        "gold=ज्यादा predicted=दिल्ली की आबादी मुंबई से कम है। दिल्ली की आबादी मुंबई": 1,
+        "gold=ज्यादा predicted=राजधानी पटना की आबादी लखनऊ से कम है। लखनऊ की आबादी": 1,
+        "gold=ज्यादा predicted=2022 में 2022 में": 2,
+        "gold=ज्यादा predicted=राजधानी भोपाल की आबादी 2019 में 2": 1,
+        "gold=ज्यादा predicted=लखनऊ की आबादी 2019 में 20": 3,
+        "gold=ज्यादा predicted=मेज का वजन 100 किलो है। मे": 1,
+        "gold=कम predicted=राजधानी पटना की आबादी 2014 में 2": 1,
+        "gold=ज्यादा predicted=2019 में उषा की उम्र 20": 1,
+        "gold=ज्यादा predicted=2008 में, 2008": 3,
+        "gold=ज्यादा predicted=गाड़ी की लंबाई 100 मीटर है। 2": 1,
+        "gold=कम predicted=आशा की उम्र 20 साल है। अंजलि की उम्र": 1,
+        "gold=कम predicted=मनोज की उम्र 6 साल है। वह 20": 2,
+        "gold=ज्यादा predicted=राजधानी रांची की आबादी 2019 में 2": 1,
+        "gold=कम predicted=मेज का वजन 100 किलोग्राम है। मे": 1,
+        "gold=कम predicted=नागपुर की आबादी 1,000 है": 1,
+        "gold=कम predicted=2019 में जन्मे लोग राहुल से ज्यादा वजन": 1,
+        "gold=कम predicted=2022 में भारत में 202": 3,
+        "gold=ज्यादा predicted=नीलम का वजन सोहन से ज्यादा है। 201": 1,
+        "gold=कम predicted=नागपुर की आबादी पटना से कम है। पटना की आबादी पटना": 1,
+        "gold=कम predicted=2016 में, 2016": 2,
+        "gold=ज्यादा predicted=2016 में भारत में 201": 1,
+        "gold=कम predicted=मेज की कीमत 1000000": 1,
+        "gold=ज्यादा predicted=मुंबई की आबादी मुंबई से कम है। मुंबई की आबादी मुंबई": 1,
+        "gold=ज्यादा predicted=रांची की आबादी 2014 में 20": 1,
+        "gold=कम predicted=दिल्ली की आबादी 2011 में 20": 1,
+        "gold=कम predicted=गाड़ी का वजन 100 ग्राम है। 2": 1,
+        "gold=कम predicted=राजधानी में 2014 में 201": 1,
+        "gold=ज्यादा predicted=मुंबई की आबादी 2011 में 10": 1,
+        "gold=कम predicted=2019 में 10000": 1,
+        "gold=कम predicted=नेहा का वजन वरुण से ज्यादा है। वरुण का वजन वरुण": 1,
+        "gold=ज्यादा predicted=आशा का वजन सरिता से कम है। वह 20": 1,
+        "gold=ज्यादा predicted=दिल्ली की आबादी पटना से कम है। दिल्ली की आबादी पटना": 1,
+        "gold=ज्यादा predicted=2008 में प्रकाशित एक लेख में, यह": 1,
+        "gold=कम predicted=2022 में आई पीएचडी की रिपोर्ट": 1,
+        "gold=ज्यादा predicted=रांची की आबादी कोलकाता से कम है। 201": 1,
+        "gold=ज्यादा predicted=राजधानी पटना की आबादी 2019 में 2": 1,
+        "gold=ज्यादा predicted=दिल्ली की आबादी 100000 है": 1,
+        "gold=ज्यादा predicted=राजधानी लखनऊ की आबादी 2019 में 2": 1,
+        "gold=कम predicted=लखनऊ की आबादी 1000000 है": 1,
+        "gold=कम predicted=अर्चना की उम्र 10 साल है। अर्चना की उम्र": 1,
+        "gold=कम predicted=लखनऊ की आबादी 2011 में 20": 1,
+        "gold=ज्यादा predicted=मेज का वजन 100 ग्राम है। मे": 1,
+        "gold=ज्यादा predicted=2019 में प्रकाशित एक लेख में, यह": 1,
+        "gold=ज्यादा predicted=राजधानी भोपाल की आबादी कोलकाता से ज्यादा है। यहां की आबादी": 1,
+        "gold=ज्यादा predicted=लखनऊ की आबादी 2014 में 20": 1,
+        "gold=कम predicted=2022 में, वरुण का वजन 6": 1
+      }
+    },
+    "qualitative": {
+      "successes": [],
+      "failures": [
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-2",
+          "text": "प्रश्न: पत्थर की लंबाई 102 सेमी है। किताब की लंबाई 110 सेमी है। बैग की लंबाई 144 सेमी है। कमरे की लंबाई 103 सेमी है। सबसे ज्यादा लंबाई किसकी है?\nउत्तर:",
+          "gold": "बैग",
+          "predicted": "102 सेमी है। 102",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmax-2",
+          "text": "प्रश्न: उदयपुर की आबादी 293 लाख है। इंदौर की आबादी 291 लाख है। सबसे ज्यादा आबादी किसकी है?\nउत्तर:",
+          "gold": "उदयपुर",
+          "predicted": "2017 में 2017 में",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: संजय का वजन 17 किलो है। कमल का वजन 24 किलो है। सोहन का वजन 9 किलो है। रेखा का वजन 6 किलो है। मीना का वजन 90 किलो है। सबसे कम वजन किसका है?\nउत्तर:",
+          "gold": "रेखा",
+          "predicted": "2019 में भारत में 201",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmin-1",
+          "text": "प्रश्न: करण का वजन 6 किलो है। लता का वजन 39 किलो है। सुनील का वजन 85 किलो है। कमल का वजन 88 किलो है। ममता का वजन 80 किलो है। किसका वजन कम है?\nउत्तर:",
+          "gold": "करण",
+          "predicted": "2019 में भारत में 201",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: उदयपुर की आबादी 272 लाख है। ग्वालियर की आबादी 272 लाख है। सबसे कम आबादी किसकी है?\nउत्तर:",
+          "gold": "बराबर",
+          "predicted": "2016 में 2016 में",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "H-CH-argmin-1",
+          "text": "प्रश्न: बगीचे की कीमत बैग से ज्यादा है। बगीचे की कीमत पत्थर से कम है। सबसे कम कीमत किसकी है?\nउत्तर:",
+          "gold": "बैग",
+          "predicted": "2019 में, 2019",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: कुर्सी की कीमत 4369 रुपये है। पेड़ की कीमत 4349 रुपये है। सबसे कम कीमत किसकी है?\nउत्तर:",
+          "gold": "पेड़",
+          "predicted": "2021 में 2021 में",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-CH-relation-1",
+          "text": "प्रश्न: जयपुर की आबादी चेन्नई से कम है। भोपाल की आबादी चेन्नई से ज्यादा है। भोपाल की आबादी लखनऊ से कम है। लखनऊ की आबादी जयपुर से ज्यादा है या कम?\nउत्तर:",
+          "gold": "ज्यादा",
+          "predicted": "राजधानी लखनऊ की आबादी 2018 में 2",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmax-held",
+          "text": "प्रश्न: भोपाल की आबादी 133 लाख है। पटना की आबादी 81 लाख है। चेन्नई की आबादी 225 लाख है। आबादी सबसे ज्यादा किसकी है?\nउत्तर:",
+          "gold": "चेन्नई",
+          "predicted": "10000000000",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-user5",
+          "text": "प्रश्न: डिब्बे की लंबाई 140 सेमी है। रस्सी की लंबाई 182 सेमी है। इनमें से किसकी लंबाई कम है?\nउत्तर:",
+          "gold": "डिब्बा",
+          "predicted": "182 सेमी है",
+          "error": "off_answer"
+        }
+      ]
+    }
+  },
+  "hindi/pretrained_4shot": {
+    "language": "hindi",
+    "file": "hindi/eval/reasoning_pretrained_4shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.0
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.3718,
+        "random_name_or_equal": 0.307,
+        "always_first_mentioned": 0.3465,
+        "always_last_mentioned": 0.3545
+      },
+      "test_entity": {
+        "random_name": 0.3653,
+        "random_name_or_equal": 0.3091,
+        "always_first_mentioned": 0.3225,
+        "always_last_mentioned": 0.3535
+      },
+      "test_template": {
+        "random_name": 0.3591,
+        "random_name_or_equal": 0.2949,
+        "always_first_mentioned": 0.339,
+        "always_last_mentioned": 0.393
+      },
+      "test_hop": {
+        "random_name": 0.2301,
+        "random_name_or_equal": 0.2146,
+        "always_first_mentioned": 0.1795,
+        "always_last_mentioned": 0.223
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 225,
+        "accuracy": 0.0
+      },
+      "2-5%": {
+        "n": 460,
+        "accuracy": 0.0
+      },
+      "5-15%": {
+        "n": 1410,
+        "accuracy": 0.0
+      },
+      "15-40%": {
+        "n": 2326,
+        "accuracy": 0.0
+      },
+      ">40%": {
+        "n": 1496,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 824,
+        "accuracy": 0.0
+      },
+      "chain:4": {
+        "n": 220,
+        "accuracy": 0.0
+      },
+      "chain:5": {
+        "n": 266,
+        "accuracy": 0.0
+      },
+      "value_compare:2": {
+        "n": 2601,
+        "accuracy": 0.0
+      },
+      "value_compare:3": {
+        "n": 2575,
+        "accuracy": 0.0
+      },
+      "value_compare:4": {
+        "n": 774,
+        "accuracy": 0.0
+      },
+      "value_compare:5": {
+        "n": 740,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3972,
+        "accuracy": 0.0
+      },
+      "user": {
+        "n": 4028,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template": {
+      "H-CH-argmax-1": {
+        "n": 335,
+        "accuracy": 0.0
+      },
+      "H-CH-argmax-held": {
+        "n": 230,
+        "accuracy": 0.0
+      },
+      "H-CH-argmin-1": {
+        "n": 370,
+        "accuracy": 0.0
+      },
+      "H-CH-relation-1": {
+        "n": 375,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-1": {
+        "n": 549,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-2": {
+        "n": 560,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-held": {
+        "n": 459,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user1": {
+        "n": 555,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user2": {
+        "n": 556,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user4": {
+        "n": 453,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user6": {
+        "n": 542,
+        "accuracy": 0.0
+      },
+      "H-VC-argmax-user8": {
+        "n": 539,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-1": {
+        "n": 574,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-2": {
+        "n": 520,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-user3": {
+        "n": 434,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-user5": {
+        "n": 525,
+        "accuracy": 0.0
+      },
+      "H-VC-argmin-user7": {
+        "n": 424,
+        "accuracy": 0.0
+      }
+    },
+    "errors": {
+      "total": 8000,
+      "by_category": {
+        "off_answer": {
+          "n": 8000,
+          "share": 1.0
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "off_answer": 2000
+        },
+        "test_entity": {
+          "off_answer": 2000
+        },
+        "test_template": {
+          "off_answer": 2000
+        },
+        "test_hop": {
+          "off_answer": 2000
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {},
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 54,
+          "accuracy": 0.0
+        },
+        "2-5%": {
+          "n": 100,
+          "accuracy": 0.0
+        },
+        "5-15%": {
+          "n": 320,
+          "accuracy": 0.0
+        },
+        "15-40%": {
+          "n": 583,
+          "accuracy": 0.0
+        },
+        ">40%": {
+          "n": 462,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 78,
+          "accuracy": 0.0
+        },
+        "chain, argmin": {
+          "n": 101,
+          "accuracy": 0.0
+        },
+        "chain, relation": {
+          "n": 105,
+          "accuracy": 0.0
+        },
+        "numeric, no tie": {
+          "n": 1519,
+          "accuracy": 0.0
+        },
+        "numeric, tie": {
+          "n": 197,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "generated": {
+          "n": 695,
+          "accuracy": 0.0
+        },
+        "user": {
+          "n": 824,
+          "accuracy": 0.0
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.0,
+        "middle": 0.0,
+        "last": 0.0
+      },
+      "relation_confusion": {
+        "gold=ज्यादा predicted=गाड़ी की कीमत 1396 रुपये है": 40,
+        "gold=कम predicted=गाड़ी की कीमत 1396 रुपये है": 25,
+        "gold=ज्यादा predicted=गाड़ी की कीमत किताब से कम है": 1,
+        "gold=ज्यादा predicted=गाड़ी का वजन उषा से कम है": 1,
+        "gold=कम predicted=गाड़ी की लंबाई 148 सेमी है": 5,
+        "gold=ज्यादा predicted=गाड़ी संख्या 139 है": 7,
+        "gold=कम predicted=गाड़ी का वजन किताब से कम है": 1,
+        "gold=कम predicted=गाड़ी का वजन राम से कम है": 1,
+        "gold=कम predicted=गाड़ी का वजन 100 किलो है": 7,
+        "gold=ज्यादा predicted=गाड़ी की लंबाई 148 सेमी है": 2,
+        "gold=कम predicted=गाड़ी से ज्यादा है": 1,
+        "gold=ज्यादा predicted=गाड़ी की लंबाई 140 सेमी है": 3,
+        "gold=ज्यादा predicted=गाड़ी का वजन 100 किलो है": 4,
+        "gold=ज्यादा predicted=गाड़ी की लंबाई पत्थर से ज्यादा है": 1,
+        "gold=ज्यादा predicted=गाड़ी की लंबाई साइकिल से ज्यादा है": 1,
+        "gold=कम predicted=गाड़ी संख्या 139 है": 4,
+        "gold=कम predicted=गाड़ी की लंबाई 140 सेमी है": 1
+      }
+    },
+    "qualitative": {
+      "successes": [],
+      "failures": [
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-2",
+          "text": "प्रश्न: पत्थर की लंबाई 102 सेमी है। किताब की लंबाई 110 सेमी है। बैग की लंबाई 144 सेमी है। कमरे की लंबाई 103 सेमी है। सबसे ज्यादा लंबाई किसकी है?\nउत्तर:",
+          "gold": "बैग",
+          "predicted": "गाड़ी की लंबाई 102 सेमी है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmax-2",
+          "text": "प्रश्न: उदयपुर की आबादी 293 लाख है। इंदौर की आबादी 291 लाख है। सबसे ज्यादा आबादी किसकी है?\nउत्तर:",
+          "gold": "उदयपुर",
+          "predicted": "गाड़ी की कीमत 1396 रुपये है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: संजय का वजन 17 किलो है। कमल का वजन 24 किलो है। सोहन का वजन 9 किलो है। रेखा का वजन 6 किलो है। मीना का वजन 90 किलो है। सबसे कम वजन किसका है?\nउत्तर:",
+          "gold": "रेखा",
+          "predicted": "गाड़ी की कीमत 1796 रुपये है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmin-1",
+          "text": "प्रश्न: करण का वजन 6 किलो है। लता का वजन 39 किलो है। सुनील का वजन 85 किलो है। कमल का वजन 88 किलो है। ममता का वजन 80 किलो है। किसका वजन कम है?\nउत्तर:",
+          "gold": "करण",
+          "predicted": "गाड़ी का वजन 60 किलो है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: उदयपुर की आबादी 272 लाख है। ग्वालियर की आबादी 272 लाख है। सबसे कम आबादी किसकी है?\nउत्तर:",
+          "gold": "बराबर",
+          "predicted": "गाड़ी की कीमत 1396 रुपये है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "H-CH-argmin-1",
+          "text": "प्रश्न: बगीचे की कीमत बैग से ज्यादा है। बगीचे की कीमत पत्थर से कम है। सबसे कम कीमत किसकी है?\nउत्तर:",
+          "gold": "बैग",
+          "predicted": "गाड़ी की कीमत 1396 रुपये है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: कुर्सी की कीमत 4369 रुपये है। पेड़ की कीमत 4349 रुपये है। सबसे कम कीमत किसकी है?\nउत्तर:",
+          "gold": "पेड़",
+          "predicted": "गाड़ी की कीमत 4369 रुपये है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-CH-relation-1",
+          "text": "प्रश्न: जयपुर की आबादी चेन्नई से कम है। भोपाल की आबादी चेन्नई से ज्यादा है। भोपाल की आबादी लखनऊ से कम है। लखनऊ की आबादी जयपुर से ज्यादा है या कम?\nउत्तर:",
+          "gold": "ज्यादा",
+          "predicted": "गाड़ी की कीमत 1396 रुपये है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmax-held",
+          "text": "प्रश्न: भोपाल की आबादी 133 लाख है। पटना की आबादी 81 लाख है। चेन्नई की आबादी 225 लाख है। आबादी सबसे ज्यादा किसकी है?\nउत्तर:",
+          "gold": "चेन्नई",
+          "predicted": "गाड़ी संख्या 133 लाख है",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-user5",
+          "text": "प्रश्न: डिब्बे की लंबाई 140 सेमी है। रस्सी की लंबाई 182 सेमी है। इनमें से किसकी लंबाई कम है?\nउत्तर:",
+          "gold": "डिब्बा",
+          "predicted": "गाड़ी की लंबाई 140 सेमी है",
+          "error": "off_answer"
+        }
+      ]
+    }
+  },
+  "sindhi/finetuned_0shot": {
+    "language": "sindhi",
+    "file": "sindhi/eval/reasoning_finetuned_0shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.7365
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.148
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.748
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.453
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.368,
+        "random_name_or_equal": 0.3061,
+        "always_first_mentioned": 0.3355,
+        "always_last_mentioned": 0.3585
+      },
+      "test_entity": {
+        "random_name": 0.3618,
+        "random_name_or_equal": 0.3054,
+        "always_first_mentioned": 0.348,
+        "always_last_mentioned": 0.3445
+      },
+      "test_template": {
+        "random_name": 0.3639,
+        "random_name_or_equal": 0.2961,
+        "always_first_mentioned": 0.3525,
+        "always_last_mentioned": 0.3935
+      },
+      "test_hop": {
+        "random_name": 0.2324,
+        "random_name_or_equal": 0.2187,
+        "always_first_mentioned": 0.169,
+        "always_last_mentioned": 0.218
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 208,
+        "accuracy": 0.3317
+      },
+      "2-5%": {
+        "n": 500,
+        "accuracy": 0.354
+      },
+      "5-15%": {
+        "n": 1403,
+        "accuracy": 0.4498
+      },
+      "15-40%": {
+        "n": 2298,
+        "accuracy": 0.6118
+      },
+      ">40%": {
+        "n": 1511,
+        "accuracy": 0.6704
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 778,
+        "accuracy": 0.3509
+      },
+      "chain:4": {
+        "n": 210,
+        "accuracy": 0.3333
+      },
+      "chain:5": {
+        "n": 286,
+        "accuracy": 0.2587
+      },
+      "value_compare:2": {
+        "n": 2624,
+        "accuracy": 0.6067
+      },
+      "value_compare:3": {
+        "n": 2598,
+        "accuracy": 0.5389
+      },
+      "value_compare:4": {
+        "n": 740,
+        "accuracy": 0.5757
+      },
+      "value_compare:5": {
+        "n": 764,
+        "accuracy": 0.4398
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3976,
+        "accuracy": 0.456
+      },
+      "user": {
+        "n": 4024,
+        "accuracy": 0.586
+      }
+    },
+    "accuracy_by_template": {
+      "S-CH-argmax-1": {
+        "n": 323,
+        "accuracy": 0.1672
+      },
+      "S-CH-argmax-held": {
+        "n": 219,
+        "accuracy": 0.484
+      },
+      "S-CH-argmin-1": {
+        "n": 355,
+        "accuracy": 0.1915
+      },
+      "S-CH-relation-1": {
+        "n": 377,
+        "accuracy": 0.5013
+      },
+      "S-VC-argmax-1": {
+        "n": 598,
+        "accuracy": 0.4365
+      },
+      "S-VC-argmax-2": {
+        "n": 564,
+        "accuracy": 0.4628
+      },
+      "S-VC-argmax-held": {
+        "n": 456,
+        "accuracy": 0.7873
+      },
+      "S-VC-argmax-user1": {
+        "n": 519,
+        "accuracy": 0.4933
+      },
+      "S-VC-argmax-user2": {
+        "n": 514,
+        "accuracy": 0.4883
+      },
+      "S-VC-argmax-user4": {
+        "n": 446,
+        "accuracy": 0.7578
+      },
+      "S-VC-argmax-user6": {
+        "n": 569,
+        "accuracy": 0.4605
+      },
+      "S-VC-argmax-user8": {
+        "n": 536,
+        "accuracy": 0.5243
+      },
+      "S-VC-argmin-1": {
+        "n": 548,
+        "accuracy": 0.5
+      },
+      "S-VC-argmin-2": {
+        "n": 536,
+        "accuracy": 0.4496
+      },
+      "S-VC-argmin-user3": {
+        "n": 448,
+        "accuracy": 0.7924
+      },
+      "S-VC-argmin-user5": {
+        "n": 561,
+        "accuracy": 0.4938
+      },
+      "S-VC-argmin-user7": {
+        "n": 431,
+        "accuracy": 0.7842
+      }
+    },
+    "errors": {
+      "total": 3829,
+      "by_category": {
+        "false_tie": {
+          "n": 1475,
+          "share": 0.3852
+        },
+        "wrong_entity": {
+          "n": 1159,
+          "share": 0.3027
+        },
+        "off_answer": {
+          "n": 493,
+          "share": 0.1288
+        },
+        "missed_tie": {
+          "n": 347,
+          "share": 0.0906
+        },
+        "relation_flip": {
+          "n": 188,
+          "share": 0.0491
+        },
+        "opposite_extreme": {
+          "n": 167,
+          "share": 0.0436
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "wrong_entity": 217,
+          "missed_tie": 136,
+          "opposite_extreme": 65,
+          "false_tie": 59,
+          "relation_flip": 50
+        },
+        "test_entity": {
+          "false_tie": 1160,
+          "off_answer": 493,
+          "relation_flip": 50,
+          "missed_tie": 1
+        },
+        "test_template": {
+          "wrong_entity": 249,
+          "opposite_extreme": 80,
+          "missed_tie": 126,
+          "false_tie": 49
+        },
+        "test_hop": {
+          "wrong_entity": 693,
+          "missed_tie": 84,
+          "relation_flip": 88,
+          "false_tie": 207,
+          "opposite_extreme": 22
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {
+      "last": 374,
+      "first": 388,
+      "middle": 564
+    },
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 41,
+          "accuracy": 0.4634
+        },
+        "2-5%": {
+          "n": 108,
+          "accuracy": 0.4815
+        },
+        "5-15%": {
+          "n": 333,
+          "accuracy": 0.6877
+        },
+        "15-40%": {
+          "n": 581,
+          "accuracy": 0.9157
+        },
+        ">40%": {
+          "n": 446,
+          "accuracy": 0.9753
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 86,
+          "accuracy": 0.4186
+        },
+        "chain, argmin": {
+          "n": 90,
+          "accuracy": 0.4556
+        },
+        "chain, relation": {
+          "n": 101,
+          "accuracy": 0.505
+        },
+        "numeric, no tie": {
+          "n": 1509,
+          "accuracy": 0.8396
+        },
+        "numeric, tie": {
+          "n": 214,
+          "accuracy": 0.3645
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "user": {
+          "n": 847,
+          "accuracy": 0.8571
+        },
+        "generated": {
+          "n": 662,
+          "accuracy": 0.8172
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.0966,
+        "last": 0.1281,
+        "middle": 0.093
+      },
+      "relation_confusion": {
+        "gold=گهٽ predicted=گهٽ": 22,
+        "gold=وڌيڪ predicted=وڌيڪ": 29,
+        "gold=گهٽ predicted=وڌيڪ": 23,
+        "gold=وڌيڪ predicted=گهٽ": 27
+      }
+    },
+    "qualitative": {
+      "successes": [
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmax-held",
+          "text": "سوال: دٻي جو وزن 89 ڪلو آهي. رسي جو وزن 16 ڪلو آهي. باغ جو وزن 92 ڪلو آهي. وزن سڀ کان وڌيڪ ڪنهن جو آهي؟\nجواب:",
+          "gold": "باغ",
+          "predicted": "باغ",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-user2",
+          "text": "سوال: بدين جي آبادي 234 لک آهي. ٺٽي جي آبادي 274 لک آهي. ميرپورخاص جي آبادي 275 لک آهي. جيڪب آباد جي آبادي 275 لک آهي. بدين، ٺٽي، ميرپورخاص ۽ جيڪب آباد مان ڪنهن جي آبادي وڌيڪ آهي؟\nجواب:",
+          "gold": "برابر",
+          "predicted": "برابر",
+          "error": null
+        },
+        {
+          "split": "test_iid",
+          "template_id": "S-VC-argmax-user2",
+          "text": "سوال: نديم جي ڊيگهه 105 سينٽي ميٽر آهي. شاهد جي ڊيگهه 142 سينٽي ميٽر آهي. نديم ۽ شاهد مان ڪنهن جي ڊيگهه وڌيڪ آهي؟\nجواب:",
+          "gold": "شاهد",
+          "predicted": "شاهد",
+          "error": null
+        },
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmax-user4",
+          "text": "سوال: گاڏي جو وزن 52 ڪلو آهي. وڻ جو وزن 48 ڪلو آهي. ڪير وڌيڪ وزن جو آهي؟\nجواب:",
+          "gold": "گاڏي",
+          "predicted": "گاڏي",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmin-1",
+          "text": "سوال: سانگهڙ جي آبادي 127 لک آهي. عمرڪوٽ جي آبادي 32 لک آهي. دادو جي آبادي 70 لک آهي. نوابشاهه جي آبادي 59 لک آهي. ڪنهن جي آبادي گهٽ آهي؟\nجواب:",
+          "gold": "عمرڪوٽ",
+          "predicted": "عمرڪوٽ",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: ڪرسي جو وزن 92 ڪلو آهي. وڻ جو وزن 13 ڪلو آهي. سائيڪل جو وزن 53 ڪلو آهي. ڪمري جو وزن 91 ڪلو آهي. ڪنهن جو وزن وڌيڪ آهي؟\nجواب:",
+          "gold": "ڪرسي",
+          "predicted": "ڪرسي",
+          "error": null
+        }
+      ],
+      "failures": [
+        {
+          "split": "test_hop",
+          "template_id": "S-CH-argmin-1",
+          "text": "سوال: نازيه جي عمر اختر کان گهٽ آهي. حسين جي عمر نازيه کان گهٽ آهي. حامد جي عمر اختر کان وڌيڪ آهي. سعيد جي عمر حسين کان گهٽ آهي. سڀ کان گهٽ عمر ڪنهن جي آهي؟\nجواب:",
+          "gold": "سعيد",
+          "predicted": "حسين",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: ٽنڊوآدم جي آبادي 170 لک آهي. لاڙڪاڻي جي آبادي 53 لک آهي. ڪنهن جي آبادي وڌيڪ آهي؟\nجواب:",
+          "gold": "ٽنڊوآدم",
+          "predicted": "برابر",
+          "error": "false_tie"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-user8",
+          "text": "سوال: ٿيلهي جي ڊيگهه 158 سينٽي ميٽر آهي. بوتل جي ڊيگهه 174 سينٽي ميٽر آهي. وڻ جي ڊيگهه 175 سينٽي ميٽر آهي. باغ جي ڊيگهه 146 سينٽي ميٽر آهي. سڀ کان وڌيڪ ڪير آهي ڊيگهه ۾؟\nجواب:",
+          "gold": "وڻ",
+          "predicted": "برابر",
+          "error": "false_tie"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmin-user5",
+          "text": "سوال: موري جي آبادي 116 لک آهي. نوشهرو فيروز جي آبادي 232 لک آهي. بدين جي آبادي 11 لک آهي. دادو جي آبادي 40 لک آهي. انهن مان ڪنهن جي آبادي گهٽ آهي؟\nجواب:",
+          "gold": "بدين",
+          "predicted": "دادو",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmin-user5",
+          "text": "سوال: دري جي ڊيگهه 121 سينٽي ميٽر آهي. ميز جي ڊيگهه 168 سينٽي ميٽر آهي. پٿر جي ڊيگهه 116 سينٽي ميٽر آهي. انهن مان ڪنهن جي ڊيگهه گهٽ آهي؟\nجواب:",
+          "gold": "پٿر",
+          "predicted": "دٻو",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "S-VC-argmax-user2",
+          "text": "سوال: ناصر جو وزن 32 ڪلو آهي. اسلم جو وزن 46 ڪلو آهي. شبانه جو وزن 38 ڪلو آهي. ناصر، اسلم ۽ شبانه مان ڪنهن جو وزن وڌيڪ آهي؟\nجواب:",
+          "gold": "اسلم",
+          "predicted": "شبانه",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-2",
+          "text": "سوال: الطاف جو وزن 73 ڪلو آهي. رخسانه جو وزن 67 ڪلو آهي. سڀ کان وڌيڪ وزن ڪنهن جو آهي؟\nجواب:",
+          "gold": "الطاف",
+          "predicted": "برابر",
+          "error": "false_tie"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmin-1",
+          "text": "سوال: لاڙڪاڻي جي آبادي 21 لک آهي. حيدرآباد جي آبادي 80 لک آهي. ٽنڊوآدم جي آبادي 50 لک آهي. ڪنهن جي آبادي گهٽ آهي؟\nجواب:",
+          "gold": "لاڙڪاڻو",
+          "predicted": "سکر",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmin-2",
+          "text": "سوال: خيرپور جي آبادي 186 لک آهي. ٽنڊوآدم جي آبادي 284 لک آهي. لاڙڪاڻي جي آبادي 46 لک آهي. سڀ کان گهٽ آبادي ڪنهن جي آهي؟\nجواب:",
+          "gold": "لاڙڪاڻو",
+          "predicted": "سکر",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-user1",
+          "text": "سوال: دري جي قيمت 2545 رپيا آهي. گهر جي قيمت 4557 رپيا آهي. ميز جي قيمت 4280 رپيا آهي. قيمت ۾ سڀ کان وڏو ڪير آهي؟\nجواب:",
+          "gold": "گهر",
+          "predicted": "برابر",
+          "error": "false_tie"
+        }
+      ]
+    }
+  },
+  "sindhi/pretrained_0shot": {
+    "language": "sindhi",
+    "file": "sindhi/eval/reasoning_pretrained_0shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.0
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.368,
+        "random_name_or_equal": 0.3061,
+        "always_first_mentioned": 0.3355,
+        "always_last_mentioned": 0.3585
+      },
+      "test_entity": {
+        "random_name": 0.3618,
+        "random_name_or_equal": 0.3054,
+        "always_first_mentioned": 0.348,
+        "always_last_mentioned": 0.3445
+      },
+      "test_template": {
+        "random_name": 0.3639,
+        "random_name_or_equal": 0.2961,
+        "always_first_mentioned": 0.3525,
+        "always_last_mentioned": 0.3935
+      },
+      "test_hop": {
+        "random_name": 0.2324,
+        "random_name_or_equal": 0.2187,
+        "always_first_mentioned": 0.169,
+        "always_last_mentioned": 0.218
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 208,
+        "accuracy": 0.0
+      },
+      "2-5%": {
+        "n": 500,
+        "accuracy": 0.0
+      },
+      "5-15%": {
+        "n": 1403,
+        "accuracy": 0.0
+      },
+      "15-40%": {
+        "n": 2298,
+        "accuracy": 0.0
+      },
+      ">40%": {
+        "n": 1511,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 778,
+        "accuracy": 0.0
+      },
+      "chain:4": {
+        "n": 210,
+        "accuracy": 0.0
+      },
+      "chain:5": {
+        "n": 286,
+        "accuracy": 0.0
+      },
+      "value_compare:2": {
+        "n": 2624,
+        "accuracy": 0.0
+      },
+      "value_compare:3": {
+        "n": 2598,
+        "accuracy": 0.0
+      },
+      "value_compare:4": {
+        "n": 740,
+        "accuracy": 0.0
+      },
+      "value_compare:5": {
+        "n": 764,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3976,
+        "accuracy": 0.0
+      },
+      "user": {
+        "n": 4024,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template": {
+      "S-CH-argmax-1": {
+        "n": 323,
+        "accuracy": 0.0
+      },
+      "S-CH-argmax-held": {
+        "n": 219,
+        "accuracy": 0.0
+      },
+      "S-CH-argmin-1": {
+        "n": 355,
+        "accuracy": 0.0
+      },
+      "S-CH-relation-1": {
+        "n": 377,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-1": {
+        "n": 598,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-2": {
+        "n": 564,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-held": {
+        "n": 456,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user1": {
+        "n": 519,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user2": {
+        "n": 514,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user4": {
+        "n": 446,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user6": {
+        "n": 569,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user8": {
+        "n": 536,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-1": {
+        "n": 548,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-2": {
+        "n": 536,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-user3": {
+        "n": 448,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-user5": {
+        "n": 561,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-user7": {
+        "n": 431,
+        "accuracy": 0.0
+      }
+    },
+    "errors": {
+      "total": 8000,
+      "by_category": {
+        "off_answer": {
+          "n": 8000,
+          "share": 1.0
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "off_answer": 2000
+        },
+        "test_entity": {
+          "off_answer": 2000
+        },
+        "test_template": {
+          "off_answer": 2000
+        },
+        "test_hop": {
+          "off_answer": 2000
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {},
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 41,
+          "accuracy": 0.0
+        },
+        "2-5%": {
+          "n": 108,
+          "accuracy": 0.0
+        },
+        "5-15%": {
+          "n": 333,
+          "accuracy": 0.0
+        },
+        "15-40%": {
+          "n": 581,
+          "accuracy": 0.0
+        },
+        ">40%": {
+          "n": 446,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 86,
+          "accuracy": 0.0
+        },
+        "chain, argmin": {
+          "n": 90,
+          "accuracy": 0.0
+        },
+        "chain, relation": {
+          "n": 101,
+          "accuracy": 0.0
+        },
+        "numeric, no tie": {
+          "n": 1509,
+          "accuracy": 0.0
+        },
+        "numeric, tie": {
+          "n": 214,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "user": {
+          "n": 847,
+          "accuracy": 0.0
+        },
+        "generated": {
+          "n": 662,
+          "accuracy": 0.0
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.0,
+        "last": 0.0,
+        "middle": 0.0
+      },
+      "relation_confusion": {
+        "gold=گهٽ predicted=10 سيڪڙو آبادي موري کان وڌيڪ آهي. نوابشاهه جي": 1,
+        "gold=وڌيڪ predicted=انور جي عمر 12 سال آهي. انور جي عمر": 1,
+        "gold=گهٽ predicted=1.5 سيڪڙو آهي. جڏهن ته 1": 4,
+        "gold=وڌيڪ predicted=1998ع ۾، سليم جي عمر": 1,
+        "gold=وڌيڪ predicted=اختر جي عمر 12 سال آهي. نديم جي عمر": 1,
+        "gold=گهٽ predicted=10 سيڪڙو آبادي آهي. ڪراچي جي آبادي قمبر کان": 1,
+        "gold=وڌيڪ predicted=1000 چورس ڪلوميٽر آهي. دادو جي آبادي": 1,
+        "gold=وڌيڪ predicted=ٺٽي کان گهٽ آهي. ٺٽي کان گهٽ آهي. ٺٽي کان": 1,
+        "gold=وڌيڪ predicted=1000 چورس ڪلوميٽر آهي. هي علائقو دادو": 1,
+        "gold=وڌيڪ predicted=بوتل جي قيمت 1000 رپيا آهي. قيمت": 2,
+        "gold=گهٽ predicted=دٻي جي ڊيگهه 1000 ميٽر آهي. جڏهن": 1,
+        "gold=گهٽ predicted=خالد جي عمر سارا کان وڌيڪ آهي. زبيده جي": 1,
+        "gold=وڌيڪ predicted=موري جي آبادي ٺٽي کان گهٽ آهي. دادو جي آبادي ٺٽي": 1,
+        "gold=وڌيڪ predicted=100 کان وڌيڪ آهي. 100": 3,
+        "gold=وڌيڪ predicted=گاڏي جي ڊيگهه 1000 ميٽر آهي. جڏهن": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آبادي موري کان گهٽ آهي. دادو": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آبادي ڪراچي کان گهٽ آهي. ڪراچي": 1,
+        "gold=گهٽ predicted=زاهد جو وزن 100 گرام آهي. زحل": 1,
+        "gold=گهٽ predicted=100 گرام وزن: 10 گرام وزن": 2,
+        "gold=گهٽ predicted=1000 چورس ڪلوميٽر آهي. هن علائقي ۾": 1,
+        "gold=وڌيڪ predicted=جميل جو وزن 100 پائونڊ آهي. خالد جو": 1,
+        "gold=گهٽ predicted=دادو جي آبادي شڪارپور کان گهٽ آهي. دادو جي آبادي شڪارپور": 1,
+        "gold=وڌيڪ predicted=خالد جي ڊيگهه 100 ميٽر آهي. خالد جي": 1,
+        "gold=گهٽ predicted=رابعه کان گهٽ آهي. سارا جي ڊيگهه": 1,
+        "gold=وڌيڪ predicted=فرزانه جي عمر 12 سال آهي. حامد جي عمر": 1,
+        "gold=وڌيڪ predicted=اسلم جو وزن رابعه کان وڌيڪ آهي. جڏهن": 1,
+        "gold=وڌيڪ predicted=100 کان وڌيڪ آهي.اهو هڪ وڏو مسئلو": 1,
+        "gold=گهٽ predicted=اهو وزن آهي. اهو وزن آهي. اهو وزن آهي": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آبادي شڪارپور کان وڌيڪ آهي. شڪارپور": 1,
+        "gold=گهٽ predicted=1.5 سيڪڙو آهي. = 1.5": 1,
+        "gold=گهٽ predicted=عائشه جي عمر خالد کان وڌيڪ آهي. عائشه جي عمر خالد": 1,
+        "gold=وڌيڪ predicted=شگفته جي ڊيگهه رابعه کان وڌيڪ": 1,
+        "gold=گهٽ predicted=1000،000،00": 1,
+        "gold=گهٽ predicted=هي شهر ڪراچي کان وڌيڪ آهي. ڪراچي کان وڌيڪ آهي": 1,
+        "gold=گهٽ predicted=10000 کان وڌيڪ آهي. 1": 1,
+        "gold=گهٽ predicted=1.5 ميٽر آهي. مريم جي ڊيگهه 1": 1,
+        "gold=وڌيڪ predicted=بوتل جي ڊيگهه ڪتاب کان وڌيڪ آهي. سائيڪل جي ڊيگهه ڪتاب": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آهي. 1.5 سيڪڙو": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آبادي قمبر کان وڌيڪ آهي. قمبر": 1,
+        "gold=وڌيڪ predicted=1000 چورس ڪلوميٽر آهي. هي علائقو": 1,
+        "gold=گهٽ predicted=شگفته جي ڊيگهه 1000 ميٽر": 1,
+        "gold=وڌيڪ predicted=100 کان وڌيڪ آهي. نسيم جي ڊيگهه": 1,
+        "gold=گهٽ predicted=100 گرام وزن: 100 گرام": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آبادي: 1.5 سيڪڙو": 1,
+        "gold=وڌيڪ predicted=1000 چورس ڪلوميٽر آهي. ٺٽي جي آبادي": 1,
+        "gold=وڌيڪ predicted=1000 چورس ڪلوميٽر آهي. اهو 1": 1,
+        "gold=وڌيڪ predicted=1990ع ۾ شڪارپور جي آبادي موري کان": 1,
+        "gold=گهٽ predicted=بوتل جي قيمت 1000 رپيا آهي. قيمت": 1,
+        "gold=وڌيڪ predicted=شگفته جي عمر سارا کان وڌيڪ آهي. شب": 1,
+        "gold=گهٽ predicted=هڪ قسم جو وڻ آهي جيڪو توهان کي پنهنجي گهر ۾ رهڻ": 1,
+        "gold=گهٽ predicted=100 کان وڌيڪ آهي.تنهن ڪري، اسان": 1,
+        "gold=گهٽ predicted=امير جي عمر 10 سال آهي. ڪريم جي عمر": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آهي. جڏهن ته 1": 2,
+        "gold=وڌيڪ predicted=دٻي جي ڊيگهه 1000 ميٽر آهي. سائيز": 1,
+        "gold=گهٽ predicted=احمد جي عمر 12 سال آهي. احمد جي عمر": 1,
+        "gold=گهٽ predicted=جيڪب آباد جي آبادي 10000 آهي": 1,
+        "gold=وڌيڪ predicted=10 سيڪڙو آبادي ڪراچي کان گهٽ آهي. ڪراچي کان": 1,
+        "gold=وڌيڪ predicted=حامد جي عمر منصور کان وڌيڪ آهي. مريم جي عمر منصور": 1,
+        "gold=وڌيڪ predicted=ڪرسي جو وزن وڻ کان وڌيڪ آهي. اهو هڪ سٺو وزن": 1,
+        "gold=گهٽ predicted=1.5 سيڪڙو آهي. سراسري طور تي 1": 1,
+        "gold=گهٽ predicted=100 کان وڌيڪ آهي. 100": 1,
+        "gold=گهٽ predicted=خالد جو وزن 100 پائونڊ آهي. خالد جو": 1,
+        "gold=گهٽ predicted=هڪ قسم جو وزن آهي. اهو وزن آهي. اهو وزن": 1,
+        "gold=وڌيڪ predicted=100 کان وڌيڪ آهي.تنهن ڪري، توهان": 1,
+        "gold=گهٽ predicted=شاهد جي عمر رابعه کان وڌيڪ آهي. عابد": 1,
+        "gold=وڌيڪ predicted=رشيد جو وزن 100 گرام آهي. ان کان": 1,
+        "gold=گهٽ predicted=100٪ آهي. اهو هڪ تمام گهڻو آهي": 1,
+        "gold=گهٽ predicted=ڪرسي جي قيمت 1000،000": 1,
+        "gold=گهٽ predicted=هڪ سائيڪل جي قيمت کان وڌيڪ آهي. قيمت جي قيمت کان": 1,
+        "gold=وڌيڪ predicted=هڪ قسم جو وزن آهي.اهو وزن جي ڀيٽ ۾ گهٽ": 1,
+        "gold=وڌيڪ predicted=1.5 سيڪڙو آبادي موري کان وڌيڪ آهي. جڏهن": 1,
+        "gold=وڌيڪ predicted=100٪ کان وڌيڪ آهي. اهو هڪ بهترين": 1,
+        "gold=گهٽ predicted=نسيم جي ڊيگهه 100 ميٽر آهي. نسيم جي": 1,
+        "gold=وڌيڪ predicted=عائشه کان وڌيڪ آهي. عائشه کان وڌيڪ آهي. عائشه کان": 1,
+        "gold=گهٽ predicted=100 گرام وزن جي ڀيٽ ۾ گهٽ آهي": 1,
+        "gold=وڌيڪ predicted=عابد جو وزن 100 گرام آهي. عابد جو": 1,
+        "gold=وڌيڪ predicted=بوتل جي وزن جي ڀيٽ ۾ وڌيڪ آهي. اهو وزن جي": 1,
+        "gold=وڌيڪ predicted=اسلم جي ڊيگهه 100 ميٽر آهي. عائشه جي": 1,
+        "gold=وڌيڪ predicted=100 گرام وزن: 100 گرام": 1,
+        "gold=گهٽ predicted=1.5 سيڪڙو آبادي سکر کان وڌيڪ آهي. ڪراچي": 1,
+        "gold=وڌيڪ predicted=سائيڪل جي قيمت 1000 رپيا آهي. قيمت": 1,
+        "gold=وڌيڪ predicted=جميل جو وزن 100 پائونڊ آهي. جميل جو": 1,
+        "gold=وڌيڪ predicted=100 کان وڌيڪ آهي.| |مفت": 2,
+        "gold=وڌيڪ predicted=1000 چورس ڪلوميٽر آهي. هن علائقي ۾": 1,
+        "gold=گهٽ predicted=انور جي عمر 10 سال آهي. انور جي عمر": 1,
+        "gold=وڌيڪ predicted=بوتل جي وزن جي ڀيٽ ۾ گهٽ آهي. بوتل جي وزن": 1,
+        "gold=گهٽ predicted=وزن 10000 ڪلو آهي. وزن": 1,
+        "gold=گهٽ predicted=زاهد جو وزن 100 گرام آهي. زاهد جو": 1,
+        "gold=وڌيڪ predicted=بوتل جي وزن کان وڌيڪ آهي.اهو وزن جي ڀيٽ ۾": 1,
+        "gold=گهٽ predicted=بوتل جو وزن 1000 پائونڊ آهي. بوتل": 1,
+        "gold=وڌيڪ predicted=سائيڪل جو وزن 1000 ڪلو آهي. اهو": 1,
+        "gold=گهٽ predicted=امير جو وزن حسين کان وڌيڪ آهي. امير جو وزن حسين": 1
+      }
+    },
+    "qualitative": {
+      "successes": [],
+      "failures": [
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmin-user5",
+          "text": "سوال: زبيده جو وزن 49 ڪلو آهي. صفيه جو وزن 91 ڪلو آهي. توفيق جو وزن 39 ڪلو آهي. حامد جو وزن 91 ڪلو آهي. انهن مان ڪنهن جو وزن گهٽ آهي؟\nجواب:",
+          "gold": "توفيق",
+          "predicted": "زبيده جو وزن 10 ڪلو آهي. ز",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-user8",
+          "text": "سوال: ميز جي ڊيگهه 171 سينٽي ميٽر آهي. پٿر جي ڊيگهه 123 سينٽي ميٽر آهي. دري جي ڊيگهه 100 سينٽي ميٽر آهي. سڀ کان وڌيڪ ڪير آهي ڊيگهه ۾؟\nجواب:",
+          "gold": "ميز",
+          "predicted": "10 سينٽي ميٽر آهي. 10 سينٽي ميٽر",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: ڪتاب جي قيمت 764 رپيا آهي. رسي جي قيمت 4722 رپيا آهي. دٻي جي قيمت 36 رپيا آهي. وڻ جي قيمت 1447 رپيا آهي. ڪنهن جي قيمت وڌيڪ آهي؟\nجواب:",
+          "gold": "رسي",
+          "predicted": "100 رپيا آهي. قيمت 147",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmin-1",
+          "text": "سوال: بوتل جي ڊيگهه 131 سينٽي ميٽر آهي. ٿيلهي جي ڊيگهه 105 سينٽي ميٽر آهي. دٻي جي ڊيگهه 165 سينٽي ميٽر آهي. ڪمري جي ڊيگهه 185 سينٽي ميٽر آهي. ڪنهن جي ڊيگهه گهٽ آهي؟\nجواب:",
+          "gold": "ٿيلهو",
+          "predicted": "100 سينٽي ميٽر آهي. سائيز 10",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: خيرپور جي آبادي 20 لک آهي. ٽنڊوآدم جي آبادي 85 لک آهي. ڪنهن جي آبادي وڌيڪ آهي؟\nجواب:",
+          "gold": "ٽنڊوآدم",
+          "predicted": "10 لک آهي.؟؟�جواب",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "S-VC-argmin-1",
+          "text": "سوال: سارا جي عمر 36 سال آهي. اختر جي عمر 36 سال آهي. حسين جي عمر 26 سال آهي. ڪنهن جي عمر گهٽ آهي؟\nجواب:",
+          "gold": "حسين",
+          "predicted": "10 سال آهي. اختر جي عمر 36",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-user6",
+          "text": "سوال: ميز جي قيمت 1841 رپيا آهي. دري جي قيمت 843 رپيا آهي. انهن مان ڪنهن جي قيمت سڀ کان وڌيڪ آهي؟\nجواب:",
+          "gold": "ميز",
+          "predicted": "100 رپيا آهي. اهو 100",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-user1",
+          "text": "سوال: شبانه جو وزن 49 ڪلو آهي. خالد جو وزن 11 ڪلو آهي. سارا جو وزن 99 ڪلو آهي. حسين جو وزن 95 ڪلو آهي. وحيد جو وزن 45 ڪلو آهي. وزن ۾ سڀ کان وڏو ڪير آهي؟\nجواب:",
+          "gold": "سارا",
+          "predicted": "10 ڪلو وزن 10 ڪلو آهي. خالد",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmin-user3",
+          "text": "سوال: سائيڪل جو وزن 58 ڪلو آهي. گاڏي جو وزن 88 ڪلو آهي. ڪرسي جو وزن 81 ڪلو آهي. گهٽ وزن ڪنهن جو آهي انهن مان؟\nجواب:",
+          "gold": "سائيڪل",
+          "predicted": "سائيڪل جو وزن 10 ڪلو آهي. اسڪوٽر جو وزن",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmin-2",
+          "text": "سوال: حيدرآباد جي آبادي 64 لک آهي. لاڙڪاڻي جي آبادي 185 لک آهي. ٽنڊوآدم جي آبادي 185 لک آهي. سڀ کان گهٽ آبادي ڪنهن جي آهي؟\nجواب:",
+          "gold": "حيدرآباد",
+          "predicted": "1.5 سيڪڙو آبادي 1.5 سيڪڙو آبادي",
+          "error": "off_answer"
+        }
+      ]
+    }
+  },
+  "sindhi/pretrained_4shot": {
+    "language": "sindhi",
+    "file": "sindhi/eval/reasoning_pretrained_4shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.0
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.0
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.368,
+        "random_name_or_equal": 0.3061,
+        "always_first_mentioned": 0.3355,
+        "always_last_mentioned": 0.3585
+      },
+      "test_entity": {
+        "random_name": 0.3618,
+        "random_name_or_equal": 0.3054,
+        "always_first_mentioned": 0.348,
+        "always_last_mentioned": 0.3445
+      },
+      "test_template": {
+        "random_name": 0.3639,
+        "random_name_or_equal": 0.2961,
+        "always_first_mentioned": 0.3525,
+        "always_last_mentioned": 0.3935
+      },
+      "test_hop": {
+        "random_name": 0.2324,
+        "random_name_or_equal": 0.2187,
+        "always_first_mentioned": 0.169,
+        "always_last_mentioned": 0.218
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 208,
+        "accuracy": 0.0
+      },
+      "2-5%": {
+        "n": 500,
+        "accuracy": 0.0
+      },
+      "5-15%": {
+        "n": 1403,
+        "accuracy": 0.0
+      },
+      "15-40%": {
+        "n": 2298,
+        "accuracy": 0.0
+      },
+      ">40%": {
+        "n": 1511,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 778,
+        "accuracy": 0.0
+      },
+      "chain:4": {
+        "n": 210,
+        "accuracy": 0.0
+      },
+      "chain:5": {
+        "n": 286,
+        "accuracy": 0.0
+      },
+      "value_compare:2": {
+        "n": 2624,
+        "accuracy": 0.0
+      },
+      "value_compare:3": {
+        "n": 2598,
+        "accuracy": 0.0
+      },
+      "value_compare:4": {
+        "n": 740,
+        "accuracy": 0.0
+      },
+      "value_compare:5": {
+        "n": 764,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3976,
+        "accuracy": 0.0
+      },
+      "user": {
+        "n": 4024,
+        "accuracy": 0.0
+      }
+    },
+    "accuracy_by_template": {
+      "S-CH-argmax-1": {
+        "n": 323,
+        "accuracy": 0.0
+      },
+      "S-CH-argmax-held": {
+        "n": 219,
+        "accuracy": 0.0
+      },
+      "S-CH-argmin-1": {
+        "n": 355,
+        "accuracy": 0.0
+      },
+      "S-CH-relation-1": {
+        "n": 377,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-1": {
+        "n": 598,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-2": {
+        "n": 564,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-held": {
+        "n": 456,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user1": {
+        "n": 519,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user2": {
+        "n": 514,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user4": {
+        "n": 446,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user6": {
+        "n": 569,
+        "accuracy": 0.0
+      },
+      "S-VC-argmax-user8": {
+        "n": 536,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-1": {
+        "n": 548,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-2": {
+        "n": 536,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-user3": {
+        "n": 448,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-user5": {
+        "n": 561,
+        "accuracy": 0.0
+      },
+      "S-VC-argmin-user7": {
+        "n": 431,
+        "accuracy": 0.0
+      }
+    },
+    "errors": {
+      "total": 8000,
+      "by_category": {
+        "off_answer": {
+          "n": 7993,
+          "share": 0.9991
+        },
+        "false_tie": {
+          "n": 7,
+          "share": 0.0009
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "off_answer": 2000
+        },
+        "test_entity": {
+          "off_answer": 1993,
+          "false_tie": 7
+        },
+        "test_template": {
+          "off_answer": 2000
+        },
+        "test_hop": {
+          "off_answer": 2000
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {},
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 41,
+          "accuracy": 0.0
+        },
+        "2-5%": {
+          "n": 108,
+          "accuracy": 0.0
+        },
+        "5-15%": {
+          "n": 333,
+          "accuracy": 0.0
+        },
+        "15-40%": {
+          "n": 581,
+          "accuracy": 0.0
+        },
+        ">40%": {
+          "n": 446,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 86,
+          "accuracy": 0.0
+        },
+        "chain, argmin": {
+          "n": 90,
+          "accuracy": 0.0
+        },
+        "chain, relation": {
+          "n": 101,
+          "accuracy": 0.0
+        },
+        "numeric, no tie": {
+          "n": 1509,
+          "accuracy": 0.0
+        },
+        "numeric, tie": {
+          "n": 214,
+          "accuracy": 0.0
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "user": {
+          "n": 847,
+          "accuracy": 0.0
+        },
+        "generated": {
+          "n": 662,
+          "accuracy": 0.0
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.0,
+        "last": 0.0,
+        "middle": 0.0
+      },
+      "relation_confusion": {
+        "gold=گهٽ predicted=1910ع ۾ دادو ضلعي جي آبادي": 1,
+        "gold=وڌيڪ predicted=ثمينه جي عمر 18 سال آهي. انور": 1,
+        "gold=گهٽ predicted=1910ع ۾ ڪراچي کان وڌيڪ آهي": 2,
+        "gold=وڌيڪ predicted=ثمينه جي عمر 18 سال آهي. خالد": 1,
+        "gold=وڌيڪ predicted=ثمينه جي عمر 18 سال آهي. وحيد": 1,
+        "gold=گهٽ predicted=1000 کان وڌيڪ آهي": 5,
+        "gold=وڌيڪ predicted=1910ع ۾ ڪراچي کان وڌيڪ آهي": 4,
+        "gold=وڌيڪ predicted=1000 کان وڌيڪ آهي": 7,
+        "gold=وڌيڪ predicted=100 سينٽي ميٽر آهي": 12,
+        "gold=وڌيڪ predicted=1000 ملي ميٽر آهي": 2,
+        "gold=گهٽ predicted=100 سينٽي ميٽر آهي": 5,
+        "gold=گهٽ predicted=ثمينه جي عمر 18 سال آهي. خالد": 1,
+        "gold=وڌيڪ predicted=دادو جي آبادي 1900 آهي. دادو جي": 1,
+        "gold=وڌيڪ predicted=1910ع ۾ شڪارپور جي آبادي 1": 2,
+        "gold=وڌيڪ predicted=1910ع ۾ دادو ضلعي ۾ آهي": 2,
+        "gold=وڌيڪ predicted=1910ع ۾ ڪراچي کان گهٽ آهي": 1,
+        "gold=گهٽ predicted=ثمينه جو وزن 100 سينٽي ميٽر آهي": 3,
+        "gold=گهٽ predicted=ثمينه جو وزن بلال کان وڌيڪ آهي. شبانه": 1,
+        "gold=گهٽ predicted=دادو ضلعي جي آبادي 1900 آهي. دادو": 1,
+        "gold=وڌيڪ predicted=ثمينه ۽ طارق مان ڪنهن جي عمر وڌيڪ آهي": 1,
+        "gold=گهٽ predicted=دادو جي آبادي 1900 آهي": 1,
+        "gold=وڌيڪ predicted=ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي": 5,
+        "gold=گهٽ predicted=ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي": 5,
+        "gold=وڌيڪ predicted=ثمينه جي عمر 18 سال آهي. عمر": 3,
+        "gold=وڌيڪ predicted=ثمينه جو وزن 100 سينٽي ميٽر آهي": 1,
+        "gold=گهٽ predicted=دادو کان وڌيڪ آهي. دادو کان وڌيڪ آهي. دادو کان": 1,
+        "gold=گهٽ predicted=1910ع ۾ ڪراچي کان ڪراچي تائين آهي": 2,
+        "gold=گهٽ predicted=ثمينه جي عمر 18 سال آهي. عائشه": 1,
+        "gold=گهٽ predicted=ثمينه جو وزن ناصر کان گهٽ آهي": 1,
+        "gold=وڌيڪ predicted=1910ع ۾ ڪراچي جي آبادي 1": 1,
+        "gold=وڌيڪ predicted=1910ع ۾ دادو ضلعي جي آبادي": 1,
+        "gold=گهٽ predicted=1000 ملي ميٽر آهي": 3,
+        "gold=وڌيڪ predicted=ثمينه جي عمر 18 سال آهي. شب": 1,
+        "gold=گهٽ predicted=100 سينٽي ميٽر آهي. اهو هڪ وڏو آهي": 1,
+        "gold=گهٽ predicted=ثمينه ۽ طارق مان ڪنهن جي عمر 18": 2,
+        "gold=گهٽ predicted=ثمينه جي عمر 18 سال آهي. احمد": 1,
+        "gold=گهٽ predicted=1910ع ۾ ڪراچي جي آبادي 1": 1,
+        "gold=وڌيڪ predicted=ثمينه جي عمر 18 سال آهي. ڪراچي": 1,
+        "gold=گهٽ predicted=1910ع ۾ ڪراچي کان 10": 1,
+        "gold=وڌيڪ predicted=دادو جي آبادي 1900 آهي": 2,
+        "gold=گهٽ predicted=ثمينه جي عمر 48 سال آهي. عابد": 1,
+        "gold=وڌيڪ predicted=ثمينه جي وزن 180 سينٽي ميٽر آهي": 3,
+        "gold=گهٽ predicted=ثمينه جي وزن 100 سينٽي ميٽر آهي": 2,
+        "gold=گهٽ predicted=1000 پائونڊ آهي.| |مواد": 1,
+        "gold=وڌيڪ predicted=ثمينه ۽ طارق مان ڪنهن جي عمر 18": 1,
+        "gold=وڌيڪ predicted=ثمينه جي وزن 100 سينٽي ميٽر آهي": 1,
+        "gold=گهٽ predicted=ثمينه جي وزن 180 سينٽي ميٽر آهي": 2,
+        "gold=وڌيڪ predicted=1910ع ۾ ڪراچي کان ڪراچي تائين آهي": 1
+      }
+    },
+    "qualitative": {
+      "successes": [],
+      "failures": [
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmin-user5",
+          "text": "سوال: زبيده جو وزن 49 ڪلو آهي. صفيه جو وزن 91 ڪلو آهي. توفيق جو وزن 39 ڪلو آهي. حامد جو وزن 91 ڪلو آهي. انهن مان ڪنهن جو وزن گهٽ آهي؟\nجواب:",
+          "gold": "توفيق",
+          "predicted": "ثمينه جو وزن 100 ڪلو آهي",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-user8",
+          "text": "سوال: ميز جي ڊيگهه 171 سينٽي ميٽر آهي. پٿر جي ڊيگهه 123 سينٽي ميٽر آهي. دري جي ڊيگهه 100 سينٽي ميٽر آهي. سڀ کان وڌيڪ ڪير آهي ڊيگهه ۾؟\nجواب:",
+          "gold": "ميز",
+          "predicted": "180 سينٽي ميٽر آهي",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: ڪتاب جي قيمت 764 رپيا آهي. رسي جي قيمت 4722 رپيا آهي. دٻي جي قيمت 36 رپيا آهي. وڻ جي قيمت 1447 رپيا آهي. ڪنهن جي قيمت وڌيڪ آهي؟\nجواب:",
+          "gold": "رسي",
+          "predicted": "ثمينه جي عمر 18 سال آهي",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmin-1",
+          "text": "سوال: بوتل جي ڊيگهه 131 سينٽي ميٽر آهي. ٿيلهي جي ڊيگهه 105 سينٽي ميٽر آهي. دٻي جي ڊيگهه 165 سينٽي ميٽر آهي. ڪمري جي ڊيگهه 185 سينٽي ميٽر آهي. ڪنهن جي ڊيگهه گهٽ آهي؟\nجواب:",
+          "gold": "ٿيلهو",
+          "predicted": "185 سينٽي ميٽر آهي",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: خيرپور جي آبادي 20 لک آهي. ٽنڊوآدم جي آبادي 85 لک آهي. ڪنهن جي آبادي وڌيڪ آهي؟\nجواب:",
+          "gold": "ٽنڊوآدم",
+          "predicted": "ثمينه جي عمر 18 سال آهي. عمر",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "S-VC-argmin-1",
+          "text": "سوال: سارا جي عمر 36 سال آهي. اختر جي عمر 36 سال آهي. حسين جي عمر 26 سال آهي. ڪنهن جي عمر گهٽ آهي؟\nجواب:",
+          "gold": "حسين",
+          "predicted": "ثمينه 36 سال آهي. اختر جي عمر",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-user6",
+          "text": "سوال: ميز جي قيمت 1841 رپيا آهي. دري جي قيمت 843 رپيا آهي. انهن مان ڪنهن جي قيمت سڀ کان وڌيڪ آهي؟\nجواب:",
+          "gold": "ميز",
+          "predicted": "1841 رپيا آهي. جڏهن ته 1",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-user1",
+          "text": "سوال: شبانه جو وزن 49 ڪلو آهي. خالد جو وزن 11 ڪلو آهي. سارا جو وزن 99 ڪلو آهي. حسين جو وزن 95 ڪلو آهي. وحيد جو وزن 45 ڪلو آهي. وزن ۾ سڀ کان وڏو ڪير آهي؟\nجواب:",
+          "gold": "سارا",
+          "predicted": "ثمينه جو وزن 100 ڪلو آهي",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmin-user3",
+          "text": "سوال: سائيڪل جو وزن 58 ڪلو آهي. گاڏي جو وزن 88 ڪلو آهي. ڪرسي جو وزن 81 ڪلو آهي. گهٽ وزن ڪنهن جو آهي انهن مان؟\nجواب:",
+          "gold": "سائيڪل",
+          "predicted": "ثمينه جي ڊيگهه 180 سينٽي ميٽر آهي",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmin-2",
+          "text": "سوال: حيدرآباد جي آبادي 64 لک آهي. لاڙڪاڻي جي آبادي 185 لک آهي. ٽنڊوآدم جي آبادي 185 لک آهي. سڀ کان گهٽ آبادي ڪنهن جي آهي؟\nجواب:",
+          "gold": "حيدرآباد",
+          "predicted": "1910ع ۾ ڪراچي جي آبادي 1",
+          "error": "off_answer"
+        }
+      ]
+    }
+  }
+}
