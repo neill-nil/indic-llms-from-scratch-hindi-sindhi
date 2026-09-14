@@ -66,7 +66,12 @@ def main():
     train_data = load_reasoning_split(args.language, "train", limit=args.limit)
     val_data = load_reasoning_split(args.language, "val")
 
+    # The cosine floor is tied to the peak (10%, as in pretraining) rather than fixed.
+    # A fixed floor would give each learning rate a different schedule SHAPE — 20% of peak
+    # at 5e-5 but 3% at 3e-4 — so a learning-rate comparison would also be quietly
+    # comparing how far each run anneals.
     cfg = FinetuneConfig(epochs=args.epochs, learning_rate=args.learning_rate,
+                         min_lr=args.learning_rate / 10,
                          micro_batch=args.micro_batch, grad_accum=args.grad_accum,
                          seed=args.seed)
     trainer = FinetuneTrainer(model, train_data, val_data, cfg, out_dir, args.device)

@@ -54,7 +54,7 @@ class FinetuneConfig(TrainConfig):
     """
 
     learning_rate: float = 1e-4
-    min_lr: float = 1e-5
+    min_lr: float = 1e-5           # 10% of peak; run.py re-derives it from the chosen rate
     warmup_steps: int = 100
     weight_decay: float = 0.01     # lighter than pretraining's 0.1: a small dataset and a
                                    # short run give the model little chance to overfit by

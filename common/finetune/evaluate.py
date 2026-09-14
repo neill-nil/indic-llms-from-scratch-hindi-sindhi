@@ -124,9 +124,9 @@ def evaluate_split(model: GPT, language: str, split: str, shot_prefix: str,
     # real tokens can attend back to the pads. Equal-length buckets sidestep all of it —
     # the prompts are short and their lengths cluster tightly, so buckets are large.
     buckets: dict[int, list] = defaultdict(list)
-    for ex in data.examples:
+    for i, ex in enumerate(data.examples):
         ids = prefix_ids + sp.encode(ex["prompt"])
-        buckets[len(ids)].append((ex, ids))
+        buckets[len(ids)].append(({**ex, "_index": i}, ids))
 
     records = []
     for length, items in sorted(buckets.items()):
@@ -149,10 +149,12 @@ def evaluate_split(model: GPT, language: str, split: str, shot_prefix: str,
                     "template_author": ex["template_author"],
                     "is_tie": ex["is_tie"],
                     "margin": ex.get("margin"),
-                    "prompt": ex["prompt"],
+                    "index": ex["_index"],
                 })
 
-    return summarise(split, records)
+    # Restore split order: bucketing by length scrambled it.
+    records.sort(key=lambda r: r["index"])
+    return summarise(split, records), records
 
 
 def summarise(split: str, records: list[dict]) -> dict:
@@ -217,15 +219,31 @@ def main():
         prefix = build_shot_prefix(language, args.shots, args.seed)
         logger.info("%s | %s | %d-shot", language, path, args.shots)
 
+        all_records: list[dict] = []
         entry = {"language": language, "checkpoint": str(path),
                  "condition": args.checkpoint, "shots": args.shots, "splits": {}}
         for split in args.splits:
-            s = evaluate_split(model, language, split, prefix,
-                               args.device, args.batch_size, args.limit)
+            s, records = evaluate_split(model, language, split, prefix,
+                                        args.device, args.batch_size, args.limit)
             entry["splits"][split] = s
+            all_records.extend({"split": split, **r} for r in records)
             logger.info("  %-14s n=%-5d accuracy %.4f | off-answer %.4f",
                         split, s["n"], s["accuracy"], s["off_answer_rate"])
         results.append(entry)
+
+        # The summary JSON keeps only a handful of examples per split. Error analysis
+        # needs every prediction, so all of them are written here, one per line. Each
+        # record carries its index into the split, so the prompt can be recovered from
+        # the (regenerable) dataset rather than stored a second time.
+        condition = args.checkpoint if args.checkpoint in ("pretrained", "finetuned") \
+            else Path(args.checkpoint).parent.name
+        rec_path = (PROJECT_ROOT / language / "eval"
+                    / f"reasoning_{condition}_{args.shots}shot.jsonl")
+        rec_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(rec_path, "w", encoding="utf-8") as f:
+            for r in all_records:
+                f.write(json.dumps(r, ensure_ascii=False) + "\n")
+        logger.info("  wrote %d predictions to %s", len(all_records), rec_path)
 
     out = Path(args.out) if args.out else (
         PROJECT_ROOT / "report" /
