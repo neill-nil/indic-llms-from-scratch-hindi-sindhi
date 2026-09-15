@@ -63,6 +63,7 @@ class FinetuneConfig(TrainConfig):
     micro_batch: int = 32
     grad_accum: int = 1
     epochs: int = 3
+    loss_on: str = "answer"        # "answer" (main models) | "full" (ablation, see dataset.py)
 
     eval_every: int = 200
     eval_batches: int = 40

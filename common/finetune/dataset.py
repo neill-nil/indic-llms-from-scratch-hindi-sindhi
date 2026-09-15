@@ -64,7 +64,14 @@ class ReasoningDataset:
     """
 
     def __init__(self, path: Path, tokenizer_path: Path, max_len: int = MAX_LEN,
-                 limit: Optional[int] = None):
+                 limit: Optional[int] = None, loss_on: str = "answer"):
+        # "answer": loss on the answer span only — the design used for the main models.
+        # "full":   loss on every real token, prompt included — the ablation testing
+        #           whether answer-only supervision caused catastrophic forgetting and
+        #           the suppression of unseen names (worklog E.1, D.10).
+        if loss_on not in ("answer", "full"):
+            raise ValueError(f"loss_on must be 'answer' or 'full', got {loss_on!r}")
+        self.loss_on = loss_on
         self.path = Path(path)
         if not self.path.exists():
             raise FileNotFoundError(
@@ -108,7 +115,8 @@ class ReasoningDataset:
             # y[t] predicts full[t+1], so the first position whose target is an answer
             # token is t = len(prompt) - 1. Everything before it is prompt and is masked.
             first = max(0, len(prompt_ids) - 1)
-            self.y[row, :first] = IGNORE_INDEX
+            if loss_on == "answer":
+                self.y[row, :first] = IGNORE_INDEX
             self.y[row, len(ys):] = IGNORE_INDEX          # padding
             self.answer_starts.append(first)
             self.prompt_lengths.append(len(prompt_ids))
@@ -148,11 +156,11 @@ class ReasoningDataset:
 
 
 def load_reasoning_split(language: str, split: str, max_len: int = MAX_LEN,
-                         limit: Optional[int] = None,
+                         limit: Optional[int] = None, loss_on: str = "answer",
                          project_root: Optional[Path] = None) -> ReasoningDataset:
     """Load <language>/finetune/data/<split>.jsonl with that language's own tokenizer."""
     root = project_root or PROJECT_ROOT
     return ReasoningDataset(
         root / language / "finetune" / "data" / f"{split}.jsonl",
         root / language / "tokenizer" / f"{language}_unigram_16000.model",
-        max_len=max_len, limit=limit)
+        max_len=max_len, limit=limit, loss_on=loss_on)

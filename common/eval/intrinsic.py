@@ -121,6 +121,26 @@ def evaluate(
     return total_nats, total_tokens, total_bytes, n_windows
 
 
+def checkpoint_path(language: str, checkpoint: str) -> Path:
+    """
+    Resolve a checkpoint name to a file.
+
+    `best` and `latest` are the pretraining run, as in Phase 2. `finetuned` is the Phase 3
+    reasoning-finetuned model, evaluated on the same held-out corpus text to measure
+    whether narrow finetuning damaged general language modelling. Anything else is taken
+    as a path.
+    """
+    if checkpoint == "nopos":
+        return PROJECT_ROOT / language / "train" / "run_nopos" / "best.pt"
+    if checkpoint == "finetuned_fullseq":
+        return PROJECT_ROOT / language / "finetune" / "run_fullseq" / "best.pt"
+    if checkpoint == "finetuned":
+        return PROJECT_ROOT / language / "finetune" / "run" / "best.pt"
+    if checkpoint in ("best", "latest"):
+        return PROJECT_ROOT / language / "train" / "run" / f"{checkpoint}.pt"
+    return Path(checkpoint)
+
+
 def evaluate_model(
     language: str,
     split: str,
@@ -139,8 +159,8 @@ def evaluate_model(
             the matched-context comparison is done: the position embeddings are simply
             sliced, so the model runs unmodified.
     """
-    run_dir = PROJECT_ROOT / language / "train" / "run"
-    ckpt = torch.load(run_dir / f"{checkpoint}.pt", map_location="cpu", weights_only=False)
+    ckpt = torch.load(checkpoint_path(language, checkpoint), map_location="cpu",
+                      weights_only=False)
     cfg = GPTConfig(**ckpt["model_config"])
 
     if cfg.language != language:
@@ -191,7 +211,8 @@ def main():
     p.add_argument("--all", action="store_true",
                    help="both models, both splits, native and matched context")
     p.add_argument("--splits", nargs="+", default=["val", "test"])
-    p.add_argument("--checkpoint", default="best")
+    p.add_argument("--checkpoint", default="best",
+                   help="best | latest | finetuned | finetuned_fullseq | nopos | path")
     p.add_argument("--batch_size", type=int, default=8)
     p.add_argument("--max_windows", type=int, default=None,
                    help="cap windows per measurement (for a quick smoke test)")
@@ -214,7 +235,7 @@ def main():
             # Matched context, only where it differs from native, so the two models are
             # conditioned on identical amounts of history.
             cfg = GPTConfig(**torch.load(
-                PROJECT_ROOT / language / "train" / "run" / f"{args.checkpoint}.pt",
+                checkpoint_path(language, args.checkpoint),
                 map_location="cpu", weights_only=False)["model_config"])
             if cfg.max_seq_len != MATCHED_CONTEXT:
                 results.append(evaluate_model(

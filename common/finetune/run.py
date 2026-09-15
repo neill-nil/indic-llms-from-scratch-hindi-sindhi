@@ -9,9 +9,11 @@ up from latest.pt and stops at the same step count.
 """
 
 import argparse
+import json
 import logging
 import signal
 import sys
+from dataclasses import asdict
 from pathlib import Path
 
 import torch
@@ -37,6 +39,8 @@ def main():
     p.add_argument("--micro_batch", type=int, default=FinetuneConfig.micro_batch)
     p.add_argument("--grad_accum", type=int, default=FinetuneConfig.grad_accum)
     p.add_argument("--seed", type=int, default=FinetuneConfig.seed)
+    p.add_argument("--loss_on", default="answer", choices=["answer", "full"],
+                   help="supervise the answer only (default) or every token")
     p.add_argument("--limit", type=int, default=None,
                    help="use only the first N training examples (smoke tests)")
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -63,7 +67,12 @@ def main():
         PROJECT_ROOT / args.language / "configs" / "model_config.json")
     model = GPT(model_cfg)
 
-    train_data = load_reasoning_split(args.language, "train", limit=args.limit)
+    train_data = load_reasoning_split(args.language, "train", limit=args.limit,
+                                      loss_on=args.loss_on)
+    # Validation is ALWAYS scored on the answer only, whatever the training loss. Its
+    # exact-answer accuracy counts an example correct when every supervised token is right;
+    # supervising the prompt there would demand the whole question be predicted, and the
+    # two runs' validation curves would stop being comparable.
     val_data = load_reasoning_split(args.language, "val")
 
     # The cosine floor is tied to the peak (10%, as in pretraining) rather than fixed.
@@ -71,6 +80,7 @@ def main():
     # at 5e-5 but 3% at 3e-4 — so a learning-rate comparison would also be quietly
     # comparing how far each run anneals.
     cfg = FinetuneConfig(epochs=args.epochs, learning_rate=args.learning_rate,
+                         loss_on=args.loss_on,
                          min_lr=args.learning_rate / 10,
                          micro_batch=args.micro_batch, grad_accum=args.grad_accum,
                          seed=args.seed)
@@ -91,6 +101,12 @@ def main():
         trainer.init_from_pretrained(pretrained)
 
     model_cfg.to_json(out_dir / "model_config.json")
+    # The optimisation settings too, as a committed file. Until this was added they existed
+    # only inside the checkpoints — which are not in git — so the hyperparameters of a run
+    # could not be read from the repository at all. Written after the trainer is built,
+    # because the trainer derives the real token budget from the epoch count.
+    (out_dir / "train_config.json").write_text(
+        json.dumps(asdict(trainer.cfg), indent=2) + "\n", encoding="utf-8")
 
     def _save_and_exit(signum, _frame):
         log.warning("received signal %s", signal.Signals(signum).name)

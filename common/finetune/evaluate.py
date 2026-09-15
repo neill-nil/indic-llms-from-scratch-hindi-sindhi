@@ -61,6 +61,8 @@ def resolve_checkpoint(language: str, which: str) -> Path:
     """`pretrained` and `finetuned` are the two named runs; anything else is a path."""
     if which == "pretrained":
         return PROJECT_ROOT / language / "train" / "run" / "best.pt"
+    if which == "finetuned_fullseq":
+        return PROJECT_ROOT / language / "finetune" / "run_fullseq" / "best.pt"
     if which == "finetuned":
         return PROJECT_ROOT / language / "finetune" / "run" / "best.pt"
     return Path(which)
@@ -235,7 +237,8 @@ def main():
         # needs every prediction, so all of them are written here, one per line. Each
         # record carries its index into the split, so the prompt can be recovered from
         # the (regenerable) dataset rather than stored a second time.
-        condition = args.checkpoint if args.checkpoint in ("pretrained", "finetuned") \
+        condition = args.checkpoint if args.checkpoint in ("pretrained", "finetuned",
+                                                           "finetuned_fullseq") \
             else Path(args.checkpoint).parent.name
         rec_path = (PROJECT_ROOT / language / "eval"
                     / f"reasoning_{condition}_{args.shots}shot.jsonl")

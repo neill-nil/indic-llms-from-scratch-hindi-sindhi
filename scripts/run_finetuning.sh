@@ -2,7 +2,8 @@
 # The complete finetuning experiment for both models, unattended.
 #
 #   bash scripts/run_finetuning.sh             # foreground
-#   setsid nohup bash scripts/run_finetuning.sh > /dev/null 2>&1 &   # detached
+#   systemd-run --user --unit=lma-finetune --collect --working-directory="$PWD" \
+#       bash scripts/run_finetuning.sh           # detached — survives the launching tool
 #
 # Stages, in order of how much the result matters:
 #   1. learning-rate probe     3 rates x 2 languages, 1 epoch each, validation only
@@ -17,10 +18,13 @@
 # Idempotent. Every stage either skips completed work or resumes it, so re-running after
 # any interruption continues rather than restarts.
 #
-# Run it DETACHED (setsid) for anything unattended. An earlier baseline run was started
-# as a child of an interactive session and was killed, unfinished, when that session
-# ended — having written no results file. setsid puts the pipeline in its own session so
-# it survives the terminal or tool that launched it.
+# Run it DETACHED for anything unattended, and detach with systemd-run, not setsid.
+# An earlier baseline run was started as a child of an interactive session and was killed,
+# unfinished, when that session ended. setsid was tried next and is NOT sufficient: it puts
+# the process in a new session, but an editor or extension restart kills every process in
+# its cgroup regardless of session, and a later evaluation died exactly that way.
+# systemd-run starts the job as its own user service in its own cgroup, which survives the
+# tool that launched it. It does not survive logging out, a reboot, or a power cut.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 

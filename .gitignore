@@ -64,6 +64,11 @@ VIVA_GUIDE.md
 # Phase 3 work log: the history of what was tried, reversed and fixed, kept so the
 # work can be reconstructed later. The assessed narrative lives in the phase reports.
 report/phase3_worklog.md
+# AI-drafted Phase 3 report and report-writing pointers: kept as private reference only. The
+# submitted report is a LaTeX PDF written by the student (TA instruction, 15 Sep), and the
+# course runs an AI-plagiarism check on it, so this draft must not sit in the branch.
+report/phase3.md
+REPORT_POINTERS.md
 
 # Phase 3 generated reasoning datasets (~98 MB across both languages).
 # Not committed: they are fully reproducible from a seeded script, so the generator,
