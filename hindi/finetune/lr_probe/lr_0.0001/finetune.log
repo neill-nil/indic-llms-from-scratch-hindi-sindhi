@@ -1,0 +1,84 @@
+2026-09-14 20:46:35,441 - INFO - train.jsonl: 40000 examples, 84459 supervised tokens (2.2% of 3840000 positions)
+2026-09-14 20:46:35,520 - INFO - val.jsonl: 2000 examples, 4247 supervised tokens (2.2% of 192000 positions)
+2026-09-14 20:46:35,641 - INFO - optimizer: 38 decayed tensors (24,182,784 params), 62 undecayed (37,888 params)
+2026-09-14 20:46:36,532 - INFO - initialised from best.pt (pretrained step 20346, val loss 3.4795) — weights only, fresh optimizer
+2026-09-14 20:46:36,532 - INFO - finetuning hindi | 40000 examples | 1250 steps/epoch x 1 epochs = 1250 steps
+2026-09-14 20:46:36,533 - INFO - ====================================================================
+2026-09-14 20:46:36,533 - INFO - training hindi | 24,220,672 params | ctx 96
+2026-09-14 20:46:36,533 - INFO -   precision      : torch.bfloat16
+2026-09-14 20:46:36,533 - INFO -   micro batch    : 32 x 1 accum = 3,072 tokens/step
+2026-09-14 20:46:36,533 - INFO -   token budget   : 3,840,000 over 1,250 steps
+2026-09-14 20:46:36,533 - INFO -   starting at    : step 0
+2026-09-14 20:46:36,533 - INFO - ====================================================================
+2026-09-14 20:46:39,032 - INFO - step     25/1250 | loss 1.8777 | lr 2.50e-05 | grad 11.53 | 30,739 tok/s | 2.0% | eta 0.0h
+2026-09-14 20:46:41,137 - INFO - step     50/1250 | loss 1.4136 | lr 5.00e-05 | grad 11.46 | 36,660 tok/s | 4.0% | eta 0.0h
+2026-09-14 20:46:43,244 - INFO - step     75/1250 | loss 1.0677 | lr 7.50e-05 | grad 11.05 | 36,623 tok/s | 6.0% | eta 0.0h
+2026-09-14 20:46:45,356 - INFO - step    100/1250 | loss 1.0747 | lr 1.00e-04 | grad 9.47 | 36,552 tok/s | 8.0% | eta 0.0h
+2026-09-14 20:46:47,468 - INFO - step    125/1250 | loss 0.8397 | lr 9.99e-05 | grad 9.97 | 36,534 tok/s | 10.0% | eta 0.0h
+2026-09-14 20:46:49,581 - INFO - step    150/1250 | loss 0.7507 | lr 9.96e-05 | grad 6.54 | 36,537 tok/s | 12.0% | eta 0.0h
+2026-09-14 20:46:51,692 - INFO - step    175/1250 | loss 0.8544 | lr 9.91e-05 | grad 6.79 | 36,556 tok/s | 14.0% | eta 0.0h
+2026-09-14 20:46:53,803 - INFO - step    200/1250 | loss 0.9243 | lr 9.84e-05 | grad 7.03 | 36,555 tok/s | 16.0% | eta 0.0h
+2026-09-14 20:46:55,482 - INFO -   eval @ 200: val loss 0.7975 | perplexity 2.22
+2026-09-14 20:46:55,482 - INFO -   eval @ 200: exact-answer accuracy 0.3220 (teacher forced)
+2026-09-14 20:46:55,698 - INFO -   new best (0.7975) -> best.pt
+2026-09-14 20:46:57,796 - INFO - step    225/1250 | loss 0.7884 | lr 9.74e-05 | grad 6.06 | 36,617 tok/s | 18.0% | eta 0.0h
+2026-09-14 20:46:59,907 - INFO - step    250/1250 | loss 0.8452 | lr 9.63e-05 | grad 7.07 | 36,547 tok/s | 20.0% | eta 0.0h
+2026-09-14 20:47:02,018 - INFO - step    275/1250 | loss 0.8377 | lr 9.50e-05 | grad 5.68 | 36,561 tok/s | 22.0% | eta 0.0h
+2026-09-14 20:47:04,129 - INFO - step    300/1250 | loss 0.7598 | lr 9.35e-05 | grad 6.84 | 36,564 tok/s | 24.0% | eta 0.0h
+2026-09-14 20:47:06,242 - INFO - step    325/1250 | loss 0.7910 | lr 9.18e-05 | grad 6.12 | 36,533 tok/s | 26.0% | eta 0.0h
+2026-09-14 20:47:08,353 - INFO - step    350/1250 | loss 0.7669 | lr 9.00e-05 | grad 6.08 | 36,551 tok/s | 28.0% | eta 0.0h
+2026-09-14 20:47:10,465 - INFO - step    375/1250 | loss 0.6838 | lr 8.80e-05 | grad 5.26 | 36,544 tok/s | 30.0% | eta 0.0h
+2026-09-14 20:47:12,578 - INFO - step    400/1250 | loss 0.7207 | lr 8.58e-05 | grad 5.22 | 36,531 tok/s | 32.0% | eta 0.0h
+2026-09-14 20:47:14,244 - INFO -   eval @ 400: val loss 0.7460 | perplexity 2.11
+2026-09-14 20:47:14,244 - INFO -   eval @ 400: exact-answer accuracy 0.3555 (teacher forced)
+2026-09-14 20:47:14,559 - INFO -   new best (0.7460) -> best.pt
+2026-09-14 20:47:16,655 - INFO - step    425/1250 | loss 0.7523 | lr 8.35e-05 | grad 6.06 | 36,653 tok/s | 34.0% | eta 0.0h
+2026-09-14 20:47:18,764 - INFO - step    450/1250 | loss 0.8340 | lr 8.11e-05 | grad 6.35 | 36,587 tok/s | 36.0% | eta 0.0h
+2026-09-14 20:47:20,876 - INFO - step    475/1250 | loss 0.6401 | lr 7.85e-05 | grad 4.60 | 36,547 tok/s | 38.0% | eta 0.0h
+2026-09-14 20:47:22,987 - INFO - step    500/1250 | loss 0.6226 | lr 7.58e-05 | grad 5.68 | 36,556 tok/s | 40.0% | eta 0.0h
+2026-09-14 20:47:25,301 - INFO - step    525/1250 | loss 0.9540 | lr 7.30e-05 | grad 6.98 | 36,580 tok/s | 42.0% | eta 0.0h
+2026-09-14 20:47:27,413 - INFO - step    550/1250 | loss 0.7319 | lr 7.02e-05 | grad 6.48 | 36,529 tok/s | 44.0% | eta 0.0h
+2026-09-14 20:47:29,525 - INFO - step    575/1250 | loss 0.7009 | lr 6.73e-05 | grad 5.50 | 36,555 tok/s | 46.0% | eta 0.0h
+2026-09-14 20:47:31,640 - INFO - step    600/1250 | loss 0.6118 | lr 6.43e-05 | grad 5.80 | 36,476 tok/s | 48.0% | eta 0.0h
+2026-09-14 20:47:33,299 - INFO -   eval @ 600: val loss 0.6785 | perplexity 1.97
+2026-09-14 20:47:33,299 - INFO -   eval @ 600: exact-answer accuracy 0.3600 (teacher forced)
+2026-09-14 20:47:33,635 - INFO -   new best (0.6785) -> best.pt
+2026-09-14 20:47:35,731 - INFO - step    625/1250 | loss 0.7503 | lr 6.12e-05 | grad 5.75 | 36,637 tok/s | 50.0% | eta 0.0h
+2026-09-14 20:47:37,841 - INFO - step    650/1250 | loss 0.5871 | lr 5.82e-05 | grad 5.62 | 36,575 tok/s | 52.0% | eta 0.0h
+2026-09-14 20:47:39,953 - INFO - step    675/1250 | loss 0.7078 | lr 5.51e-05 | grad 5.52 | 36,548 tok/s | 54.0% | eta 0.0h
+2026-09-14 20:47:42,066 - INFO - step    700/1250 | loss 0.6208 | lr 5.21e-05 | grad 4.59 | 36,527 tok/s | 56.0% | eta 0.0h
+2026-09-14 20:47:44,177 - INFO - step    725/1250 | loss 0.6538 | lr 4.90e-05 | grad 5.67 | 36,564 tok/s | 58.0% | eta 0.0h
+2026-09-14 20:47:46,289 - INFO - step    750/1250 | loss 0.5465 | lr 4.60e-05 | grad 5.51 | 36,545 tok/s | 60.0% | eta 0.0h
+2026-09-14 20:47:48,401 - INFO - step    775/1250 | loss 0.4936 | lr 4.30e-05 | grad 4.11 | 36,548 tok/s | 62.0% | eta 0.0h
+2026-09-14 20:47:50,520 - INFO - step    800/1250 | loss 0.4713 | lr 4.00e-05 | grad 4.36 | 36,551 tok/s | 64.0% | eta 0.0h
+2026-09-14 20:47:52,180 - INFO -   eval @ 800: val loss 0.6292 | perplexity 1.88
+2026-09-14 20:47:52,180 - INFO -   eval @ 800: exact-answer accuracy 0.3930 (teacher forced)
+2026-09-14 20:47:52,519 - INFO -   new best (0.6292) -> best.pt
+2026-09-14 20:47:54,617 - INFO - step    825/1250 | loss 0.5710 | lr 3.72e-05 | grad 5.60 | 36,608 tok/s | 66.0% | eta 0.0h
+2026-09-14 20:47:56,729 - INFO - step    850/1250 | loss 0.6238 | lr 3.44e-05 | grad 5.32 | 36,552 tok/s | 68.0% | eta 0.0h
+2026-09-14 20:47:58,840 - INFO - step    875/1250 | loss 0.5508 | lr 3.17e-05 | grad 4.65 | 36,552 tok/s | 70.0% | eta 0.0h
+2026-09-14 20:48:00,959 - INFO - step    900/1250 | loss 0.5828 | lr 2.91e-05 | grad 6.02 | 36,559 tok/s | 72.0% | eta 0.0h
+2026-09-14 20:48:03,072 - INFO - step    925/1250 | loss 0.6900 | lr 2.67e-05 | grad 5.97 | 36,534 tok/s | 74.0% | eta 0.0h
+2026-09-14 20:48:05,184 - INFO - step    950/1250 | loss 0.4750 | lr 2.44e-05 | grad 5.22 | 36,536 tok/s | 76.0% | eta 0.0h
+2026-09-14 20:48:07,295 - INFO - step    975/1250 | loss 0.6236 | lr 2.22e-05 | grad 6.57 | 36,563 tok/s | 78.0% | eta 0.0h
+2026-09-14 20:48:09,407 - INFO - step   1000/1250 | loss 0.5884 | lr 2.02e-05 | grad 5.49 | 36,550 tok/s | 80.0% | eta 0.0h
+2026-09-14 20:48:11,067 - INFO -   eval @ 1000: val loss 0.5901 | perplexity 1.80
+2026-09-14 20:48:11,067 - INFO -   eval @ 1000: exact-answer accuracy 0.4235 (teacher forced)
+2026-09-14 20:48:11,408 - INFO -   new best (0.5901) -> best.pt
+2026-09-14 20:48:13,827 - INFO - step   1025/1250 | loss 0.4950 | lr 1.83e-05 | grad 5.75 | 36,632 tok/s | 82.0% | eta 0.0h
+2026-09-14 20:48:15,939 - INFO - step   1050/1250 | loss 0.5751 | lr 1.66e-05 | grad 5.37 | 36,547 tok/s | 84.0% | eta 0.0h
+2026-09-14 20:48:18,049 - INFO - step   1075/1250 | loss 0.5122 | lr 1.51e-05 | grad 4.68 | 36,569 tok/s | 86.0% | eta 0.0h
+2026-09-14 20:48:20,161 - INFO - step   1100/1250 | loss 0.7463 | lr 1.38e-05 | grad 6.52 | 36,541 tok/s | 88.0% | eta 0.0h
+2026-09-14 20:48:22,274 - INFO - step   1125/1250 | loss 0.6845 | lr 1.26e-05 | grad 6.21 | 36,541 tok/s | 90.0% | eta 0.0h
+2026-09-14 20:48:24,385 - INFO - step   1150/1250 | loss 0.6447 | lr 1.17e-05 | grad 5.99 | 36,550 tok/s | 92.0% | eta 0.0h
+2026-09-14 20:48:26,497 - INFO - step   1175/1250 | loss 0.4606 | lr 1.10e-05 | grad 5.55 | 36,542 tok/s | 94.0% | eta 0.0h
+2026-09-14 20:48:28,609 - INFO - step   1200/1250 | loss 0.5325 | lr 1.04e-05 | grad 5.19 | 36,555 tok/s | 96.0% | eta 0.0h
+2026-09-14 20:48:30,268 - INFO -   eval @ 1200: val loss 0.5599 | perplexity 1.75
+2026-09-14 20:48:30,268 - INFO -   eval @ 1200: exact-answer accuracy 0.4460 (teacher forced)
+2026-09-14 20:48:30,608 - INFO -   new best (0.5599) -> best.pt
+2026-09-14 20:48:32,706 - INFO - step   1225/1250 | loss 0.4869 | lr 1.01e-05 | grad 5.50 | 36,613 tok/s | 98.0% | eta 0.0h
+2026-09-14 20:48:34,816 - INFO - step   1250/1250 | loss 0.4998 | lr 1.00e-05 | grad 6.00 | 36,573 tok/s | 100.0% | eta 0.0h
+2026-09-14 20:48:36,473 - INFO -   eval @ 1250: val loss 0.5568 | perplexity 1.75
+2026-09-14 20:48:36,473 - INFO -   eval @ 1250: exact-answer accuracy 0.4730 (teacher forced)
+2026-09-14 20:48:36,799 - INFO -   new best (0.5568) -> best.pt
+2026-09-14 20:48:37,125 - INFO - done: 3,840,000 tokens in 0.03 h | best val loss 0.5568 (ppl 1.75)
