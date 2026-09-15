@@ -173,7 +173,7 @@ Each isolates a different way the model could appear to reason without reasoning
 | `test_iid` | nothing | — (in-distribution ceiling) |
 | `test_entity` | **entity names** | memorising name→answer associations |
 | `test_template` | **surface phrasings** | memorising a fixed word order |
-| `test_hop` | **chain length** (train 2-hop → test 3-hop) | pattern-matching instead of composing |
+| `test_hop` | **problem size** (train 2-3 entities → test 4-5) *— superseded, see §6.1* | pattern-matching instead of composing |
 
 `test_hop` is the strongest probe: a model that has genuinely learned transitivity should
 extend to a longer chain, while one that has memorised the shape of a two-step problem
@@ -200,6 +200,9 @@ Stratification matters: an all-male held-out pool would confound "unseen name" w
 
 ### 4.3 Template partition
 
+> **Superseded — see §6.2.** The held-out templates as built differ by word order, not by
+> register. The paragraph below is the original plan, kept unedited.
+
 The `age` attribute retains the adjective comparative (`सबसे बड़ा` 899, `سڀ کان وڏو` 521)
 alongside the quantifier form. This gives a **genuine register difference**, attested in
 both corpora, from which the held-out paraphrase templates are drawn — rather than
@@ -224,3 +227,86 @@ Applied at generation time so no post-hoc filtering is needed:
   in v1. Worth adding if in-distribution accuracy saturates.
 - **The composed sentences are not verified by a native speaker.** See §2.2. This is the
   principal limitation of the Sindhi half of this phase.
+
+---
+
+## 6. Amendments made while building the dataset
+
+This document was written before any data existed, and the sections above are left as
+originally written so that record stays intact. Building the dataset forced the changes
+below. **Every one was made during dataset construction, before any model was finetuned or
+evaluated**: the last change to the templates, lexicons or generator was committed on
+12 September 2026, and the first finetuning run began on 14 September. The test splits
+were therefore still not shaped by model results.
+
+### 6.1 Problem sizes (corrects §4.1)
+
+Training and the first three test splits use problems with **2 or 3 entities**;
+`test_hop` uses **4 or 5**. This applies to numeric comparisons as well as chains, so
+"hop" is shorthand for problem size.
+
+Chains additionally require **at least 3 entities**. A two-entity "chain" is a single
+stated relation and involves no composition, and the first build showed it was solvable
+by copying the first name mentioned.
+
+### 6.2 Template partition (corrects §4.3)
+
+Held-out templates differ from training templates in **word order**, not in register.
+The adjective register (`सबसे बड़ा` / `سڀ کان وڏو`) is used by one training template.
+
+| | generated | human-authored | total |
+|---|---:|---:|---:|
+| train | 7 | 5 | 12 |
+| held out | 2 | 3 | 5 |
+| **all** | **9** | **8** | **17** |
+
+Identical in both languages. Eight of the seventeen templates were written by the author
+from natural sentences and converted with `common/reasoning/make_template.py`.
+
+### 6.3 Attributes
+
+`distance` was dropped: its Sindhi form did not clear corpus validation. That left no
+attribute that applies to a place, so **`population`** was added (`की आबादी` 208,
+`جي آبادي` 379) — giving five attributes: age, height, weight, price, population.
+
+### 6.4 Answer position — how uniformity was actually achieved
+
+§4.4 claims answer position is uniform. The first build showed it was not: 58.6% of
+`test_template` answers sat at position 0, because each chain link always named the larger
+entity first. Two changes fixed it:
+
+- each chain link is stated from a **randomly chosen end** ("A more than B" or the
+  equivalent "B less than A");
+- chains start at three entities (§6.1).
+
+Position is now uniform *conditional on the number of entities*.
+
+### 6.5 Entity names in questions: `{entities}`
+
+A placeholder was added so a question can name its candidates ("of Ram and Shyam, whose
+age is greater?"). Names are listed in first-mention order; listing them in ranking order
+would reveal the answer.
+
+### 6.6 Oblique case
+
+Masculine nouns in `-ा` (Hindi) and `-و` (Sindhi) take an oblique form before a
+postposition (`कमरा` → `कमरे का`). Whether each name inflects was decided **by corpus
+count rather than by rule**: of 28 Hindi names ending in `-ा`, only 3 inflect. Sindhi
+place names inflect where Hindi ones do not. Answers keep the citation form.
+
+### 6.7 Deduplication
+
+The audit found 323 of 2,000 validation examples verbatim in train — the natural collision
+rate for the size of the problem space. Every generated text is now deduplicated across
+**all** splits, so train/test disjointness holds by construction.
+
+### 6.8 Measured balance, against the plan
+
+| planned (§4.4) | as built |
+|---|---|
+| ties injected at 15% | 7-12% realised per split (~11% of train), after deduplication; chains have no ties |
+| labels balanced | no entity name dominates; the single most common answer is the equality word, and its share **equals the tie rate exactly** in every split |
+| position uniform | uniform conditional on entity count (§6.4) |
+
+Full distributions: `<language>/finetune/data/dataset_statistics.json`.
+

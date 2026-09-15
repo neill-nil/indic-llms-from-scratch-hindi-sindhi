@@ -446,6 +446,453 @@
       ]
     }
   },
+  "hindi/finetuned_fullseq_0shot": {
+    "language": "hindi",
+    "file": "hindi/eval/reasoning_finetuned_fullseq_0shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.755
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.2665
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.754
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.4445
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.3718,
+        "random_name_or_equal": 0.307,
+        "always_first_mentioned": 0.3465,
+        "always_last_mentioned": 0.3545
+      },
+      "test_entity": {
+        "random_name": 0.3653,
+        "random_name_or_equal": 0.3091,
+        "always_first_mentioned": 0.3225,
+        "always_last_mentioned": 0.3535
+      },
+      "test_template": {
+        "random_name": 0.3591,
+        "random_name_or_equal": 0.2949,
+        "always_first_mentioned": 0.339,
+        "always_last_mentioned": 0.393
+      },
+      "test_hop": {
+        "random_name": 0.2301,
+        "random_name_or_equal": 0.2146,
+        "always_first_mentioned": 0.1795,
+        "always_last_mentioned": 0.223
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 225,
+        "accuracy": 0.2844
+      },
+      "2-5%": {
+        "n": 460,
+        "accuracy": 0.3783
+      },
+      "5-15%": {
+        "n": 1410,
+        "accuracy": 0.4489
+      },
+      "15-40%": {
+        "n": 2326,
+        "accuracy": 0.5873
+      },
+      ">40%": {
+        "n": 1496,
+        "accuracy": 0.6932
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 824,
+        "accuracy": 0.3883
+      },
+      "chain:4": {
+        "n": 220,
+        "accuracy": 0.3591
+      },
+      "chain:5": {
+        "n": 266,
+        "accuracy": 0.2368
+      },
+      "value_compare:2": {
+        "n": 2601,
+        "accuracy": 0.6874
+      },
+      "value_compare:3": {
+        "n": 2575,
+        "accuracy": 0.5604
+      },
+      "value_compare:4": {
+        "n": 774,
+        "accuracy": 0.553
+      },
+      "value_compare:5": {
+        "n": 740,
+        "accuracy": 0.4311
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3972,
+        "accuracy": 0.4945
+      },
+      "user": {
+        "n": 4028,
+        "accuracy": 0.6147
+      }
+    },
+    "accuracy_by_template": {
+      "H-CH-argmax-1": {
+        "n": 335,
+        "accuracy": 0.206
+      },
+      "H-CH-argmax-held": {
+        "n": 230,
+        "accuracy": 0.5391
+      },
+      "H-CH-argmin-1": {
+        "n": 370,
+        "accuracy": 0.2027
+      },
+      "H-CH-relation-1": {
+        "n": 375,
+        "accuracy": 0.5173
+      },
+      "H-VC-argmax-1": {
+        "n": 549,
+        "accuracy": 0.5537
+      },
+      "H-VC-argmax-2": {
+        "n": 560,
+        "accuracy": 0.5536
+      },
+      "H-VC-argmax-held": {
+        "n": 459,
+        "accuracy": 0.8475
+      },
+      "H-VC-argmax-user1": {
+        "n": 555,
+        "accuracy": 0.5964
+      },
+      "H-VC-argmax-user2": {
+        "n": 556,
+        "accuracy": 0.5576
+      },
+      "H-VC-argmax-user4": {
+        "n": 453,
+        "accuracy": 0.8057
+      },
+      "H-VC-argmax-user6": {
+        "n": 542,
+        "accuracy": 0.5701
+      },
+      "H-VC-argmax-user8": {
+        "n": 539,
+        "accuracy": 0.5937
+      },
+      "H-VC-argmin-1": {
+        "n": 574,
+        "accuracy": 0.4686
+      },
+      "H-VC-argmin-2": {
+        "n": 520,
+        "accuracy": 0.4423
+      },
+      "H-VC-argmin-user3": {
+        "n": 434,
+        "accuracy": 0.7558
+      },
+      "H-VC-argmin-user5": {
+        "n": 525,
+        "accuracy": 0.4019
+      },
+      "H-VC-argmin-user7": {
+        "n": 424,
+        "accuracy": 0.7123
+      }
+    },
+    "errors": {
+      "total": 3560,
+      "by_category": {
+        "wrong_entity": {
+          "n": 1473,
+          "share": 0.4138
+        },
+        "off_answer": {
+          "n": 1265,
+          "share": 0.3553
+        },
+        "opposite_extreme": {
+          "n": 433,
+          "share": 0.1216
+        },
+        "relation_flip": {
+          "n": 181,
+          "share": 0.0508
+        },
+        "false_tie": {
+          "n": 144,
+          "share": 0.0404
+        },
+        "missed_tie": {
+          "n": 64,
+          "share": 0.018
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "opposite_extreme": 142,
+          "wrong_entity": 262,
+          "relation_flip": 53,
+          "false_tie": 24,
+          "missed_tie": 9
+        },
+        "test_entity": {
+          "relation_flip": 61,
+          "off_answer": 1265,
+          "opposite_extreme": 37,
+          "false_tie": 76,
+          "wrong_entity": 23,
+          "missed_tie": 5
+        },
+        "test_template": {
+          "wrong_entity": 295,
+          "opposite_extreme": 180,
+          "false_tie": 11,
+          "missed_tie": 6
+        },
+        "test_hop": {
+          "missed_tie": 44,
+          "wrong_entity": 893,
+          "opposite_extreme": 74,
+          "relation_flip": 67,
+          "false_tie": 33
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {
+      "middle": 991,
+      "last": 486,
+      "first": 429
+    },
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 54,
+          "accuracy": 0.4444
+        },
+        "2-5%": {
+          "n": 100,
+          "accuracy": 0.49
+        },
+        "5-15%": {
+          "n": 320,
+          "accuracy": 0.6562
+        },
+        "15-40%": {
+          "n": 583,
+          "accuracy": 0.8096
+        },
+        ">40%": {
+          "n": 462,
+          "accuracy": 0.9264
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 78,
+          "accuracy": 0.5
+        },
+        "chain, argmin": {
+          "n": 101,
+          "accuracy": 0.4752
+        },
+        "chain, relation": {
+          "n": 105,
+          "accuracy": 0.4952
+        },
+        "numeric, no tie": {
+          "n": 1519,
+          "accuracy": 0.7788
+        },
+        "numeric, tie": {
+          "n": 197,
+          "accuracy": 0.9543
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "generated": {
+          "n": 695,
+          "accuracy": 0.754
+        },
+        "user": {
+          "n": 824,
+          "accuracy": 0.7998
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.1124,
+        "middle": 0.1475,
+        "last": 0.1972
+      },
+      "relation_confusion": {
+        "gold=ज्यादा predicted=ज्यादा": 19,
+        "gold=कम predicted=कम": 33,
+        "gold=कम predicted=ज्यादा": 12,
+        "gold=ज्यादा predicted=कम": 41
+      }
+    },
+    "qualitative": {
+      "successes": [
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmin-user7",
+          "text": "प्रश्न: पत्थर की लंबाई 191 सेमी है। गाड़ी की लंबाई 191 सेमी है। लंबाई में सबसे कम इनमें से कौन है?\nउत्तर:",
+          "gold": "बराबर",
+          "predicted": "बराबर",
+          "error": null
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmax-held",
+          "text": "प्रश्न: नरेश की लंबाई 193 सेमी है। रवि की लंबाई 124 सेमी है। लंबाई सबसे ज्यादा किसकी है?\nउत्तर:",
+          "gold": "नरेश",
+          "predicted": "नरेश",
+          "error": null
+        },
+        {
+          "split": "test_iid",
+          "template_id": "H-VC-argmax-user6",
+          "text": "प्रश्न: अजमेर की आबादी 261 लाख है। लखनऊ की आबादी 261 लाख है। सूरत की आबादी 65 लाख है। इनमें से किसकी आबादी सबसे ज्यादा है?\nउत्तर:",
+          "gold": "बराबर",
+          "predicted": "बराबर",
+          "error": null
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmax-user4",
+          "text": "प्रश्न: किताब की कीमत 2964 रुपये है। मकान की कीमत 2477 रुपये है। कौन ज्यादा कीमत का है?\nउत्तर:",
+          "gold": "किताब",
+          "predicted": "किताब",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-1",
+          "text": "प्रश्न: बोतल की लंबाई 137 सेमी है। गाड़ी की लंबाई 101 सेमी है। किताब की लंबाई 121 सेमी है। पत्थर की लंबाई 137 सेमी है। किसकी लंबाई ज्यादा है?\nउत्तर:",
+          "gold": "बराबर",
+          "predicted": "बराबर",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmin-1",
+          "text": "प्रश्न: नागपुर की आबादी 153 लाख है। शिमला की आबादी 28 लाख है। भोपाल की आबादी 205 लाख है। पटना की आबादी 247 लाख है। दिल्ली की आबादी 32 लाख है। किसकी आबादी कम है?\nउत्तर:",
+          "gold": "शिमला",
+          "predicted": "शिमला",
+          "error": null
+        }
+      ],
+      "failures": [
+        {
+          "split": "test_hop",
+          "template_id": "H-VC-argmax-2",
+          "text": "प्रश्न: बैग की लंबाई 173 सेमी है। कमरे की लंबाई 169 सेमी है। मकान की लंबाई 143 सेमी है। पत्थर की लंबाई 155 सेमी है। सबसे ज्यादा लंबाई किसकी है?\nउत्तर:",
+          "gold": "बैग",
+          "predicted": "कमरा",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-CH-argmin-1",
+          "text": "प्रश्न: प्रदीप की लंबाई गीता से कम है। प्रदीप की लंबाई दिनेश से ज्यादा है। सबसे कम लंबाई किसकी है?\nउत्तर:",
+          "gold": "दिनेश",
+          "predicted": "अजमेर",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-CH-argmin-1",
+          "text": "प्रश्न: मकान की कीमत बैग से ज्यादा है। बगीचे की कीमत कमरे से ज्यादा है। बगीचे की कीमत गाड़ी से कम है। गाड़ी की कीमत बैग से कम है। सबसे कम कीमत किसकी है?\nउत्तर:",
+          "gold": "कमरा",
+          "predicted": "बगीचा",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-user5",
+          "text": "प्रश्न: जोधपुर की आबादी 8 लाख है। इंदौर की आबादी 113 लाख है। इनमें से किसकी आबादी कम है?\nउत्तर:",
+          "gold": "जोधपुर",
+          "predicted": "",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "H-CH-relation-1",
+          "text": "प्रश्न: नागपुर की आबादी जयपुर से कम है। नागपुर की आबादी दिल्ली से ज्यादा है। जयपुर की आबादी दिल्ली से ज्यादा है या कम?\nउत्तर:",
+          "gold": "ज्यादा",
+          "predicted": "कम",
+          "error": "relation_flip"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-2",
+          "text": "प्रश्न: जोधपुर की आबादी 87 लाख है। इंदौर की आबादी 229 लाख है। सबसे कम आबादी किसकी है?\nउत्तर:",
+          "gold": "जोधपुर",
+          "predicted": "",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmax-user4",
+          "text": "प्रश्न: लखनऊ की आबादी 206 लाख है। दिल्ली की आबादी 225 लाख है। मुंबई की आबादी 94 लाख है। कौन ज्यादा आबादी का है?\nउत्तर:",
+          "gold": "दिल्ली",
+          "predicted": "लखनऊ",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_template",
+          "template_id": "H-VC-argmin-user7",
+          "text": "प्रश्न: सुरेश का वजन 76 किलो है। रवि का वजन 94 किलो है। रचना का वजन 94 किलो है। वजन में सबसे कम इनमें से कौन है?\nउत्तर:",
+          "gold": "सुरेश",
+          "predicted": "रवि",
+          "error": "opposite_extreme"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "H-VC-argmin-1",
+          "text": "प्रश्न: राजेश की उम्र 15 साल है। प्रदीप की उम्र 35 साल है। किसकी उम्र कम है?\nउत्तर:",
+          "gold": "राजेश",
+          "predicted": "",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "H-CH-relation-1",
+          "text": "प्रश्न: गाड़ी की लंबाई किताब से ज्यादा है। मेज की लंबाई किताब से कम है। गाड़ी की लंबाई बोतल से कम है। बोतल की लंबाई मेज से ज्यादा है या कम?\nउत्तर:",
+          "gold": "ज्यादा",
+          "predicted": "कम",
+          "error": "relation_flip"
+        }
+      ]
+    }
+  },
   "hindi/pretrained_0shot": {
     "language": "hindi",
     "file": "hindi/eval/reasoning_pretrained_0shot.jsonl",
@@ -1692,6 +2139,452 @@
           "gold": "گهر",
           "predicted": "برابر",
           "error": "false_tie"
+        }
+      ]
+    }
+  },
+  "sindhi/finetuned_fullseq_0shot": {
+    "language": "sindhi",
+    "file": "sindhi/eval/reasoning_finetuned_fullseq_0shot.jsonl",
+    "n": 8000,
+    "accuracy_by_split": {
+      "test_iid": {
+        "n": 2000,
+        "accuracy": 0.629
+      },
+      "test_entity": {
+        "n": 2000,
+        "accuracy": 0.166
+      },
+      "test_template": {
+        "n": 2000,
+        "accuracy": 0.598
+      },
+      "test_hop": {
+        "n": 2000,
+        "accuracy": 0.331
+      }
+    },
+    "chance_by_split": {
+      "test_iid": {
+        "random_name": 0.368,
+        "random_name_or_equal": 0.3061,
+        "always_first_mentioned": 0.3355,
+        "always_last_mentioned": 0.3585
+      },
+      "test_entity": {
+        "random_name": 0.3618,
+        "random_name_or_equal": 0.3054,
+        "always_first_mentioned": 0.348,
+        "always_last_mentioned": 0.3445
+      },
+      "test_template": {
+        "random_name": 0.3639,
+        "random_name_or_equal": 0.2961,
+        "always_first_mentioned": 0.3525,
+        "always_last_mentioned": 0.3935
+      },
+      "test_hop": {
+        "random_name": 0.2324,
+        "random_name_or_equal": 0.2187,
+        "always_first_mentioned": 0.169,
+        "always_last_mentioned": 0.218
+      }
+    },
+    "accuracy_by_margin": {
+      "<2%": {
+        "n": 208,
+        "accuracy": 0.1923
+      },
+      "2-5%": {
+        "n": 500,
+        "accuracy": 0.244
+      },
+      "5-15%": {
+        "n": 1403,
+        "accuracy": 0.3165
+      },
+      "15-40%": {
+        "n": 2298,
+        "accuracy": 0.4008
+      },
+      ">40%": {
+        "n": 1511,
+        "accuracy": 0.5129
+      }
+    },
+    "accuracy_by_family_and_size": {
+      "chain:3": {
+        "n": 778,
+        "accuracy": 0.3843
+      },
+      "chain:4": {
+        "n": 210,
+        "accuracy": 0.2524
+      },
+      "chain:5": {
+        "n": 286,
+        "accuracy": 0.2622
+      },
+      "value_compare:2": {
+        "n": 2624,
+        "accuracy": 0.5404
+      },
+      "value_compare:3": {
+        "n": 2598,
+        "accuracy": 0.4115
+      },
+      "value_compare:4": {
+        "n": 740,
+        "accuracy": 0.3946
+      },
+      "value_compare:5": {
+        "n": 764,
+        "accuracy": 0.3168
+      }
+    },
+    "accuracy_by_template_author_POOLED": {
+      "generated": {
+        "n": 3976,
+        "accuracy": 0.3969
+      },
+      "user": {
+        "n": 4024,
+        "accuracy": 0.4647
+      }
+    },
+    "accuracy_by_template": {
+      "S-CH-argmax-1": {
+        "n": 323,
+        "accuracy": 0.161
+      },
+      "S-CH-argmax-held": {
+        "n": 219,
+        "accuracy": 0.4932
+      },
+      "S-CH-argmin-1": {
+        "n": 355,
+        "accuracy": 0.1803
+      },
+      "S-CH-relation-1": {
+        "n": 377,
+        "accuracy": 0.5385
+      },
+      "S-VC-argmax-1": {
+        "n": 598,
+        "accuracy": 0.3746
+      },
+      "S-VC-argmax-2": {
+        "n": 564,
+        "accuracy": 0.3954
+      },
+      "S-VC-argmax-held": {
+        "n": 456,
+        "accuracy": 0.682
+      },
+      "S-VC-argmax-user1": {
+        "n": 519,
+        "accuracy": 0.4123
+      },
+      "S-VC-argmax-user2": {
+        "n": 514,
+        "accuracy": 0.428
+      },
+      "S-VC-argmax-user4": {
+        "n": 446,
+        "accuracy": 0.6592
+      },
+      "S-VC-argmax-user6": {
+        "n": 569,
+        "accuracy": 0.4271
+      },
+      "S-VC-argmax-user8": {
+        "n": 536,
+        "accuracy": 0.4272
+      },
+      "S-VC-argmin-1": {
+        "n": 548,
+        "accuracy": 0.3704
+      },
+      "S-VC-argmin-2": {
+        "n": 536,
+        "accuracy": 0.3545
+      },
+      "S-VC-argmin-user3": {
+        "n": 448,
+        "accuracy": 0.5737
+      },
+      "S-VC-argmin-user5": {
+        "n": 561,
+        "accuracy": 0.3333
+      },
+      "S-VC-argmin-user7": {
+        "n": 431,
+        "accuracy": 0.5244
+      }
+    },
+    "errors": {
+      "total": 4552,
+      "by_category": {
+        "false_tie": {
+          "n": 1513,
+          "share": 0.3324
+        },
+        "wrong_entity": {
+          "n": 1498,
+          "share": 0.3291
+        },
+        "opposite_extreme": {
+          "n": 733,
+          "share": 0.161
+        },
+        "off_answer": {
+          "n": 547,
+          "share": 0.1202
+        },
+        "relation_flip": {
+          "n": 174,
+          "share": 0.0382
+        },
+        "missed_tie": {
+          "n": 87,
+          "share": 0.0191
+        }
+      },
+      "by_split": {
+        "test_iid": {
+          "opposite_extreme": 258,
+          "wrong_entity": 294,
+          "false_tie": 131,
+          "relation_flip": 36,
+          "missed_tie": 23
+        },
+        "test_entity": {
+          "false_tie": 1034,
+          "off_answer": 547,
+          "opposite_extreme": 19,
+          "relation_flip": 51,
+          "wrong_entity": 17
+        },
+        "test_template": {
+          "opposite_extreme": 334,
+          "wrong_entity": 345,
+          "false_tie": 95,
+          "missed_tie": 30
+        },
+        "test_hop": {
+          "wrong_entity": 842,
+          "false_tie": 253,
+          "missed_tie": 34,
+          "opposite_extreme": 122,
+          "relation_flip": 87
+        }
+      }
+    },
+    "wrong_entity_mention_position_RAW_COUNTS": {
+      "last": 640,
+      "first": 730,
+      "middle": 861
+    },
+    "controlled_in_distribution": {
+      "split": "test_iid",
+      "accuracy_by_margin": {
+        "<2%": {
+          "n": 41,
+          "accuracy": 0.2683
+        },
+        "2-5%": {
+          "n": 108,
+          "accuracy": 0.2963
+        },
+        "5-15%": {
+          "n": 333,
+          "accuracy": 0.4805
+        },
+        "15-40%": {
+          "n": 581,
+          "accuracy": 0.611
+        },
+        ">40%": {
+          "n": 446,
+          "accuracy": 0.7982
+        }
+      },
+      "accuracy_by_task": {
+        "chain, argmax": {
+          "n": 86,
+          "accuracy": 0.4651
+        },
+        "chain, argmin": {
+          "n": 90,
+          "accuracy": 0.5333
+        },
+        "chain, relation": {
+          "n": 101,
+          "accuracy": 0.6436
+        },
+        "numeric, no tie": {
+          "n": 1509,
+          "accuracy": 0.6057
+        },
+        "numeric, tie": {
+          "n": 214,
+          "accuracy": 0.8925
+        }
+      },
+      "accuracy_by_template_author_numeric_no_tie": {
+        "user": {
+          "n": 847,
+          "accuracy": 0.608
+        },
+        "generated": {
+          "n": 662,
+          "accuracy": 0.6027
+        }
+      },
+      "wrong_pick_rate_per_slot": {
+        "first": 0.2071,
+        "last": 0.2479,
+        "middle": 0.1581
+      },
+      "relation_confusion": {
+        "gold=گهٽ predicted=گهٽ": 30,
+        "gold=وڌيڪ predicted=وڌيڪ": 35,
+        "gold=گهٽ predicted=وڌيڪ": 15,
+        "gold=وڌيڪ predicted=گهٽ": 21
+      }
+    },
+    "qualitative": {
+      "successes": [
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-2",
+          "text": "سوال: ميز جو وزن 96 ڪلو آهي. پٿر جو وزن 96 ڪلو آهي. سڀ کان وڌيڪ وزن ڪنهن جو آهي؟\nجواب:",
+          "gold": "برابر",
+          "predicted": "برابر",
+          "error": null
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-2",
+          "text": "سوال: رسي جي ڊيگهه 154 سينٽي ميٽر آهي. بوتل جي ڊيگهه 154 سينٽي ميٽر آهي. ڪرسي جي ڊيگهه 110 سينٽي ميٽر آهي. وڻ جي ڊيگهه 144 سينٽي ميٽر آهي. سڀ کان وڌيڪ ڊيگهه ڪنهن جي آهي؟\nجواب:",
+          "gold": "برابر",
+          "predicted": "برابر",
+          "error": null
+        },
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmax-held",
+          "text": "سوال: شڪارپور جي آبادي 294 لک آهي. ٺٽي جي آبادي 248 لک آهي. سانگهڙ جي آبادي 294 لک آهي. آبادي سڀ کان وڌيڪ ڪنهن جي آهي؟\nجواب:",
+          "gold": "برابر",
+          "predicted": "برابر",
+          "error": null
+        },
+        {
+          "split": "test_iid",
+          "template_id": "S-CH-relation-1",
+          "text": "سوال: قمبر جي آبادي نوشهرو فيروز کان وڌيڪ آهي. شڪارپور جي آبادي قمبر کان وڌيڪ آهي. شڪارپور جي آبادي نوشهرو فيروز کان وڌيڪ آهي يا گهٽ؟\nجواب:",
+          "gold": "وڌيڪ",
+          "predicted": "وڌيڪ",
+          "error": null
+        },
+        {
+          "split": "test_iid",
+          "template_id": "S-VC-argmax-user8",
+          "text": "سوال: طارق جو وزن 78 ڪلو آهي. خالد جو وزن 39 ڪلو آهي. سڀ کان وڌيڪ ڪير آهي وزن ۾؟\nجواب:",
+          "gold": "طارق",
+          "predicted": "طارق",
+          "error": null
+        },
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmax-held",
+          "text": "سوال: حسين جي عمر 18 سال آهي. عابد جي عمر 75 سال آهي. عمر سڀ کان وڌيڪ ڪنهن جي آهي؟\nجواب:",
+          "gold": "عابد",
+          "predicted": "عابد",
+          "error": null
+        }
+      ],
+      "failures": [
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmax-user4",
+          "text": "سوال: ميرپورخاص جي آبادي 245 لک آهي. قمبر جي آبادي 262 لک آهي. ڪير وڌيڪ آبادي جو آهي؟\nجواب:",
+          "gold": "قمبر",
+          "predicted": "ميرپورخاص",
+          "error": "opposite_extreme"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-CH-relation-1",
+          "text": "سوال: حسن جو وزن توفيق کان گهٽ آهي. فرزانه جو وزن امير کان وڌيڪ آهي. حسن جو وزن ايوب کان وڌيڪ آهي. توفيق جو وزن امير کان گهٽ آهي. ايوب جو وزن فرزانه کان وڌيڪ آهي يا گهٽ؟\nجواب:",
+          "gold": "گهٽ",
+          "predicted": "وڌيڪ",
+          "error": "relation_flip"
+        },
+        {
+          "split": "test_iid",
+          "template_id": "S-VC-argmax-user2",
+          "text": "سوال: سعيد جي ڊيگهه 166 سينٽي ميٽر آهي. طارق جي ڊيگهه 125 سينٽي ميٽر آهي. وحيد جي ڊيگهه 161 سينٽي ميٽر آهي. سعيد، طارق ۽ وحيد مان ڪنهن جي ڊيگهه وڌيڪ آهي؟\nجواب:",
+          "gold": "سعيد",
+          "predicted": "وحيد",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_entity",
+          "template_id": "S-VC-argmax-2",
+          "text": "سوال: لاڙڪاڻي جي آبادي 24 لک آهي. ٽنڊوآدم جي آبادي 71 لک آهي. خيرپور جي آبادي 68 لک آهي. سڀ کان وڌيڪ آبادي ڪنهن جي آهي؟\nجواب:",
+          "gold": "ٽنڊوآدم",
+          "predicted": "",
+          "error": "off_answer"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: ٿيلهي جي ڊيگهه 137 سينٽي ميٽر آهي. دٻي جي ڊيگهه 101 سينٽي ميٽر آهي. بوتل جي ڊيگهه 121 سينٽي ميٽر آهي. گاڏي جي ڊيگهه 137 سينٽي ميٽر آهي. ڪنهن جي ڊيگهه وڌيڪ آهي؟\nجواب:",
+          "gold": "برابر",
+          "predicted": "بوتل",
+          "error": "missed_tie"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmax-1",
+          "text": "سوال: ايوب جو وزن 75 ڪلو آهي. منصور جو وزن 68 ڪلو آهي. اقبال جو وزن 21 ڪلو آهي. سعيد جو وزن 79 ڪلو آهي. ڪنهن جو وزن وڌيڪ آهي؟\nجواب:",
+          "gold": "سعيد",
+          "predicted": "برابر",
+          "error": "false_tie"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-VC-argmin-1",
+          "text": "سوال: خالد جي ڊيگهه 140 سينٽي ميٽر آهي. ايوب جي ڊيگهه 101 سينٽي ميٽر آهي. زينب جي ڊيگهه 162 سينٽي ميٽر آهي. شاهد جي ڊيگهه 162 سينٽي ميٽر آهي. ڪنهن جي ڊيگهه گهٽ آهي؟\nجواب:",
+          "gold": "ايوب",
+          "predicted": "خالد",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmin-user7",
+          "text": "سوال: زينب جو وزن 81 ڪلو آهي. ثمينه جو وزن 38 ڪلو آهي. صفيه جو وزن 95 ڪلو آهي. وزن ۾ سڀ کان گهٽ انهن مان ڪير آهي؟\nجواب:",
+          "gold": "ثمينه",
+          "predicted": "صفيه",
+          "error": "opposite_extreme"
+        },
+        {
+          "split": "test_hop",
+          "template_id": "S-CH-argmin-1",
+          "text": "سوال: مريم جي عمر حامد کان وڌيڪ آهي. ثمينه جي عمر مريم کان وڌيڪ آهي. وحيد جي عمر منصور کان وڌيڪ آهي. ثمينه جي عمر منصور کان گهٽ آهي. سڀ کان گهٽ عمر ڪنهن جي آهي؟\nجواب:",
+          "gold": "حامد",
+          "predicted": "مريم",
+          "error": "wrong_entity"
+        },
+        {
+          "split": "test_template",
+          "template_id": "S-VC-argmax-user4",
+          "text": "سوال: ايوب جي ڊيگهه 160 سينٽي ميٽر آهي. شبانه جي ڊيگهه 173 سينٽي ميٽر آهي. رشيد جي ڊيگهه 101 سينٽي ميٽر آهي. ڪير وڌيڪ ڊيگهه جو آهي؟\nجواب:",
+          "gold": "شبانه",
+          "predicted": "ايوب",
+          "error": "wrong_entity"
         }
       ]
     }

@@ -1,0 +1,68 @@
+[
+  {
+    "language": "hindi",
+    "split": "val",
+    "context": 512,
+    "cross_entropy": 6.727653577453949,
+    "perplexity": 835.1852674738586,
+    "bits_per_byte": 0.9739053380515755,
+    "n_tokens": 14825984,
+    "n_bytes": 147755937,
+    "n_windows": 28957
+  },
+  {
+    "language": "hindi",
+    "split": "test",
+    "context": 512,
+    "cross_entropy": 6.719892858891211,
+    "perplexity": 828.7287158112243,
+    "bits_per_byte": 1.0111379790414199,
+    "n_tokens": 11826176,
+    "n_bytes": 113388968,
+    "n_windows": 23098
+  },
+  {
+    "language": "sindhi",
+    "split": "val",
+    "context": 1024,
+    "cross_entropy": 8.071038148722236,
+    "perplexity": 3200.4226196950885,
+    "bits_per_byte": 1.8004684669904258,
+    "n_tokens": 18111488,
+    "n_bytes": 117131189,
+    "n_windows": 17687
+  },
+  {
+    "language": "sindhi",
+    "split": "val",
+    "context": 512,
+    "cross_entropy": 8.2284699970151,
+    "perplexity": 3746.097824362743,
+    "bits_per_byte": 1.835828956054,
+    "n_tokens": 18112000,
+    "n_bytes": 117119126,
+    "n_windows": 35375
+  },
+  {
+    "language": "sindhi",
+    "split": "test",
+    "context": 1024,
+    "cross_entropy": 6.085745043364423,
+    "perplexity": 439.54717241349834,
+    "bits_per_byte": 1.9315255079396512,
+    "n_tokens": 14955520,
+    "n_bytes": 67981284,
+    "n_windows": 14605
+  },
+  {
+    "language": "sindhi",
+    "split": "test",
+    "context": 512,
+    "cross_entropy": 6.1632151212415085,
+    "perplexity": 474.9526530331401,
+    "bits_per_byte": 1.9562530792334916,
+    "n_tokens": 14956032,
+    "n_bytes": 67978756,
+    "n_windows": 29211
+  }
+]

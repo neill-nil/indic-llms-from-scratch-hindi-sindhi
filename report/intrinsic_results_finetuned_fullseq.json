@@ -1,0 +1,35 @@
+[
+  {
+    "language": "hindi",
+    "split": "val",
+    "context": 512,
+    "cross_entropy": 16.31634238672202,
+    "perplexity": 12192631.9254618,
+    "bits_per_byte": 2.361978476590865,
+    "n_tokens": 14825984,
+    "n_bytes": 147755937,
+    "n_windows": 28957
+  },
+  {
+    "language": "sindhi",
+    "split": "val",
+    "context": 1024,
+    "cross_entropy": 8.098384162910165,
+    "perplexity": 3289.1490500729283,
+    "bits_per_byte": 1.806568752398076,
+    "n_tokens": 18111488,
+    "n_bytes": 117131189,
+    "n_windows": 17687
+  },
+  {
+    "language": "sindhi",
+    "split": "val",
+    "context": 512,
+    "cross_entropy": 8.102945147942318,
+    "perplexity": 3304.185073131219,
+    "bits_per_byte": 1.8078234881218427,
+    "n_tokens": 18112000,
+    "n_bytes": 117119126,
+    "n_windows": 35375
+  }
+]
