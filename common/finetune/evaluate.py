@@ -243,8 +243,15 @@ def main():
         condition = args.checkpoint if args.checkpoint in ("pretrained", "finetuned",
                                                            "finetuned_fullseq") \
             else Path(args.checkpoint).parent.name
-        rec_path = (PROJECT_ROOT / language / "eval"
-                    / f"reasoning_{condition}_{args.shots}shot.jsonl")
+        # Predictions follow --out when one is given. They used to go to the fixed path
+        # below whatever --out said, so a `--limit 4` smoke test silently overwrote a
+        # committed 8,000-row results file with four rows.
+        if args.out:
+            out_path = Path(args.out)
+            rec_path = out_path.with_name(f"{out_path.stem}_{language}_predictions.jsonl")
+        else:
+            rec_path = (PROJECT_ROOT / language / "eval"
+                        / f"reasoning_{condition}_{args.shots}shot.jsonl")
         rec_path.parent.mkdir(parents=True, exist_ok=True)
         with open(rec_path, "w", encoding="utf-8") as f:
             for r in all_records:
