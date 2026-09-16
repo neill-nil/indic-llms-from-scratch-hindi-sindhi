@@ -1,7 +1,7 @@
 [
   {
     "language": "hindi",
-    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/hindi/finetune/run_fullseq/best.pt",
+    "checkpoint": "hindi/finetune/run_fullseq/best.pt",
     "condition": "finetuned_fullseq",
     "shots": 0,
     "splits": {
@@ -633,7 +633,7 @@
   },
   {
     "language": "sindhi",
-    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/sindhi/finetune/run_fullseq/best.pt",
+    "checkpoint": "sindhi/finetune/run_fullseq/best.pt",
     "condition": "finetuned_fullseq",
     "shots": 0,
     "splits": {

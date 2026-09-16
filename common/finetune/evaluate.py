@@ -222,7 +222,10 @@ def main():
         logger.info("%s | %s | %d-shot", language, path, args.shots)
 
         all_records: list[dict] = []
-        entry = {"language": language, "checkpoint": str(path),
+        # Relative to the repository, so results files do not carry this machine's home
+        # directory around and mean the same thing on a grader's checkout.
+        rel = path.relative_to(PROJECT_ROOT) if path.is_relative_to(PROJECT_ROOT) else path
+        entry = {"language": language, "checkpoint": str(rel),
                  "condition": args.checkpoint, "shots": args.shots, "splits": {}}
         for split in args.splits:
             s, records = evaluate_split(model, language, split, prefix,

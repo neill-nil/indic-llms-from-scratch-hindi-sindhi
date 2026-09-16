@@ -2,7 +2,7 @@
 # Train all tokenizer models for Hindi (BPE + Unigram, 16k vocab)
 # This script is designed to run completely detached from any terminal.
 set -e
-cd /home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil
+cd "$(dirname "$0")"   # repo root, wherever it is checked out
 PYTHON=.venv/bin/python
 
 echo "$(date) — Starting Hindi BPE tokenizer training (16k vocab)..."

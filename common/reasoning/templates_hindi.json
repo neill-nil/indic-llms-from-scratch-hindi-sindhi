@@ -1,8 +1,8 @@
 {
   "language": "hindi",
   "_readme": [
-    "Surface templates for the Hindi reasoning corpus. THIS FILE IS MEANT TO BE EDITED",
-    "BY HAND — it is the intended place to add human-authored templates alongside the",
+    "Surface templates for the Hindi reasoning corpus. This file is intended to be edited",
+    "by hand: it is the place where human-authored templates live alongside the",
     "generated ones. Run `python -m common.reasoning.check_templates --language hindi`",
     "after editing: it validates the schema, checks every literal word against the Hindi",
     "pretraining corpus, and prints a rendered example of each template.",
@@ -12,10 +12,10 @@
     "them this way is what lets one template cover 2, 3 or 4 entities, which is how the",
     "held-out longer-chain test split is built without writing separate templates for it.",
     "",
-    "YOU DO NOT HAVE TO WRITE PLACEHOLDERS BY HAND. Write the sentence with real",
+    "Placeholders need not be written by hand. A sentence written with real",
     "words and convert it:  python -m common.reasoning.make_template --language hindi",
     "  --fact \"<one statement>\" --question \"<the question>\" --type argmax",
-    "It prints a finished template to paste here, and names any word it did not",
+    "prints a finished template to paste here, and names any word it did not",
     "recognise. The placeholder list below is reference, not a prerequisite.",
     "",
     "PLACEHOLDERS",

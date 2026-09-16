@@ -142,7 +142,7 @@ Same resume-capable format as the pretrained checkpoints.
 Optional bonus from the brief: Model H retrained from scratch with the positional embedding
 table removed, then put through the full Phase 2 evaluation suite.
 
-- **Ablated checkpoint (Hindi, no positional embeddings)** — `https://drive.google.com/file/d/1aLaUtgnBNaME62MQTLI2NAhCeDUH4IhH/view?usp=sharing` — `best.pt`, 275 MB
+- **Ablated checkpoint (Hindi, no positional embeddings)** — `https://drive.google.com/file/d/1aLaUtgnBNaME62MQTLI2NAhCeDUH4IhH/view?usp=sharing` — `hindi_nopos_best.pt`, 275 MB
 - Report: [`report/nopos_ablation.md`](report/nopos_ablation.md) — setup, training, perplexity/BPB, generation, attention
 - Figures: `report/figures/nopos_comparison.png`, `nopos_attention.png`, `attention_nopos_layer0.png`, `attention_nopos_layer5.png`
 - Results: `report/intrinsic_results_nopos.json`, `generation_results_nopos.json`, `attention_results_nopos.json`

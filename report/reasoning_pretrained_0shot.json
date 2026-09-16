@@ -1,7 +1,7 @@
 [
   {
     "language": "hindi",
-    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/hindi/train/run/best.pt",
+    "checkpoint": "hindi/train/run/best.pt",
     "condition": "pretrained",
     "shots": 0,
     "splits": {
@@ -633,7 +633,7 @@
   },
   {
     "language": "sindhi",
-    "checkpoint": "/home/neill-rawani/Documents/Assignments/LMA/Indv_Project/individual-project-neill-nil/sindhi/train/run/best.pt",
+    "checkpoint": "sindhi/train/run/best.pt",
     "condition": "pretrained",
     "shots": 0,
     "splits": {
