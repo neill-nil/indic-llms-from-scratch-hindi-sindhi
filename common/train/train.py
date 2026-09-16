@@ -40,6 +40,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--language", required=True, choices=["hindi", "sindhi"])
+    p.add_argument("--config", type=str, default=None,
+                   help="model config JSON; default <language>/configs/model_config.json")
     p.add_argument("--out_dir", type=str, default=None,
                    help="default: <language>/train/run")
     p.add_argument("--data_dir", type=str, default=None,
@@ -75,7 +77,11 @@ def main():
         torch.backends.cudnn.allow_tf32 = True
 
     # ── Model ───────────────────────────────────────────────────────────────────
-    model_cfg = GPTConfig.from_json(PROJECT_ROOT / args.language / "configs" / "model_config.json")
+    model_cfg = GPTConfig.from_json(
+        Path(args.config) if args.config
+        else PROJECT_ROOT / args.language / "configs" / "model_config.json")
+    if model_cfg.language != args.language:
+        raise SystemExit(f"config is for {model_cfg.language}, not {args.language}")
     model = GPT(model_cfg)
     log.info("model config: %s", model_cfg)
     log.info("\n%s", model.parameter_summary())

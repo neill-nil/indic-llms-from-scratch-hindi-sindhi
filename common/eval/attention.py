@@ -130,9 +130,10 @@ def sample_clean_windows(tokens: np.ndarray, sep_id: int, n: int, length: int,
 
 @torch.no_grad()
 def analyse(language: str, split: str, n_windows: int, seq_len: int,
-            device: str, seed: int) -> dict:
+            device: str, seed: int, checkpoint: str = "best") -> dict:
     """Run the model over held-out text and collect per-layer, per-head statistics."""
-    ckpt_path = PROJECT_ROOT / language / "train" / "run" / "best.pt"
+    from common.eval.intrinsic import checkpoint_path
+    ckpt_path = checkpoint_path(language, checkpoint)
     ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
     cfg = GPTConfig(**ckpt["model_config"])
     model = GPT(cfg)
@@ -201,12 +202,18 @@ def main():
     p.add_argument("--seq_len", type=int, default=256)
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    # Defaults reproduce Phase 2 exactly. The bonus ablation passes --checkpoint nopos and
+    # its own --out so the Phase 2 results file is never overwritten.
+    p.add_argument("--checkpoint", default="best",
+                   help="best | finetuned | nopos | path — see intrinsic.checkpoint_path")
+    p.add_argument("--out", default=None, help="default: report/attention_results.json")
     args = p.parse_args()
 
-    out = [analyse(lang, args.split, args.n_windows, args.seq_len, args.device, args.seed)
+    out = [analyse(lang, args.split, args.n_windows, args.seq_len, args.device, args.seed,
+                   args.checkpoint)
            for lang in ([args.language] if args.language else ["hindi", "sindhi"])]
 
-    path = PROJECT_ROOT / "report" / "attention_results.json"
+    path = Path(args.out) if args.out else PROJECT_ROOT / "report" / "attention_results.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     logger.info("Wrote %s", path)

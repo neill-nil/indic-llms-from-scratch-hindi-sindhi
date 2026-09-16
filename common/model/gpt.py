@@ -92,7 +92,8 @@ class GPT(nn.Module):
         total = sum(p.numel() for p in self.parameters())
         if non_embedding:
             total -= self.embeddings.token_embedding.weight.numel()
-            total -= self.embeddings.position_embedding.weight.numel()
+            if self.embeddings.position_embedding is not None:
+                total -= self.embeddings.position_embedding.weight.numel()
         return total
 
     # ── Forward ─────────────────────────────────────────────────────────────────
@@ -228,7 +229,7 @@ class GPT(nn.Module):
         """Human-readable breakdown, logged at the start of a training run."""
         c = self.config
         tok = c.vocab_size * c.d_model
-        pos = c.max_seq_len * c.d_model
+        pos = c.max_seq_len * c.d_model if c.use_positional_embeddings else 0
         blocks = sum(p.numel() for p in self.blocks.parameters())
         total = self.num_parameters()
         lines = [

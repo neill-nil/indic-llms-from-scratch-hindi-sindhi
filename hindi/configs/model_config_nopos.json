@@ -1,0 +1,13 @@
+{
+  "vocab_size": 16000,
+  "d_model": 512,
+  "n_layers": 6,
+  "n_heads": 8,
+  "d_ff": 1536,
+  "max_seq_len": 512,
+  "dropout": 0.1,
+  "tie_embeddings": true,
+  "language": "hindi",
+  "tokenizer": "hindi_unigram_16000.model",
+  "use_positional_embeddings": false
+}

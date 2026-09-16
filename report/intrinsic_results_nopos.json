@@ -1,0 +1,24 @@
+[
+  {
+    "language": "hindi",
+    "split": "val",
+    "context": 512,
+    "cross_entropy": 3.550261138350602,
+    "perplexity": 34.82240976702948,
+    "bits_per_byte": 0.5139411883073259,
+    "n_tokens": 14825984,
+    "n_bytes": 147755937,
+    "n_windows": 28957
+  },
+  {
+    "language": "hindi",
+    "split": "test",
+    "context": 512,
+    "cross_entropy": 3.6330485644304593,
+    "perplexity": 37.827961993364774,
+    "bits_per_byte": 0.5466624930391643,
+    "n_tokens": 11826176,
+    "n_bytes": 113388968,
+    "n_windows": 23098
+  }
+]

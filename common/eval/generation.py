@@ -161,9 +161,11 @@ def repetition_rate(texts: List[str], n: int = 4) -> float:
 
 @torch.no_grad()
 def evaluate(language: str, split: str, n_prompts: int, prompt_len: int,
-             gen_len: int, batch_size: int, device: str, seed: int) -> dict:
+             gen_len: int, batch_size: int, device: str, seed: int,
+             checkpoint: str = "best") -> dict:
     """Generate at every temperature and score against the true continuations."""
-    ckpt_path = PROJECT_ROOT / language / "train" / "run" / "best.pt"
+    from common.eval.intrinsic import checkpoint_path
+    ckpt_path = checkpoint_path(language, checkpoint)
     ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
     cfg = GPTConfig(**ckpt["model_config"])
     model = GPT(cfg)
@@ -264,15 +266,21 @@ def main():
     p.add_argument("--batch_size", type=int, default=16)
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    # Defaults reproduce Phase 2 exactly. The bonus ablation passes --checkpoint nopos and
+    # its own --out so the Phase 2 results file is never overwritten.
+    p.add_argument("--checkpoint", default="best",
+                   help="best | finetuned | nopos | path — see intrinsic.checkpoint_path")
+    p.add_argument("--out", default=None, help="default: report/generation_results.json")
     args = p.parse_args()
 
     languages = [args.language] if args.language else ["hindi", "sindhi"]
     out = []
     for lang in languages:
         out.append(evaluate(lang, args.split, args.n_prompts, args.prompt_tokens,
-                            args.generate_tokens, args.batch_size, args.device, args.seed))
+                            args.generate_tokens, args.batch_size, args.device, args.seed,
+                            args.checkpoint))
 
-    path = PROJECT_ROOT / "report" / "generation_results.json"
+    path = Path(args.out) if args.out else PROJECT_ROOT / "report" / "generation_results.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     logger.info("Wrote %s", path)

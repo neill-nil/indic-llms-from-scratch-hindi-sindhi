@@ -21,7 +21,7 @@ The two models share no data, vocabulary, or weights — separate corpora, separ
 tokenizers, separate training runs.
 
 **Final report: [`report/final_report.pdf`](report/final_report.pdf)** — a single LaTeX
-report covering all three phases.
+report covering all three phases *(added at the report deadline, 17 September)*.
 
 ## Repository Structure
 
@@ -67,7 +67,7 @@ All large artifacts (Datasets, Tokenizer Models) that are too large for Git are 
 - **[Trained Tokenizer Models & Vocab (16K Unigram)](https://drive.google.com/drive/folders/1S0uDU-52hUb54DrZDFUTji7uX_fk_kFb?usp=sharing)** — also committed directly to this repo under `hindi/tokenizer/` and `sindhi/tokenizer/`, so no download is needed to reproduce Phase 2.
 
 ### Reports
-- **[Final report (PDF, all three phases)](report/final_report.pdf)**
+- **[Final report (PDF, all three phases)](report/final_report.pdf)** *(added at the report deadline, 17 September)*
 - **Phase 3 supporting material**
   - [All Phase 3 tables](report/phase3_results.md) — generated from the results files
   - [Reasoning task design](report/phase3_task_design.md) — dataset specification, with dated amendments
@@ -136,6 +136,37 @@ Same resume-capable format as the pretrained checkpoints.
 | Pretrained vs finetuned attention | `report/attention_finetune_results.json`, `report/figures/attention_finetune_*.png` |
 | Language modelling after finetuning | `report/intrinsic_results_finetuned*.json`, `report/figures/finetune_lm_regression.png` |
 | Full-sequence-loss ablation | `scripts/run_fullseq_ablation.sh`; `<language>/finetune/run_fullseq/`; `report/*fullseq*` |
+
+### Bonus ablation — a model with no positional embeddings
+
+Optional bonus from the brief: Model H retrained from scratch with the positional embedding
+table removed, then put through the full Phase 2 evaluation suite.
+
+- **Ablated checkpoint (Hindi, no positional embeddings)** — `https://drive.google.com/file/d/1aLaUtgnBNaME62MQTLI2NAhCeDUH4IhH/view?usp=sharing` — `best.pt`, 275 MB
+- Report: [`report/nopos_ablation.md`](report/nopos_ablation.md) — setup, training, perplexity/BPB, generation, attention
+- Figures: `report/figures/nopos_comparison.png`, `nopos_attention.png`, `attention_nopos_layer0.png`, `attention_nopos_layer5.png`
+- Results: `report/intrinsic_results_nopos.json`, `generation_results_nopos.json`, `attention_results_nopos.json`
+- Logs and config: `hindi/train/run_nopos/{train.log, training_log.jsonl, model_config.json}`, `hindi/configs/model_config_nopos.json`
+
+| | standard Model H | no positional embeddings |
+|---|---:|---:|
+| Parameters | 24,220,672 | 23,958,528 |
+| Test perplexity | 35.59 | 37.83 |
+| **Test bits per byte** | **0.5375** | **0.5467** (+1.7%) |
+| chrF++ at T=1.0 | 19.72 | 19.94 |
+
+Removing positions costs about 1.7% in bits per byte. What we measure is the compensation:
+layers 3-4 become far more local (mean attention distance 14.0 → 6.1 and 26.6 → 11.0 tokens)
+and two heads still put over half their attention on the previous token. The usual
+explanation — that a causal mask leaves position partly recoverable, since each token sees a
+different number of predecessors — is consistent with this, but is not something these
+measurements prove. Measured at 512 tokens only.
+
+```bash
+bash scripts/train_nopos.sh                      # ~5.3 h, resumable, refuses on battery
+systemd-run --user --unit=lma-nopos-eval --collect --working-directory="$PWD" \
+    bash scripts/run_nopos_eval.sh               # full Phase 2 suite on the ablated model
+```
 
 ## Reproduction
 

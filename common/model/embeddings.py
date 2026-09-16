@@ -62,8 +62,12 @@ class InputEmbedding(nn.Module):
         # the output projection, so it is trained by gradients from both ends.
         self.token_embedding = nn.Embedding(config.vocab_size, config.d_model)
 
-        # One row per position index.
-        self.position_embedding = nn.Embedding(config.max_seq_len, config.d_model)
+        # One row per position index — unless the no-positional-embeddings ablation asks
+        # for none. Then there is no table at all rather than a zeroed one: a zero table would
+        # still be a trainable parameter that gradients could revive, and would inflate the
+        # parameter count the ablation is compared on.
+        self.position_embedding = (nn.Embedding(config.max_seq_len, config.d_model)
+                                   if config.use_positional_embeddings else None)
 
         self.dropout = nn.Dropout(config.dropout)
 
@@ -102,11 +106,14 @@ class InputEmbedding(nn.Module):
                 f"position table has no row for index {self.max_seq_len} or beyond."
             )
 
+        tok = self.token_embedding(idx)          # (B, T, d)
+        if self.position_embedding is None:
+            # Ablation: token identity only. The causal mask is now the sole source of order.
+            return self.dropout(tok)
+
         # (T,) position indices on the same device as the input, so this works under
         # .to('cuda') without the caller having to pass anything extra.
         positions = torch.arange(T, device=idx.device)
-
-        tok = self.token_embedding(idx)          # (B, T, d)
         pos = self.position_embedding(positions)  # (T, d)
 
         # pos broadcasts over the batch: (B,T,d) + (T,d) -> (B,T,d). Every sequence in the

@@ -48,6 +48,12 @@ class GPTConfig:
     d_ff: int = 1536            # feed-forward inner width (3x d_model)
     max_seq_len: int = 512      # context length; hard ceiling set by the position table
 
+    # Bonus ablation only. False removes the positional embedding table entirely, leaving the
+    # causal mask as the model's only source of order information. Defaults to True so that
+    # every existing config and checkpoint — none of which carries this key — loads and
+    # behaves exactly as before.
+    use_positional_embeddings: bool = True
+
     # ── Regularisation ──────────────────────────────────────────────────────────
     dropout: float = 0.1        # applied to embeddings, attention probs, sublayer outputs
 
@@ -85,7 +91,7 @@ class GPTConfig:
         architecture is not what this config claims it is.
         """
         tok = self.vocab_size * self.d_model
-        pos = self.max_seq_len * self.d_model
+        pos = self.max_seq_len * self.d_model if self.use_positional_embeddings else 0
         attn = 4 * (self.d_model * self.d_model + self.d_model)
         mlp = (self.d_model * self.d_ff + self.d_ff) + (self.d_ff * self.d_model + self.d_model)
         norms = 2 * (2 * self.d_model)

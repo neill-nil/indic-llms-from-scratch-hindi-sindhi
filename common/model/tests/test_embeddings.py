@@ -152,6 +152,45 @@ def test_target_budget():
     assert cfg.d_head == 64
 
 
+def test_no_position_table_when_ablated():
+    """The ablation removes the table outright, not by zeroing it."""
+    emb = InputEmbedding(_cfg(use_positional_embeddings=False))
+    assert emb.position_embedding is None
+    assert not any("position" in n for n, _ in emb.named_parameters())
+
+
+def test_ablation_carries_no_order_information():
+    """
+    Without positions, the embedding of a token must not depend on where it sits.
+
+    A sequence of one repeated token must embed to identical rows — and, as a control that
+    keeps this test from passing vacuously, must NOT do so when positions are present.
+    """
+    ids = torch.full((1, 8), 7)
+    ablated = InputEmbedding(_cfg(use_positional_embeddings=False)).eval()(ids)[0]
+    assert torch.equal(ablated, ablated[0].expand_as(ablated)), "rows differ without positions"
+    normal = InputEmbedding(_cfg()).eval()(ids)[0]
+    assert not torch.equal(normal, normal[0].expand_as(normal)), "control failed"
+
+
+def test_ablation_param_count_drops_by_exactly_the_table():
+    """Analytic and module counts agree, and differ from the full model by max_seq_len x d."""
+    from common.model.gpt import GPT
+    full, ablated = _cfg(n_layers=1), _cfg(n_layers=1, use_positional_embeddings=False)
+    assert GPT(ablated).num_parameters() == ablated.n_params()
+    assert full.n_params() - ablated.n_params() == full.max_seq_len * full.d_model
+
+
+def test_existing_configs_default_to_positions_on():
+    """Configs written before the flag existed must keep their positional embeddings."""
+    import json, pathlib
+    root = pathlib.Path(__file__).resolve().parents[3]
+    for lang in ("hindi", "sindhi"):
+        raw = json.loads((root / lang / "configs" / "model_config.json").read_text())
+        assert "use_positional_embeddings" not in raw
+        assert GPTConfig(**raw).use_positional_embeddings is True
+
+
 if __name__ == "__main__":
     torch.manual_seed(0)
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
