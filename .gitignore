@@ -1,6 +1,10 @@
 # Project requirements/docs
 *.pdf
 LMA_Individual_Project_v1.pdf
+# ...except the final report, which is the graded Phase 3 deliverable and must be committed.
+# Both spellings, so a rename of the compiled file does not silently re-ignore it.
+!report/Final_Report.pdf
+!report/final_report.pdf
 
 # Virtual environment
 .venv/
