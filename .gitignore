@@ -87,3 +87,6 @@ REPORT_POINTERS.md
 # so that re-running common.finetune.lr_probe skips finished runs. The committed
 # training_log.jsonl already records that each run completed.
 */finetune/lr_probe/*/DONE
+
+# Personal working outline for the final report — not a deliverable.
+LMA FINAL REPORT.txt
